@@ -1,0 +1,22 @@
+---
+title: "Publications"
+permalink: /publications/
+author_profile: true
+---
+
+{% if page.author and site.data.authors[page.author] %}
+  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
+{% endif %}
+
+<p>You can also find my articles on <a href="{{author.googlescholar}}">my Google Scholar profile</a>.</p>
+
+{% include base_path %}
+{% capture written_year %}'None'{% endcapture %}
+    {% for post in site.publications reversed %}
+      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+      {% if year != written_year %}
+        <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
+        {% capture written_year %}{{ year }}{% endcapture %}
+      {% endif %}
+      {% include archive-single.html %}
+    {% endfor %}

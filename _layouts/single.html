@@ -1,0 +1,173 @@
+--- 
+layout: default
+---
+{% include base_path %}
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+{% include page__hero.html %}
+{% endif %}
+{% if page.url != "/" and site.breadcrumbs %}
+{% unless paginator %}
+{% include breadcrumbs.html %}
+{% endunless %}
+{% endif %}
+<script>
+   function growDiv(id, height) {
+     var growDiv = document.getElementsByClassName('grow')[id];
+     if (growDiv.style.height == height) {
+       growDiv.id = "post" + id;
+       var wrapper = document.querySelector('.measuringWrapper' + id);
+       growDiv.style.height = wrapper.clientHeight + 30 + "px";
+       document.getElementById("more-button" + id).innerHTML = 'Read less <i class="fas fa-chevron-up"></i>'
+     } else {
+       growDiv.id = "pre" + id;
+       growDiv.style.height = height;
+       document.getElementById("more-button" + id).innerHTML = 'Read more <i class="fas fa-chevron-down"></i>'
+     }
+   }
+</script>
+<div id="main" role="main">
+   {% include sidebar.html %}
+   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+      {% if page.title %}
+      <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
+      {% endif %}
+      {% if page.excerpt %}
+      <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
+      {% endif %}
+      {% if page.date %}
+      <meta itemprop="datePublished" content="{{ page.date | date: '%B %d, %Y' }}">
+      {% endif %}
+      {% if page.modified %}
+      <meta itemprop="dateModified" content="{{ page.modified | date: '%B %d, %Y' }}">
+      {% endif %}
+      <div class="page__inner-wrap">
+         <header>
+            {% if page.title %}
+            <h1 class="page__title" style="margin-bottom: 0.1em" itemprop="headline">
+               {{ page.title | markdownify | remove: "
+               <p>" | remove: "</p>
+               " }}
+            </h1>
+            {% endif %}
+            {% if page.collection == 'teaching' %}
+            <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+            {% elsif page.collection == 'publications' or page.collection == 'whitepapers' %}      
+            <p style="margin-bottom: 0">
+               <i><b>{{ page.venue }}, {{ page.date | default: "1900-01-01" | date: "%Y-%m" }}</b></i>
+               <br>
+               <i style="font-size: 0.85em">{{page.authors}}</i>
+               <br>
+               <!-- Awards badge -->
+               {% if page.award and page.award != "" and page.award_link and page.award_link != "" %}
+               <a href="{{ page.award_link }}" class="btn btn--award" target="_blank" rel="noopener noreferrer"><i class="fa fa-star" aria-hidden="true"></i>{{ page.award }}</a>
+               <br>
+               {% elsif page.award and page.award != "" %}
+               <a class="btn btn--award" target="_blank" rel="noopener noreferrer"><i class="fa fa-star" aria-hidden="true"></i> {{ page.award }}</a>
+               <br>
+               {% endif %}
+               <!--{% if page.publisher_link %}<a href="{{ page.publisher_link }}" class="btn btn--pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Publisher link</a>{% endif %}
+                  {% if page.pre_print_link %}<a href="{{ page.pre_print_link }}" class="btn btn--pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pre-print direct link</a>{% endif %}
+                  {% if page.open_access_link %}<a href="{{ page.open_access_link }}" class="btn btn--pdf-light"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> arXiv.org</a>{% endif %}
+                  {% if page.white_paper_publisher_link %}<a href="{{ page.white_paper_publisher_link }}" class="btn btn--success"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Publisher link</a>{% endif %}
+                  {% if page.publisher_link %}<a href="{{ page.open_access_link }}" class="btn btn--pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Publisher PDF</a>{% endif %}-->
+               {% if page.open_access_link %}<a href="{{ page.open_access_link }}" target="_blank" class="btn btn--pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>{% endif %}
+               {% if page.pre_print_link %}<a href="{{ page.pre_print_link }}" class="btn btn--pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Pre-print</a>{% endif %}
+               {% if page.white_paper_publisher_link %}<a href="{{ page.white_paper_publisher_link }}" class="btn btn--success"><i class="fa-solid fa-arrow-up-right-from-square"></i> External link</a>{% endif %}
+               {% if page.database %}<a href="{{ page.database }}" class="btn btn--success"><i class="fa fa-database" aria-hidden="true"></i> Datasets</a>{% endif %}
+               {% if page.slides %}<a href="{{ page.slides }}" class="btn btn--slides"><i class="fa-solid fa-person-chalkboard"></i> Slides</a>{% endif %}
+               {% if page.source %}<a href="{{ page.source }}" class="btn btn--success"><i class="fa fa-code" aria-hidden="true"></i> Source code</a>{% endif %}
+               {% if page.video_link %}<a href="{{ page.video_link }}" class="btn btn--video"><i class="fa fa-film" aria-hidden="true"></i> Conference</a>{% endif %}
+               {% if page.press %}<a href="#media" class="btn btn--info"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Media coverage</a>{% endif %}
+            </p>
+            <section class="page__content" style="font-size: 0.85em; text-align: justify; text-justify: inter-word;" itemprop="text">
+               {% if page.abstract and page.abstract != "" %}
+               <h2>Abstract</h2>
+               <p>{{page.abstract}}</p>
+               {% endif %}
+               {% if page.exec_summary and page.exec_summary != "" %}
+               <h2>Executive Summary</h2>
+               <p>{{page.exec_summary}}</p>
+               {% endif %}
+               {% if page.main_outcomes and page.main_outcomes != "" %}
+               <h2>Main research outcomes</h2>
+               <p>{{page.main_outcomes}}</p>
+               {% endif %}
+
+
+               {% if page.extra_section_title and page.extra_section_title != "" and page.extra_section_content1 and page.extra_section_content1 != "" %}
+               <div class="grow" id="pre0" style="height: 300px">
+                  <div class='measuringWrapper0'>
+                     <h2 id="appendix">{{ page.extra_section_title}}</h2>
+                     <p>{{page.extra_section_content1}}</p>
+                     {% if page.extra_section_fig1 and page.extra_section_fig1 != "" %}
+                     <img src="{{site.url}}{{page.extra_section_fig1}}" onclick="window.open(this.src)"></img>
+                     {% endif %}
+                     {% if page.extra_section_content2 and page.extra_section_content2 != "" %}
+                     <br/><br/>
+                     <p>{{page.extra_section_content2}}</p>
+                     {% endif %}
+                     {% if page.extra_section_fig2 and page.extra_section_fig2 != "" %}
+                     <img src="{{site.url}}{{page.extra_section_fig2}}" onclick="window.open(this.src)"></img>
+                     {% endif %}
+                     {% if page.extra_section_content3 and page.extra_section_content3 != "" %}
+                     <br/><br/>
+                     <p>{{page.extra_section_content3}}</p>
+                     {% endif %}
+                  </div>
+               </div>
+               {%endif%}
+
+               {% if page.extra_section_title and page.extra_section_title != "" and page.extra_section_content1 and page.extra_section_content1 != "" %}
+               <div onclick="growDiv(0, '300px')" class="morebutton" id="more-button0">Read more <i class="fas fa-chevron-down"></i></div>
+               {% endif %}
+               {% if page.press and page.press != "" %}
+               <p style="height: fit-content">
+                  <h2 id="media">Media coverage</h2>
+                  {% for item in page.press%}
+                  <a href="{{ item[0] }}">[{% if item[1] == "en"%}<span class="flag-icon flag-icon-gb" style="font-size: 17px"></span>{%elsif item[1] == "nl"%}<span class="flag-icon flag-icon-nl" style="font-size: 17px"></span>{%endif%}] {{ item[2] }}</a><br/>
+                  {% endfor %}
+               </p>
+               {% endif %}
+               <!--{% if page.press and page.press != "" %}
+               <div onclick="growDiv(1, '400px')" class="morebutton" id="more-button1">Read more <i class="fas fa-chevron-down"></i></div>
+               {% endif %}-->
+
+            </section>
+            {% endif %}
+            {% if page.citation and page.paperurl %}
+            <p>Recommended citation: {{ page.citation }} <a href="{{ page.paperurl }}"><u>{{ page.paperurl }}</u></a></p>
+            {% elsif page.citation %}
+            <p>Recommended citation: {{ page.citation }} </p>
+            {% endif %}
+         </header>
+         <section class="page__content" style="text-align: justify; text-justify: inter-word;" itemprop="text">
+            {{ content }}
+         </section>
+         <footer class="page__meta">
+            {% if site.data.ui-text[site.locale].meta_label %}
+            <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+            {% endif %}
+            {% include page__taxonomy.html %}
+         </footer>
+         <!--{% if page.share %}{% include social-share.html %}{% endif %}
+         {% include post_pagination.html %}-->
+      </div>
+      {% if site.comments.provider and page.comments %}
+      {% include comments.html %}
+      {% endif %}
+   </article>
+   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
+   {% if page.id and page.related and site.related_posts.size > 0 %}
+   <div class="page__related">
+      {% if site.data.ui-text[site.locale].related_label %}
+      <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+      {% endif %}
+      <div class="grid__wrapper">
+         {% for post in site.related_posts limit:4 %}
+         {% include archive-single.html type="grid" %}
+         {% endfor %}
+      </div>
+   </div>
+   {% endif %}
+</div>
+

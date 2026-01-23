@@ -1,0 +1,333 @@
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+/*
+   Default button
+   ========================================================================== */
+
+
+savespace {
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+.right {
+    float: right;
+    margin: 2px;
+  }
+
+.morebutton {
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+  display: block;
+  text-weight: bold;
+  text-align: center;
+  color: #494e52;
+  text-decoration: none !important;
+  cursor: pointer
+}
+
+.btn {
+  /* default button */
+  display: inline-block;
+  margin-bottom: 0.25em;
+  padding: 0.3em 0.4em;
+  color: #fff;
+  font-family: $sans-serif;
+  font-size: $type-size-10;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none !important;
+  background-color: #FFF;
+  border: 1px solid !important;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: mix(white, #000, 20%);
+  }
+
+  .icon {
+    margin-right: 0.5em;
+  }
+
+  .icon + .hidden {
+    margin-left: -0.5em; /* override for hidden text*/
+  }
+
+  /* fills width of parent container */
+
+  &--block {
+    display: block;
+    width: 100%;
+
+    + .btn--block {
+      margin-top: 0.25em;
+    }
+  }
+
+  /* for dark backgrounds */
+
+  &--inverse {
+    color: $gray !important;
+    border: 1px solid $light-gray !important; /* override*/
+    background-color: #fff;
+
+    &:hover {
+      color: #fff !important;
+      border-color: $gray;
+    }
+  }
+
+  /* light outline */
+
+  &--light-outline {
+    border: 1px solid #fff !important; /* override*/
+    background-color: transparent;
+  }
+
+  /* information */
+
+  &--info {
+    color: $info-color !important;
+    background-color: mix(#FFF, $info-color, 90%) !important;
+    border-color: $info-color !important;
+    border-width: 2px !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+    &:hover {
+      color: mix(#0000FF, $info-color, 70%) !important;
+      background-color: mix(#FFF, $info-color, 70%) !important;
+
+    }
+  }
+
+  /* warning */
+
+  &--warning {
+    background-color: $warning-color;
+
+    &:hover {
+      background-color: mix(#000, $warning-color, 20%);
+    }
+  }
+
+  /* positive */
+
+  &--positive {
+    background-color: $success-color;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#000, $success-color, 20%);
+    }
+  }
+
+  /* success */
+
+  &--success {
+    color: $success-color !important;
+    background-color: mix(#FFF, $success-color, 90%) !important;
+    border-color: $success-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#208F20, $success-color, 70%) !important;
+      background-color: mix(#FFF, $success-color, 70%) !important;
+    }
+  }
+
+  /* slides */
+
+  &--slides {
+    color: $slides-color !important;
+    background-color: mix(#FFF, $slides-color, 90%) !important;
+    border-color: $slides-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#ad9343, $slides-color, 70%) !important;
+      background-color: mix(#FFF, $slides-color, 70%) !important;
+    }
+  }
+
+
+  /* video */
+
+  &--video {
+    color: $video-color !important;
+    background-color: mix(#FFF, $video-color, 90%) !important;
+    border-color: $video-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#000, $video-color, 80%) !important;
+      background-color: mix(#FFF, $video-color, 80%) !important;
+    }
+  }
+
+  /* pdf */
+
+  &--pdf {
+    color: $pdf-color !important;
+    background-color: mix(#FFF, $pdf-color, 90%) !important;
+    border-color: $pdf-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#FF0000, $pdf-color, 70%) !important;
+      background-color: mix(#FFF, $pdf-color, 70%) !important;
+    }
+  }
+
+  /* pdf-light */
+
+  &--pdf-light {
+    color: $pdf-color !important;
+    background-color: mix(#FFF, $pdf-color, 95%) !important;
+    border-color: mix(#FFF, $pdf-color, 30%) !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#FF0000, $pdf-color, 85%) !important;
+      background-color: mix(#FFF, $pdf-color, 85%) !important;
+    }
+  }
+
+  /* appendix */
+
+  &--appendix {
+    color: $appendix-color !important;
+    background-color: mix(#FFF, $appendix-color, 90%) !important;
+    border-color: $appendix-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      color: mix(#882288, $appendix-color, 70%) !important;
+      background-color: mix(#FFF, $appendix-color, 70%) !important;
+
+    }
+  }
+
+  &--whitepaper {
+    color: $text-color !important;
+    background-color: mix(#FFF, $whitepaper-color, 60%) !important;
+    border-color: $whitepaper-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $whitepaper-color-hover, 60%) !important;
+
+    }
+  }
+
+  &--journal {
+    color: $text-color !important;
+    background-color: mix(#FFF, $journal-color, 60%) !important;
+    border-color: $journal-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $journal-color-hover, 60%) !important;
+
+    }
+  }
+
+  &--badge {
+    color: $text-color !important;
+    background-color: mix(#FFF, $badge-color, 60%) !important;
+    border-color: $badge-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $badge-color-hover, 60%) !important;
+
+    }
+  }
+
+  &--thesis {
+    color: $text-color !important;
+    background-color: mix(#FFF, $thesis-color, 60%) !important;
+    border-color: $thesis-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $thesis-color-hover, 60%) !important;
+
+    }
+  }
+
+  &--award {
+    color: $text-color !important;
+    background-color: $award-color;
+    border-color: mix(#000, $award-color, 20%)  !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $award-color-hover, 20%) !important;
+
+    }
+  }
+
+  
+
+  /* disabled */
+
+  &--disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+    opacity: 0.65;
+  }
+
+  /* social buttons */
+
+  $social:
+  (facebook, $facebook-color),
+  (twitter, $twitter-color),
+  (google-plus, $google-plus-color),
+  (linkedin, $linkedin-color);
+
+  @each $socialnetwork, $color in $social {
+    &--#{$socialnetwork} {
+      background-color: $color;
+
+      &:hover {
+        background-color: mix(#000, $color, 20%);
+      }
+    }
+  }
+
+  /* extra large button */
+
+  &--x-large {
+    font-size: $type-size-4;
+  }
+
+  /* large button */
+
+  &--large {
+    font-size: $type-size-5;
+  }
+
+  /* small button */
+
+  &--small {
+    font-size: $type-size-7;
+  }
+}

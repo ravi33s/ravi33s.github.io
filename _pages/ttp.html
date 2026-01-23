@@ -1,0 +1,39 @@
+---
+title: "Invited Talks"
+permalink: /ttp/
+author_profile: true
+---
+
+<ul style="padding-left:15px;margin-top:8px">
+{% include base_path %}
+{% for post in site.talks reversed %}
+  {% include archive_ttp.html %}
+{% endfor %}
+</ul>
+
+<h1>Teaching</h1>
+
+<ul style="padding-left:15px">
+{% include base_path %}
+{% for post in site.teaching reversed %}
+  {% include archive_ttp.html %}
+{% endfor %}
+</ul>
+
+<h1>Podcasts</h1>
+
+<ul style="padding-left:15px">
+{% include base_path %}
+{% for post in site.podcasts reversed %}
+  {% include archive_ttp.html %}
+{% endfor %}
+</ul>
+
+<h1>Press</h1>
+
+<ul style="padding-left:15px">
+{% include base_path %}
+{% for post in site.press reversed %}
+  {% include archive_ttp.html %}
+{% endfor %}
+</ul>

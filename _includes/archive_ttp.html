@@ -1,0 +1,41 @@
+{% include base_path %}
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+<!--{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}-->
+
+<div class="{{ include.type | default: "list" }}__item_ttp">
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork" style="padding-bottom: 10px;">
+      {% if include.type == "grid" and teaser %}
+        <div class="archive__item-teaser">
+          <img src=
+            {% if teaser contains "://" %}
+              "{{ teaser }}"
+            {% else %}
+              "{{ teaser | prepend: "/images/" | prepend: base_path }}"
+            {% endif %}
+            alt="">
+        </div>
+      {% endif %}
+
+      {% if post.collection == 'teaching' %}
+        <i>{{ post.title }}</i><br/><b style="padding-left: 15px;">{{ post.course }}</b>, {{ post.start-date | date:"%Y" }}-{{ post.end-date | default: "present" | date: "%Y" }}. {% if post.course_page and post.course_page != "" %}<a href="{{ post.course_page}}">Course page</a> {% endif %}
+      {% elsif post.collection == 'talks' %}
+        <i>{{ post.title }}</i><br/><b style="padding-left: 15px;">{{post.location}}</b>, {{post.where}}. {{ post.date | date:"%B %Y" }}{% if post.link and post.link != "" %}<br/><a href="{{ post.link}}">Link</a>{% endif %} 
+      {% elsif post.collection == 'press' %}
+        <i><a href="{{ post.link}}">{{ post.title }}</a></i><br/><b style="padding-left: 15px;">{{post.editor}}</b>, {{ post.date | date:"%B %Y" }}
+      {% elsif post.collection == 'podcasts' %}
+        <i><a href="{{ post.link}}">{{ post.title }}</a></i>{% if post.youtube and post.youtube != "" %}.<br/>Direct link: <a href="{{ post.youtube }}"><i class="fa-brands fa-youtube fa-lg" style="color: #ff0000;"></i> YouTube</a>{% endif %}
+      {% if post.spotify and post.spotify != "" %} <a href="{{ post.spotify }}"><i class="fa-brands fa-spotify fa-lg" style="color: #1ed760;"></i> Spotify</a>{% endif %}
+          <br/><b style="padding-left: 15px;">{{post.editor}}</b>, {{ post.date | date:"%B %Y" }}
+      {% endif %}
+  </article>
+</div>
