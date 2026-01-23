@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-<!--<p style="padding-bottom:0.5em;border-bottom:1px solid #f2f3f3">My full CV is <a href="https://michelecampobasso.github.io/files/Michele_Campobasso_CV.pdf">here</a>!</p>-->
+<!--<p style="padding-bottom:0.5em;border-bottom:1px solid #f2f3f3">My full CV is <a href="https://ravi33s.github.io/files/Michele_Campobasso_CV.pdf">here</a>!</p>-->
 <!--<h3 style="color:#DC143C">I currently am in the job market!</h3>-->
 
 <img src="/images/resume3.png" style="width:30px;height:30px;"> My full CV is [here](https://michelecampobasso.github.io/files/Michele_Campobasso_CV.pdf).
