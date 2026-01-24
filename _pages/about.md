@@ -6,8 +6,6 @@ redirect_from:
   - /about/
   - /about.html
 ---
-<h3>Research Profile</h3>
-
 I am a postdoctoral researcher at the [Information Systems in the Built Environment](https://www.tue.nl/en/research/research-groups/design-and-decision-support-systems/information-systems-in-the-built-environment) research group of [Eindhoven University of Technology](https://www.tue.nl) in the Netherlands. My work is part of the [WILSON Horizon Europe Project](https://wilson-project.eu/), focusing on distributed data modelling and federated digital twinning for lifecycle data-driven sustainable operation and management of buildings and districts. I am supervised by [Dr. Ir.-arch. Pieter Pauwels](https://www.tue.nl/en/research/researchers/pieter-pauwels) and [Dr. Ir.-arch. Ekaterina Petrova](https://www.tue.nl/en/research/researchers/ekaterina-petrova).
 
 <img src="/images/resume3.png" style="width:30px;height:30px;"> <b><q>We are currently in the midst of a technological and computing revolution that will drastically change our lives and potentially redefine what it means to be human. I am very excited at the prospect of devoting my long-term career to such a dynamic, fast advancing field.</q></b>
@@ -18,7 +16,7 @@ I earned my PhD in Computer Science and Engineering from the [Department of Elec
 
 I received my M.Tech degree in [Computer Science and Engineering](https://www.iitp.ac.in/departments/engineering-technology/computer-science-and-engineering) from the [Indian Institute of Technology (IIT) Patna](https://iitp.ac.in) in India, under the supervision of [Prof. Dr. Ashok Singh Sairam](https://fac.iitg.ac.in/ashok/view/index.php). My master's thesis focused on [Time Synchronization in Duty Cycled Wireless Sensor Networks](https://ravi33s.github.io/files/RAVI_CV.pdf), which was part of a DAAD-DST Indo-German collaborative project. The research aimed to model broadcast duration to ensure synchronization among wireless sensor nodes, with applications in industrial monitoring and networked systems. During this time, I also worked under [Prof. Dr.-Ing. Axel Sikora](http://ei.hs-offenburg.de/sikora) at [Offenburg University of Applied Sciences](https://www.hs-offenburg.de/) in Germany on an Indo-German Joint Research Collaboration.
 
-<h3>Research overview</h3>
+<h3>Research Profile</h3>
 
 My research focusses on I4.0, IIoT, Industrial Cyber Physical Systems (ICPS), wireless sensor networks (WSNs), and computer networking. My work aims to reduce human intervention in data flow from industrial plants to ERP and cloud infrastructure by implementing cutting-edge techniques. My projects include secure query processing, sensor device integration, and trustworthy firmware dissemination.
 
