@@ -244,15 +244,15 @@ savespace {
     }
   }
 
-  &--badge {
+  &--conference {
     color: $text-color !important;
-    background-color: mix(#FFF, $badge-color, 60%) !important;
-    border-color: $badge-color !important;
+    background-color: mix(#FFF, $conference-color, 60%) !important;
+    border-color: $conference-color !important;
     padding: 0em 0.3em !important;
     font-size: $type-size-6;
 
     &:hover {
-      background-color: mix(#FFF, $badge-color-hover, 60%) !important;
+      background-color: mix(#FFF, $conference-color-hover, 60%) !important;
 
     }
   }
