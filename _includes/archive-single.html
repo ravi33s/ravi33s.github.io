@@ -49,6 +49,8 @@
         {{ post.authors }}  <i><a href="{{ post.permalink }}">{{ post.title }}</a>. </i>{{ post.venue }}{% if post.extra_info and post.extra_info != "" %}, {{post.extra_info}} {% endif %}
       {% elsif post.collection == 'journals' %}
         {{ post.authors }}  <i><a href="{{ post.permalink }}">{{ post.title }}</a>. </i>{{ post.venue }}{% if post.extra_info and post.extra_info != "" %}, {{post.extra_info}} {% endif %}
+      {% elsif post.collection == 'conference' %}
+        {{ post.authors }}  <i><a href="{{ post.permalink }}">{{ post.title }}</a>. </i>{{ post.venue }}{% if post.extra_info and post.extra_info != "" %}, {{post.extra_info}} {% endif %}
       {% endif %}
 
       <!--
