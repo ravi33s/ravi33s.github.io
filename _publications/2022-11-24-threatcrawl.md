@@ -1,8 +1,9 @@
 ---
 title: "THREAT/crawl: a Trainable, Highly-Reusable, and Extensible Automated Method and Tool to Crawl Criminal Underground Forums"
-collection: publications
+collection: conference
 permalink: /publication/2022-11-24-threatcrawl
 date: 2022-11-24
+conference: true
 venue: 'In Proceedings of the 17th Symposium on Electronic Crime Research (<b>APWG eCrime 2022</b>)'
 open_access_link: 'https://arxiv.org/pdf/2212.03641.pdf'
 authors: 'Campobasso, M.; Allodi, L.'
