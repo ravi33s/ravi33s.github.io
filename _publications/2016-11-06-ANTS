@@ -1,0 +1,13 @@
+---
+title: "Tunable synchronization in duty-cycled wireless sensor networks"
+collection: publications
+permalink: /publication/2016-11-06-ANTS
+date: 2016-11-06
+conference: True
+venue: 'IEEE 10th International Conference on Advanced Networks and Telecommunications Systems (ANTS), Bangalore, India (<b>ANTS</b>)'
+open_access_link: "https://doi.org/10.1109/ANTS.2016.7947782"
+publisher_link: 'https://doi.org/10.1109/ANTS.2016.7947782'
+authors: '<b>Ravi Sharma</b>, Ashok Singh Sairam, Akash Yadav, and Axel Sikora'
+abstract: "In this work, we consider a duty-cycled wireless sensor network with the assumption that the on/off schedules are uncoordinated. In such networks, as all nodes may not be awake during the transmission of time synchronization messages, nodes will require to re-transmit the synchronization messages. Ideally a node should re-transmit for the maximum sleep duration to ensure that all nodes are synchronized. However, such a proposition will immensely increase the energy consumption of the nodes. Such a situation demands that there is an upper bound of the number of retransmissions. We refer to the time a node spends in re-transmission of the control message as broadcast duration. We ask the question, what should be the broadcast duration to ensure that a certain percentage of the available nodes are synchronized. The problem to estimate the broadcast duration is formulated so as to capture the probability threshold of the nodes being synchronized. Results show the proposed analytical model can predict the broadcast duration with a given lower error margin under real world conditions, thus demonstrating the efficiency of our solution."
+
+---
