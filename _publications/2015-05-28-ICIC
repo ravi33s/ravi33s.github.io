@@ -1,0 +1,13 @@
+---
+title: "A virtual infrastructure using tides for data dissemination in wireless sensor networks for mobile sinks"
+collection: publications
+permalink: /publication/2015-05-28-ICIC
+date: 2015-05-28
+conference: True
+venue: 'IEEE International Conference on Industrial Instrumentation and Control, Pune, India (<b>ICIC</b>)'
+open_access_link: "https://doi.org/10.1109/IIC.2015.7150891"
+publisher_link: 'https://doi.org/10.1109/IIC.2015.7150891'
+authors: '<b>Ravi Sharma</b>, Nitika Vats Doohan, and Sanjiv Tokekar'
+abstract: "A Wireless Sensor Network (WSN) is a cluster of sensor nodes where each sensor node has capability to monitor, measure and disseminates the data to the neighboring node. Collected data is normally forwarded to base station for analysis and processing. Many protocols for network with static sink are available in literature. However, WSN with mobile sink(s) is the contemporary research issue amongst the researchers. The existing approaches have high communication overhead and latency. As an alternative of existing protocol we are presenting Tide-based Data Dissemination (TBDD) protocol for mobile sink in WSNs where we added the concept of tides and relay nodes in rendezvous region (RR) that results in highly secured, reliable and energy efficient protocol. The nodes in RR take part in the communication which results in increase of network life time as well as address the sink mobility."
+
+---
