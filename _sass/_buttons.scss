@@ -257,6 +257,19 @@ savespace {
     }
   }
 
+   &--bookchapter {
+    color: $text-color !important;
+    background-color: mix(#FFF, $bookchapter-color, 60%) !important;
+    border-color: $bookchapter-color !important;
+    padding: 0em 0.3em !important;
+    font-size: $type-size-6;
+
+    &:hover {
+      background-color: mix(#FFF, $bookchapter-color-hover, 60%) !important;
+
+    }
+  }
+
    &--badge {
     color: $text-color !important;
     background-color: mix(#FFF, $badge-color, 60%) !important;
