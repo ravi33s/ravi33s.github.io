@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ravi Sharma - Postdoctoral Researcher at TU/e Eindhoven, specialized in Industrial IoT, Industry 4.0, and Building Information Systems">
+    <meta name="keywords" content="Ravi Sharma, Industrial IoT, IIoT, Industry 4.0, TU/e, WILSON, Digital Twin, Wireless Sensor Networks">
+    <meta name="author" content="Dr. Ravi Sharma">
+    <title>Dr. Ravi Sharma</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Three.js and Vanta.js for background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Styles.css">
+    <style>
+        /* Section navigation buttons */
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .section-nav button {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .section-nav button:hover {
+            background-color: rgba(62, 130, 247, 0.1);
+            color: #3e82f7;
+        }
+        
+        .section-nav button.active {
+            background-color: #3e82f7;
+            color: white;
+        }
+        
+        /* Publication styles */
+        .publication-year-group {
+            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .publication-year-group h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3e82f7;
+            display: inline-block;
+        }
+        
+        .publication-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .publication-item {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .publication-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .publication-type {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            margin-right: 15px;
+            height: fit-content;
+            min-width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .journal-item .publication-type {
+            background-color: #3e82f7; /* Blue */
+        }
+        
+        .conference-item .publication-type {
+            background-color: #16a34a; /* Green */
+        }
+        
+        .book-item .publication-type {
+            background-color: #d946ef; /* Purple */
+        }
+        
+        .publication-details {
+            flex: 1;
+        }
+        
+        .publication-details h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .publication-details p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .publication-details .authors {
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .journal-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        
+        .journal-line p {
+            margin: 0;
+            flex-grow: 1;
+            min-width: 250px;
+            font-size: 15px;
+        }
+        
+        .journal-line p em {
+            font-weight: 500;
+        }
+        
+        .right-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .impact-factor {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #f9f0ff;
+            color: #9333ea;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+        
+        .indexing {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f0f7ff;
+            color: #2563eb;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+        
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12.5px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid #ddd;
+        }
+        
+        .pub-link:hover {
+            background-color: #f5f5f5;
+            color: #3e82f7;
+            border-color: #3e82f7;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 576px) {
+            .section-nav {
+                margin: 10px 0;
+                flex-wrap: wrap;
+            }
+            
+            .section-nav button {
+                padding: 6px 12px;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            
+            .publication-year-group {
+                padding: 15px;
+            }
+            
+            .publication-item {
+                flex-direction: column;
+            }
+            
+            .publication-type {
+                margin-right: 0;
+                margin-bottom: 10px;
+                align-self: flex-start;
+            }
+            
+            .journal-line {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .journal-line p {
+                min-width: 100%;
+            }
+            
+            .right-metadata {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Globe background container -->
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
+            <div class="name-container">
+                <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
+            </div>
+            <div class="profile-container">
+                <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-info">
+                    <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
+                    <h3><i class="fas fa-university"></i> Built Environment, TU/e</h3>
+                    <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
+                </div>
+            </div>
+            <div class="logos" data-aos="fade-up" data-aos-delay="400">
+                <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile">
+                    <img src="img/Scopus.jpg" alt="Scopus">
+                </a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID Profile">
+                    <img src="img/ORCID.png" alt="Orcid">
+                </a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar Profile">
+                    <img src="img/GS.png" alt="Google Scholar">
+                </a>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-building"></i> Department of Built Environment, Eindhoven University of Technology (TU/e), Netherlands</p>
+                <p><i class="fas fa-map-marker-alt"></i> Vertigo 9.16, TU/e Campus, 5600 MB Eindhoven, The Netherlands</p>
+            </div>
+        </div>
+
+        <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
+            <div class="navbar">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink" id="aboutBtn">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Academia</span>
+                    </a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Publications</span>
+                    </a>
+                    <a href="projects.html" class="navlink" id="projectsBtn">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="group.html" class="navlink" id="groupBtn">
+                        <i class="fas fa-users"></i>
+                        <span>Research Group</span>
+                    </a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn">
+                        <i class="fas fa-tasks"></i>
+                        <span>Activities</span>
+                    </a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Opportunities</span>
+                    </a>
+                </div>
+                <!-- Mobile nav button -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="section" id="publications">
+                <div class="section-content">
+                    
+                    <div class="section-nav">
+                        <button id="all-btn" class="active">All Papers</button>
+                        <button id="journal-btn">Journals</button>
+                        <button id="conference-btn">Conferences</button>
+                        <button id="book-btn">Book Chapters</button>
+                        <button id="deliverable-btn">Deliverables</button>
+                    </div>
+
+                    <div class="publications-container">
+
+                        <!-- 2026 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2026</h3>
+                            <div class="publication-list">
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>SmartData Interlock: An Access Control Architecture and Data Exchange Model for Secure Data Ecosystem in Smart Buildings</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Avinash Ramachandruni, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE Transactions on Privacy</em>, IEEE, Volume 3, Pages 52–66, 11 May 2026</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">WoS</span>
+                                                <a href="https://doi.org/10.1109/TP.2026.3692127" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Unified Application Interfaces for Digital Twin Based Asset Management in Smart Built Environment</h4>
+                                        <p class="authors">Avinash Ramachandruni, <strong>Ravi Sharma</strong>, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>23rd International Conference on Smart and Sustainable Built Environment (SASBE)</em>, Cambridge, UK, Pages 1–8, 22–24 July 2026</p>
+                                            <div class="right-metadata">
+                                                <a href="https://research.tue.nl/files/387156039/TUE_SASBE_2026_UAMS_2_.pdf" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>A Two-Layer Framework for Digital Building Logbook Implementation as a Gateway in Federated Data Environments</h4>
+                                        <p class="authors">Avinash Ramachandruni, <strong>Ravi Sharma</strong>, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>5th 4TU/14USA Research Day on Digitalization in the Built Environment</em>, Enschede, Netherlands, Pages 1–10, 15–16 April 2026</p>
+                                            <div class="right-metadata">
+                                                <a href="https://research.tue.nl/files/387155351/4TU-14UAS_Full_Submission_Final.pdf" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> PDF</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item deliverable-item" data-aos="fade-up" data-aos-delay="250">
+                                    <div class="publication-type">Deliverable</div>
+                                    <div class="publication-details">
+                                        <h4>D5.2 WILSON Ontologies Evaluation – Month 18</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Avinash Ramachandruni, Arghavan Akbarieh, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>WILSON Public Deliverable</em>, Pages 1–67, 18 Feb 2026</p>
+                                            <div class="right-metadata">
+                                                <a href="https://wilson-project.eu/d5-2-wilson-ontologies-evaluation-month-18-2/" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item deliverable-item" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="publication-type">Deliverable</div>
+                                    <div class="publication-details">
+                                        <h4>D7.1 Personalised Data Hubs – Month 18</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Avinash Ramachandruni, Arghavan Akbarieh, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>WILSON Public Deliverable</em>, Pages 1–52, 18 Feb 2026</p>
+                                            <div class="right-metadata">
+                                                <a href="https://wilson-project.eu/d7-1-personalised-data-hubs-month-18/" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item deliverable-item" data-aos="fade-up" data-aos-delay="350">
+                                    <div class="publication-type">Deliverable</div>
+                                    <div class="publication-details">
+                                        <h4>D7.3 Connectors to Legacy and Third Party Systems – Month 18</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Avinash Ramachandruni, Arghavan Akbarieh, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>WILSON Confidential Deliverable</em>, Pages 1–33, 29 Oct 2025</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">Confidential</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item deliverable-item" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="publication-type">Deliverable</div>
+                                    <div class="publication-details">
+                                        <h4>D9.1 BMS Upgrade and Digital Building Logbook – Month 18</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Avinash Ramachandruni, Arghavan Akbarieh, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>WILSON Confidential Deliverable</em>, Pages 1–33, 29 Oct 2025</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">Confidential</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2025 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2025</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Vocabulary Hub for Semantic Data Exchange and Interoperability in an AECO Domain-specific Dataspace</h4>
+                                        <p class="authors">Avinash Ramachandruni, <strong>Ravi Sharma</strong>, Ekaterina Petrova, and Pieter Pauwels</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>European Conference on Computing in Construction (EC³)</em>, Porto, Portugal, Pages 1–8, 14–17 July 2025</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">Scopus</span>
+                                                <a href="https://doi.org/10.35490/EC3.2025.340" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item book-item" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="publication-type">Book Chapter</div>
+                                    <div class="publication-details">
+                                        <h4>Chapter 12: IoT in Blockchain-Enabled Metaverse Infrastructures</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong></p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Blockchain Enabled Metaverse for Smart Wireless Sensor Networks</em>, 1st Edition, Springer Nature, 2025</p>
+                                            <div class="right-metadata">
+                                                <a href="https://doi.org/10.1007/978-3-032-07305-1" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2024 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2024</h3>
+                            <div class="publication-list">
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>An Efficient and Dependable UAV-Assisted Code Dissemination in 5G-Enabled Industrial IoT</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE Open Journal of the Communications Society</em>, IEEE, Volume 5, Pages 1525–1536, 21 Feb 2024</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 7.9</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1109/OJCOMS.2024.3368275" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>Safe and Secure Oil and Gas Pipeline Transportation System Based on Industrial IoT</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE Sensors Journal</em>, IEEE, Volume 24, Issue 5, Pages 6834–6845, 19 Jan 2024</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 4.5</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1109/JSEN.2024.3353595" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item book-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="publication-type">Book Chapter</div>
+                                    <div class="publication-details">
+                                        <h4>Chapter 1: Machine Learning and 5G-based Industrial IoT Device Positioning for Location-aware Power Quality Management</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong></p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Adaptive Power Quality for Power Management Units using Smart Technologies</em>, 1st Edition, Taylor &amp; Francis, CRC Press, 2024</p>
+                                            <div class="right-metadata">
+                                                <a href="https://doi.org/10.1201/9781003436461" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2023 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2023</h3>
+                            <div class="publication-list">
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>A Sustainable Ethereum Merge-based Big-Data Gathering and Dissemination in IIoT System</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Alexandria Engineering Journal</em>, Elsevier, Volume 69, Pages 109–119, 15 Apr 2023</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 6.8</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1016/j.aej.2023.01.055" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>The Transformative Power of AI as Future GPTs in Propelling Society Into a New Era of Advancement</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong></p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE Engineering Management Review</em>, Volume 51, Issue 4, Pages 215–224, 13 Sep 2023</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">ESCI</span>
+                                                <span class="indexing">Q2</span>
+                                                <a href="https://doi.org/10.1109/EMR.2023.3315191" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2022 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2022</h3>
+                            <div class="publication-list">
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>A Spatiotemporal Order-Revealing Query Processing Approach for Industrial Internet of Things</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Journal of King Saud University – Computer and Information Sciences</em>, Elsevier, Volume 34, Issue 10, Part B, Pages 8985–8995, 23 Aug 2022</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 13.4</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1016/j.jksuci.2022.08.024" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>Consistent Round Hash Optimized SRP-6a-based End-to-End Mutual Authentication for Secure Data Transfer in Industry 4.0</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Internet of Things and Cyber-Physical Systems</em>, Elsevier, Pages 170–179, 30 Sep 2022</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 3.9</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1016/j.iotcps.2022.09.001" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>Evaluation of Corporate Requirements for Smart Manufacturing Systems Using Predictive Analytics</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Internet of Things</em>, Elsevier, Volume 19, Pages 100554, 23 May 2022</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 7.6</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q1</span>
+                                                <a href="https://doi.org/10.1016/j.iot.2022.100554" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item journal-item" data-aos="fade-up" data-aos-delay="250">
+                                    <div class="publication-type">Journal</div>
+                                    <div class="publication-details">
+                                        <h4>Converging Telco-Grade Solutions 5G and Beyond to Support Production in Industry 4.0</h4>
+                                        <p class="authors">Pal Varga, Bácsi Sándor, <strong>Ravi Sharma</strong>, Abdulhalim Fayad, Ali Raheem Mandeel, Gabor Soos, Attila Franko, Tibor Fegyo, and Dániel Ficzere</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>Applied Sciences</em>, 12(15): 7600, 2022</p>
+                                            <div class="right-metadata">
+                                                <span class="impact-factor"><i class="fas fa-chart-line"></i> IF: 2.8</span>
+                                                <span class="indexing">SCOPUS</span>
+                                                <span class="indexing">SCIE</span>
+                                                <span class="indexing">Q2</span>
+                                                <a href="https://doi.org/10.3390/app12157600" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>The Fundamentals and Strategies of Maintenance, Repair, and Overhaul (MRO) in Industry 4.0</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE International Conference on Electrical, Computer and Energy Technologies (ICECET)</em>, Prague, Czech Republic, Pages 1–6, 20–22 July 2022</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/ICECET55527.2022.9872577" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2021 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2021</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Insights from a High-Performance Open-Communication Framework for Advanced Industrial Networks</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE 21st International Symposium on Computational Intelligence and Informatics (CINTI)</em>, Budapest, Hungary, Pages 253–258, 18–20 November 2021</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/CINTI53070.2021.9668461" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2020 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2020</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Two-Tier Analyzed Content Filtering Based Data Management Architecture in Industry 4.0</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong> and Balázs Villányi</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE 15th International Conference on System of Systems Engineering (SoSE)</em>, Budapest, Hungary, Pages 543–548, 2–4 June 2020</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/SoSE50414.2020.9130464" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2019 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2019</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Creating Internet of Things for the Benefit of Indian Society</h4>
+                                        <p class="authors">Priyanshu Gandhi, <strong>Ravi Sharma</strong>, and Ankit Maheshwari</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE International Conference on Wireless Communications Signal Processing and Networking (WiSPNET)</em>, Chennai, India, Pages 35–40, 21–23 March 2019</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/WiSPNET45539.2019.9032716" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2016 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2016</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>Tunable Synchronization in Duty-Cycled Wireless Sensor Networks</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Ashok Singh Sairam, Akash Yadav, and Axel Sikora</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE 10th International Conference on Advanced Networks and Telecommunications Systems (ANTS)</em>, Bangalore, India, Pages 1–6, 6–9 November 2016</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/ANTS.2016.7947782" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2015 -->
+                        <div class="publication-year-group" data-aos="fade-up">
+                            <h3><i class="fas fa-calendar-alt"></i> 2015</h3>
+                            <div class="publication-list">
+                                <div class="publication-item conference-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="publication-type">Conference</div>
+                                    <div class="publication-details">
+                                        <h4>A Virtual Infrastructure Using Tides for Data Dissemination in Wireless Sensor Networks for Mobile Sinks</h4>
+                                        <p class="authors"><strong>Ravi Sharma</strong>, Nitika Vats Doohan, and Sanjiv Tokekar</p>
+                                        <div class="journal-line">
+                                            <p class="journal"><em>IEEE International Conference on Industrial Instrumentation and Control (ICIC)</em>, Pune, India, Pages 997–1002, 28–30 May 2015</p>
+                                            <div class="right-metadata">
+                                                <span class="indexing">IEEE</span>
+                                                <a href="https://doi.org/10.1109/IIC.2015.7150891" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p>
+            </div>
+            <div class="social-links">
+                <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+
+            // Collect all button and item references
+            const allBtn         = document.getElementById('all-btn');
+            const journalBtn     = document.getElementById('journal-btn');
+            const conferenceBtn  = document.getElementById('conference-btn');
+            const bookBtn        = document.getElementById('book-btn');
+            const deliverableBtn = document.getElementById('deliverable-btn');
+
+            const allBtns = [allBtn, journalBtn, conferenceBtn, bookBtn, deliverableBtn];
+
+            const journalItems     = document.querySelectorAll('.journal-item');
+            const conferenceItems  = document.querySelectorAll('.conference-item');
+            const bookItems        = document.querySelectorAll('.book-item');
+            const deliverableItems = document.querySelectorAll('.deliverable-item');
+            const allItems         = document.querySelectorAll('.publication-item');
+
+            // Restore original type label text from data-label attribute
+            allItems.forEach(item => {
+                const typeEl = item.querySelector('.publication-type');
+                typeEl.setAttribute('data-label', typeEl.textContent);
+            });
+
+            function setActiveBtn(btn) {
+                allBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+
+            function hideAll() {
+                allItems.forEach(item => item.style.display = 'none');
+            }
+
+            function showItems(items) {
+                items.forEach(item => item.style.display = 'flex');
+            }
+
+            function restoreLabels(items) {
+                items.forEach(item => {
+                    const typeEl = item.querySelector('.publication-type');
+                    typeEl.textContent = typeEl.getAttribute('data-label');
+                });
+            }
+
+            function numberItems(items) {
+                let counter = 1;
+                items.forEach(item => {
+                    item.querySelector('.publication-type').textContent = counter++;
+                });
+            }
+
+            function updateYearGroups() {
+                document.querySelectorAll('.publication-year-group').forEach(group => {
+                    const hasVisible = Array.from(group.querySelectorAll('.publication-item'))
+                        .some(item => item.style.display !== 'none');
+                    group.style.display = hasVisible ? 'block' : 'none';
+                });
+            }
+
+            // --- All Papers ---
+            allBtn.addEventListener('click', function() {
+                setActiveBtn(this);
+                showItems(allItems);
+                restoreLabels(allItems);
+                updateYearGroups();
+                AOS.refresh();
+            });
+
+            // --- Journals ---
+            journalBtn.addEventListener('click', function() {
+                setActiveBtn(this);
+                hideAll();
+                showItems(journalItems);
+                restoreLabels(journalItems);
+                numberItems(journalItems);
+                updateYearGroups();
+                AOS.refresh();
+            });
+
+            // --- Conferences ---
+            conferenceBtn.addEventListener('click', function() {
+                setActiveBtn(this);
+                hideAll();
+                showItems(conferenceItems);
+                restoreLabels(conferenceItems);
+                numberItems(conferenceItems);
+                updateYearGroups();
+                AOS.refresh();
+            });
+
+            // --- Book Chapters ---
+            bookBtn.addEventListener('click', function() {
+                setActiveBtn(this);
+                hideAll();
+                showItems(bookItems);
+                restoreLabels(bookItems);
+                numberItems(bookItems);
+                updateYearGroups();
+                AOS.refresh();
+            });
+
+            // --- Deliverables ---
+            deliverableBtn.addEventListener('click', function() {
+                setActiveBtn(this);
+                hideAll();
+                showItems(deliverableItems);
+                restoreLabels(deliverableItems);
+                numberItems(deliverableItems);
+                updateYearGroups();
+                AOS.refresh();
+            });
+
+            // Initial setup — show all
+            showItems(allItems);
+            updateYearGroups();
+
+            // Globe background effect
+            if (typeof VANTA !== 'undefined') {
+                VANTA.GLOBE({
+                    el: "#particles-js",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x3e82f7,
+                    backgroundColor: 0xffffff,
+                    size: 0.70,
+                    speed: 0.3
+                });
+            }
+
+            // Highlight active nav link
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navlink').forEach(link => {
+                if (link.getAttribute('href') === currentPage) link.classList.add('active');
+            });
+
+            // Mobile navigation toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinksContainer = document.querySelector('.navlinks');
+
+            mobileNavToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+                const isExpanded = navLinksContainer.classList.contains('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                mobileNavToggle.innerHTML = isExpanded
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            document.querySelectorAll('.navlinks .navlink').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Scroll-to-top button
+            const scrollBtn = document.createElement('button');
+            scrollBtn.classList.add('scroll-top-btn');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                const contentPanel = document.getElementById('content');
+                if (contentPanel) contentPanel.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            const contentPanel = document.getElementById('content');
+            if (contentPanel) {
+                contentPanel.addEventListener('scroll', function() {
+                    scrollBtn.style.display = this.scrollTop > 300 ? 'block' : 'none';
+                });
+            }
+
+            // Add colour for deliverable badge
+            const style = document.createElement('style');
+            style.textContent = '.deliverable-item .publication-type { background-color: #f59e0b; }';
+            document.head.appendChild(style);
+
+            // Add typing effect to the heading
+            const typeElement = (selector, text, speed = 100, delay = 0) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                // Store original text and clear it
+                const originalText = text || element.textContent;
+                element.textContent = '';
+                element.style.borderRight = '2px solid var(--primary-color)';
+                
+                // Start typing after delay
+                setTimeout(() => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < originalText.length) {
+                            element.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                            element.style.borderRight = 'none';
+                        }
+                    }, speed);
+                }, delay);
+            };
+            
+            // Typing effects for name
+            typeElement('.name-container .title', 'Dr.', 100, 300);
+            typeElement('.name-container .first-name', 'Ravi', 100, 800);
+            typeElement('.name-container .last-name', 'Sharma', 100, 1500);
+        });
+    </script>
+    <!-- Load particles.js for the background animation -->
+    <script src="particles.js"></script>
+</body>
+</html>

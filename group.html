@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ravi Sharma - Postdoctoral Researcher at TU/e Eindhoven, specialized in Industrial IoT, Industry 4.0, and Building Information Systems">
+    <meta name="keywords" content="Ravi Sharma, Industrial IoT, IIoT, Industry 4.0, TU/e, WILSON, Digital Twin, Wireless Sensor Networks">
+    <meta name="author" content="Dr. Ravi Sharma">
+    <title>Dr. Ravi Sharma</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Three.js and Vanta.js for background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <!-- Globe background container -->
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
+            <div class="name-container">
+                <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
+            </div>
+            <div class="profile-container">
+                <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-info">
+                    <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
+                    <h3><i class="fas fa-university"></i> TU Eindhoven</h3>
+                    <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
+                </div>
+            </div>
+            <div class="logos" data-aos="fade-up" data-aos-delay="400">
+                <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile">
+                    <img src="img/Scopus.jpg" alt="Scopus">
+                </a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID Profile">
+                    <img src="img/ORCID.png" alt="Orcid">
+                </a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar Profile">
+                    <img src="img/GS.png" alt="Google Scholar">
+                </a>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-building"></i> Department of Built Environment, Eindhoven University of Technology (TU/e), Netherlands</p>
+                <p><i class="fas fa-map-marker-alt"></i> Vertigo 9.16, TU/e Campus, 5600 MB Eindhoven, The Netherlands</p>
+            </div>
+        </div>
+
+        <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
+            <div class="navbar">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink" id="aboutBtn">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Academia</span>
+                    </a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Publications</span>
+                    </a>
+                    <a href="projects.html" class="navlink" id="projectsBtn">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="group.html" class="navlink" id="groupBtn">
+                        <i class="fas fa-users"></i>
+                        <span>Research Group</span>
+                    </a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn">
+                        <i class="fas fa-tasks"></i>
+                        <span>Activities</span>
+                    </a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Opportunities</span>
+                    </a>
+                </div>
+                <!-- Mobile nav button -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="section" id="group">
+                <div class="section-content">
+                    <!-- Create section navigation -->
+                    <div class="section-nav" data-aos="fade-up" data-aos-delay="50">
+                        <button id="phd-btn" class="active">Ph.D</button>
+                        <button id="mtech-btn">M.Tech</button>
+                    </div>
+                    
+                    <div class="team-category" id="phd-section" data-aos="fade-up" data-aos-delay="100">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="section-title-text">Ph.D</h3>
+                        </div>
+                        <div class="team-slider">
+                            <div class="team-cards" id="phd-cards">
+                                <!-- <div class="team-card" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Deepali Thombre</h5>
+                                    <p class="team-project">Low Resource Language Processing</p>
+                                </div> 
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Shakir Ali</h5>
+                                    <h4 class="team-name">(student under joint supervision)</h4>
+                                    <p class="team-project">AI/ML Techniques for Spectrum Sharing</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Lipsa Mariya Jose</h5>
+                                    <h4 class="team-name">(student under joint supervision)</h4>
+                                    <p class="team-project">AI, Behavioural Economics, and Smoking</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Harshit Shrivastava</h5>
+                                    <h4 class="team-name">(student under joint supervision)</h4>
+                                    <p class="team-project">Machine Learning, Smartphone Addiction, and Intervention</p>
+                                </div>
+                                -->
+                            </div>
+                            <div class="slider-nav" id="phd-slider-nav">
+                                <button class="prev-btn" onclick="slideTeam('phd-cards', 'prev')"><i class="fas fa-chevron-left"></i></button>
+                                <button class="next-btn" onclick="slideTeam('phd-cards', 'next')"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-category" id="mtech-section" data-aos="fade-up" data-aos-delay="250">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="section-title-text">M.Tech</h3>
+                        </div>
+                        <div class="team-slider">
+                            <div class="team-cards" id="mtech-cards">
+                                <!-- 
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Mr. Uplab Rajak</h5>
+                                    <p class="team-project">Radiology Report Generation</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="350">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Mr. Mohit Agarwala</h5>
+                                    <p class="team-project">Emotion-aware Dialogue Generation</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Mr. Abhishek Kumar</h5>
+                                    <p class="team-project">Simultaneous Machine Translation System</p>
+                                </div>
+                                -->
+                            </div>
+                            <div class="slider-nav" id="mtech-slider-nav">
+                                <button class="prev-btn" onclick="slideTeam('mtech-cards', 'prev')"><i class="fas fa-chevron-left"></i></button>
+                                <button class="next-btn" onclick="slideTeam('mtech-cards', 'next')"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-category" id="btech-section" style="display: none;" data-aos="fade-up" data-aos-delay="450">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="section-title-text">B.Tech</h3>
+                        </div>
+                        <div class="team-slider">
+                            <div class="team-cards" id="btech-cards">
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="500">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Rohit Sharma</h5>
+                                    <p class="team-project">Sentiment Analysis for Indian Languages</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="550">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Priya Patel</h5>
+                                    <p class="team-project">Speech Recognition Systems</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Vikram Singh</h5>
+                                    <p class="team-project">AI for Healthcare Applications</p>
+                                </div>
+                            </div>
+                            <div class="slider-nav" id="btech-slider-nav">
+                                <button class="prev-btn" onclick="slideTeam('btech-cards', 'prev')"><i class="fas fa-chevron-left"></i></button>
+                                <button class="next-btn" onclick="slideTeam('btech-cards', 'next')"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-category" id="intern-section" style="display: none;" data-aos="fade-up" data-aos-delay="650">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="section-title-text">Intern</h3>
+                        </div>
+                        <div class="team-slider">
+                            <div class="team-cards" id="intern-cards">
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="700">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Ananya Desai</h5>
+                                    <p class="team-project">Text Summarization</p>
+                                    <p class="team-institution">IIT Roorkee</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="750">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Ravi Kumar</h5>
+                                    <p class="team-project">Multilingual Question Answering</p>
+                                    <p class="team-institution">NIT Raipur</p>
+                                </div>
+                                <div class="team-card" data-aos="fade-up" data-aos-delay="800">
+                                    <div class="team-photo placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h5 class="team-name">Meera Srivastava</h5>
+                                    <p class="team-project">Conversational AI</p>
+                                    <p class="team-institution">BITS Pilani</p>
+                                </div>
+                            </div>
+                            <div class="slider-nav" id="intern-slider-nav">
+                                <button class="prev-btn" onclick="slideTeam('intern-cards', 'prev')"><i class="fas fa-chevron-left"></i></button>
+                                <button class="next-btn" onclick="slideTeam('intern-cards', 'next')"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p>
+            </div>
+            <div class="social-links">
+                <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+            
+            // Section transitions for Research Group
+            const phdSection = document.getElementById('phd-section');
+            const mtechSection = document.getElementById('mtech-section');
+            const btechSection = document.getElementById('btech-section');
+            const internSection = document.getElementById('intern-section');
+            
+            // Ensure only PhD section is visible by default
+            if (phdSection && mtechSection && btechSection && internSection) {
+                phdSection.style.display = 'block';
+                mtechSection.style.display = 'none';
+                btechSection.style.display = 'none';
+                internSection.style.display = 'none';
+            
+                // Handle section navigation
+                document.getElementById('phd-btn').addEventListener('click', function() {
+                    this.classList.add('active');
+                    document.getElementById('mtech-btn').classList.remove('active');
+                    
+                    phdSection.style.display = 'block';
+                    mtechSection.style.display = 'none';
+                    
+                    // Refresh AOS animations
+                    AOS.refresh();
+                });
+                
+                document.getElementById('mtech-btn').addEventListener('click', function() {
+                    this.classList.add('active');
+                    document.getElementById('phd-btn').classList.remove('active');
+                    
+                    phdSection.style.display = 'none';
+                    mtechSection.style.display = 'block';
+                    
+                    // Refresh AOS animations
+                    AOS.refresh();
+                });
+            }
+            
+            // Globe background effect
+            if (typeof VANTA !== 'undefined') {
+                VANTA.GLOBE({
+                    el: "#particles-js",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x3e82f7,
+                    backgroundColor: 0xffffff,
+                    size: 0.70,
+                    speed: 0.3
+                });
+            }
+            
+            // Highlight active page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navlink').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Mobile navigation toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinksContainer = document.querySelector('.navlinks');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+                const isExpanded = navLinksContainer.classList.contains('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                
+                // Change icon based on state
+                if (isExpanded) {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.navlinks .navlink').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
+            // Scroll to top button
+            const scrollTopButton = document.createElement('div');
+            scrollTopButton.className = 'scroll-top-btn';
+            scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            document.body.appendChild(scrollTopButton);
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            });
+            
+            scrollTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Team slider functionality
+            window.slideTeam = function(containerId, direction) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                const scrollAmount = direction === 'next' ? 300 : -300;
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            };
+            
+            // Add CSS styles for the Research Group page
+            const researchGroupStyles = document.createElement('style');
+            researchGroupStyles.textContent = `
+                /* Section Styling */
+                .team-category {
+                    margin-bottom: 50px;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    border-radius: 10px;
+                    padding: 25px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                }
+                
+                /* New Header Design */
+                .section-header-new {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    position: relative;
+                    padding-bottom: 10px;
+                }
+                
+                .blue-circle-icon {
+                    background-color: #3e82f7;
+                    color: white;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 15px;
+                    box-shadow: 0 4px 10px rgba(62, 130, 247, 0.2);
+                }
+                
+                .blue-circle-icon i {
+                    font-size: 18px;
+                }
+                
+                .section-title-text {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 28px;
+                    color: #333;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                }
+                
+                /* Section navigation */
+                .section-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin: 20px 0;
+                    gap: 10px;
+                }
+                
+                .section-nav button {
+                    background: none;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-weight: 500;
+                    color: #555;
+                }
+                
+                .section-nav button:hover {
+                    background-color: rgba(62, 130, 247, 0.1);
+                    color: #3e82f7;
+                }
+                
+                .section-nav button.active {
+                    background-color: #3e82f7;
+                    color: white;
+                }
+                
+                /* Team card styling */
+                .team-cards {
+                    display: flex;
+                    gap: 20px;
+                    overflow-x: auto;
+                    padding: 10px 0;
+                    scrollbar-width: none; /* Hide scrollbar for Firefox */
+                    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+                }
+                
+                .team-cards::-webkit-scrollbar {
+                    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+                }
+                
+                .team-card {
+                    min-width: 240px;
+                    background-color: white;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    text-align: center;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                
+                .team-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                }
+                
+                .team-photo {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin: 0 auto 15px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #f0f0f0;
+                    color: #aaa;
+                }
+                
+                .team-photo i {
+                    font-size: 40px;
+                }
+                
+                .team-name {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 0 0 5px;
+                    color: #333;
+                }
+                
+                .team-project {
+                    font-size: 14px;
+                    color: #666;
+                    margin: 0;
+                }
+                
+                .team-institution {
+                    font-size: 13px;
+                    color: #3e82f7;
+                    margin: 5px 0 0 0;
+                    font-style: italic;
+                    font-weight: 500;
+                }
+                
+                /* Slider navigation */
+                .slider-nav {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    margin-top: 15px;
+                }
+                
+                .slider-nav button {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    border: none;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .slider-nav button:hover {
+                    background-color: #f0f0f0;
+                    transform: scale(1.1);
+                }
+                
+                .slider-nav button i {
+                    color: #3e82f7;
+                    font-size: 16px;
+                }
+                
+                /* Responsive adjustments */
+                @media screen and (max-width: 767px) {
+                    .section-nav {
+                        flex-wrap: wrap;
+                    }
+                    
+                    .section-nav button {
+                        padding: 6px 12px;
+                        font-size: 14px;
+                    }
+                    
+                    .team-card {
+                        min-width: 200px;
+                    }
+                }
+            `;
+            document.head.appendChild(researchGroupStyles);
+        });
+    </script>
+    <!-- Load particles.js for the background animation -->
+    <script src="particles.js"></script>
+</body>
+</html> 

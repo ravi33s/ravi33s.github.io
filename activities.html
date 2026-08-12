@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ravi Sharma - Activities, Academic Services, Expert Lectures">
+    <meta name="author" content="Dr. Ravi Sharma">
+    <title>Activities - Dr. Ravi Sharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <link rel="stylesheet" href="Styles.css">
+    <style>
+        /* ── Base circle + header ── */
+        .section-header-new { display: flex; align-items: center; margin-bottom: 20px; position: relative; }
+        .blue-circle-icon { background-color: #3e82f7; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,.2); flex-shrink: 0; }
+        .blue-circle-icon i { font-size: 18px; }
+        .section-title-text { margin: 0; padding: 0; font-size: 24px; color: #333; font-weight: 600; letter-spacing: .5px; }
+
+        /* ── Tab nav ── */
+        .act-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+        .act-tab { background: none; border: 2px solid #e0e7ff; border-radius: 22px; padding: 7px 18px; font-size: .88em; font-weight: 600; color: #555; cursor: pointer; transition: all .25s; }
+        .act-tab:hover { border-color: #3e82f7; color: #3e82f7; background: #f0f6ff; }
+        .act-tab.active { background: #3e82f7; border-color: #3e82f7; color: #fff; box-shadow: 0 3px 10px rgba(62,130,247,.3); }
+
+        /* ── Panel wrapper ── */
+        .act-panel { display: none; }
+        .act-panel.visible { display: block; }
+
+        /* ── Card used across panels ── */
+        .act-card { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: 0 3px 14px rgba(0,0,0,.07); margin-bottom: 14px; display: flex; gap: 16px; align-items: flex-start; transition: transform .2s, box-shadow .2s; }
+        .act-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.12); }
+        .act-icon { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1em; flex-shrink: 0; }
+        .act-body { flex: 1; min-width: 0; }
+        .act-body h4 { margin: 0 0 5px; color: #1e293b; font-size: .98em; line-height: 1.4; }
+        .act-body p { margin: 0; color: #555; font-size: .88em; line-height: 1.5; }
+        .act-date { display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: .8em; color: #3e82f7; font-weight: 600; }
+
+        /* ── Reviewer table ── */
+        .reviewer-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+        .reviewer-table thead tr { background: #3e82f7; color: #fff; }
+        .reviewer-table thead th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: .88em; }
+        .reviewer-table tbody tr { background: #fff; border-bottom: 1px solid #f0f4ff; transition: background .15s; }
+        .reviewer-table tbody tr:hover { background: #f5f8ff; }
+        .reviewer-table tbody td { padding: 11px 14px; font-size: .88em; color: #333; }
+        .reviewer-table tbody td:last-child { text-align: center; }
+        .rev-badge { display: inline-block; background: #3e82f7; color: #fff; padding: 2px 11px; border-radius: 12px; font-size: .8em; font-weight: 700; }
+        .rev-badge.elsevier { background: #c93d3b; }
+        .rev-badge.springer { background: #35e59c; }
+
+        /* ── Editor grid ── */
+        .editor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-top: 4px; }
+        .editor-card { background: #fff; border-radius: 10px; padding: 13px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); display: flex; align-items: center; gap: 12px; border-left: 4px solid #e53935; transition: all .2s; }
+        .editor-card:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(0,0,0,.1); }
+        .editor-card i { color: #e53935; font-size: 1.2em; flex-shrink: 0; }
+        .editor-card-body h5 { margin: 0 0 2px; color: #222; font-size: .9em; font-weight: 600; }
+        .editor-card-body span { font-size: .78em; color: #888; }
+
+        /* ── Courses grid ── */
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 13px; margin-top: 4px; }
+        .course-card { background: #fff; border-radius: 11px; padding: 15px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-left: 4px solid #3e82f7; transition: all .2s; }
+        .course-card:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(0,0,0,.1); }
+        .course-year { font-size: .76em; color: #3e82f7; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+        .course-card h4 { margin: 4px 0 4px; color: #1e293b; font-size: .9em; }
+        .course-card p { margin: 0; color: #666; font-size: .82em; }
+
+        /* ── Achievements ── */
+        .achieve-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin-top: 4px; }
+        .achieve-card { background: #fff; border-radius: 13px; padding: 18px 16px; box-shadow: 0 3px 12px rgba(0,0,0,.07); display: flex; gap: 14px; align-items: flex-start; transition: all .2s; }
+        .achieve-card:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0,0,0,.12); }
+        .achieve-year { background: #3e82f7; color: #fff; padding: 5px 10px; border-radius: 8px; font-size: .82em; font-weight: 700; white-space: nowrap; height: fit-content; flex-shrink: 0; }
+        .achieve-card h4 { margin: 0 0 4px; color: #1e293b; font-size: .92em; }
+        .achieve-card p { margin: 0; color: #666; font-size: .82em; }
+
+        /* ── Workshops list ── */
+        .workshop-list { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+        .workshop-item { background: #fff; border-radius: 11px; padding: 14px 18px; box-shadow: 0 2px 8px rgba(0,0,0,.06); display: flex; gap: 14px; align-items: flex-start; border-left: 4px solid #8b5cf6; transition: all .2s; }
+        .workshop-item:hover { transform: translateX(4px); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
+        .workshop-date-badge { background: #8b5cf6; color: #fff; padding: 5px 10px; border-radius: 8px; font-size: .78em; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+        .workshop-item h4 { margin: 0 0 3px; color: #1e293b; font-size: .9em; }
+        .workshop-item p { margin: 0; color: #666; font-size: .82em; }
+
+        /* ── Academia section wrapper ── */
+        .academia-section { background: rgba(255,255,255,.65); border-radius: 14px; padding: 24px; box-shadow: 0 5px 18px rgba(0,0,0,.06); margin-bottom: 26px; }
+
+        @media (max-width: 600px) {
+            .editor-grid, .courses-grid, .achieve-grid { grid-template-columns: 1fr; }
+            .act-tabs { gap: 6px; }
+            .act-tab { padding: 6px 12px; font-size: .82em; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- ── INFO PANEL ── -->
+        <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
+            <div class="name-container">
+                <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
+            </div>
+            <div class="profile-container">
+                <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-info">
+                    <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
+                    <h3><i class="fas fa-university"></i> Built Environment, TU/e</h3>
+                    <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
+                </div>
+            </div>
+            <div class="logos" data-aos="fade-up" data-aos-delay="400">
+                <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus"><img src="img/Scopus.jpg" alt="Scopus"></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><img src="img/ORCID.png" alt="Orcid"></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><img src="img/GS.png" alt="Google Scholar"></a>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-building"></i> Department of Built Environment, Eindhoven University of Technology (TU/e), Netherlands</p>
+                <p><i class="fas fa-map-marker-alt"></i> Vertigo 9.16, TU/e Campus, 5600 MB Eindhoven, The Netherlands</p>
+            </div>
+        </div>
+
+        <!-- ── CONTENT PANEL ── -->
+        <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
+            <div class="navbar">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink" id="aboutBtn">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Academia</span>
+                    </a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Publications</span>
+                    </a>
+                    <a href="projects.html" class="navlink" id="projectsBtn">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="group.html" class="navlink" id="groupBtn">
+                        <i class="fas fa-users"></i>
+                        <span>Research Group</span>
+                    </a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn">
+                        <i class="fas fa-tasks"></i>
+                        <span>Activities</span>
+                    </a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Opportunities</span>
+                    </a>
+                </div>
+                <!-- Mobile nav button -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="section" id="activities">
+                <div class="section-content">
+
+                    <!-- Tab bar -->
+                    <div class="act-tabs" data-aos="fade-down">
+                        <button class="act-tab active" data-target="panel-editor"><i class="fas fa-pen-nib"></i> Editorial</button>
+                        <button class="act-tab" data-target="panel-reviewer"><i class="fas fa-check-double"></i> Reviewer</button>
+                        <button class="act-tab" data-target="panel-lectures"><i class="fas fa-microphone-alt"></i> Lectures</button>
+                        <button class="act-tab" data-target="panel-workshops"><i class="fas fa-chalkboard"></i> Workshops</button>
+                        <button class="act-tab" data-target="panel-training"><i class="fas fa-certificate"></i> Training</button>
+                        <button class="act-tab" data-target="panel-achievements"><i class="fas fa-trophy"></i> Achievements</button>
+                    </div>
+
+                    <!-- ══ PANEL: Editorial ══ -->
+                    <div class="act-panel visible" id="panel-editor" data-aos="fade-up">
+                        <div class="academia-section">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#e53935;"><i class="fas fa-pen-nib"></i></div>
+                                <h3 class="section-title-text">Elsevier Scientific Editor</h3>
+                            </div>
+                            <p style="color:#555;font-size:.9em;margin-bottom:16px;">Member of the editorial board of Elsevier Journals</p>
+                            <div class="editor-grid">
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="50"><i class="fas fa-flask"></i><div class="editor-card-body"><h5>Next Research</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="80"><i class="fas fa-layer-group"></i><div class="editor-card-body"><h5>Array</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="110"><i class="fas fa-city"></i><div class="editor-card-body"><h5>City and Environment Interactions</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="140"><i class="fas fa-bolt"></i><div class="editor-card-body"><h5>Energy Nexus</h5><span>Elsevier · IF 8.2 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="170"><i class="fas fa-plug"></i><div class="editor-card-body"><h5>Int. Journal of Electrical Power &amp; Energy Systems</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-atom"></i><div class="editor-card-body"><h5>Materials Today Communications</h5><span>Elsevier · IF 4.9 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="230"><i class="fas fa-ruler"></i><div class="editor-card-body"><h5>Measurement</h5><span>Elsevier · IF 6.1 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="260"><i class="fas fa-cogs"></i><div class="editor-card-body"><h5>Results in Engineering</h5><span>Elsevier · IF 9.4 · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="290"><i class="fas fa-road"></i><div class="editor-card-body"><h5>Transportation Engineering</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
+                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="320"><i class="fas fa-radiation"></i><div class="editor-card-body"><h5>Physics Open</h5><span>Elsevier · IF 2.1 · Jun 2026–Jun 2027</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ PANEL: Reviewer ══ -->
+                    <div class="act-panel" id="panel-reviewer">
+                        <div class="academia-section" data-aos="fade-up">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon"><i class="fas fa-check-double"></i></div>
+                                <h3 class="section-title-text">Academic Reviewer</h3>
+                            </div>
+                            <table class="reviewer-table">
+                                <thead>
+                                    <tr><th>Journal</th><th>Publisher</th><th>Reviews</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>IEEE Transactions on Industrial Cyber-Physical Systems</td><td>IEEE</td><td><span class="rev-badge ieee">10</span></td></tr>
+                                    <tr><td>Elsevier Internet of Things</td><td>Elsevier</td><td><span class="rev-badge elsevier">3</span></td></tr>
+                                    <tr><td>Cluster computing, Springer Nature </td><td>Springer</td><td><span class="rev-badge springer">4</span></td></tr>
+                                    <tr><td>IEEE Open Journal of the Communications Society</td><td>IEEE</td><td><span class="rev-badge ieee">2</span></td></tr>
+                                    <tr><td>IEEE Internet of Things Journal</td><td>IEEE</td><td><span class="rev-badge ieee">1</span></td></tr>
+                                    <tr><td>IEEE Transactions on Emerging Topics in Computational Intelligence</td><td>IEEE</td><td><span class="rev-badge ieee">1</span></td></tr>
+                                    <tr><td>IEEE Transactions on Machine Learning in Communications and Networking</td><td>IEEE</td><td><span class="rev-badge ieee">1</span></td></tr>
+                                    <tr><td>IEEE Open Journal of the Industrial Electronics Society</td><td>IEEE</td><td><span class="rev-badge ieee">1</span></td></tr>
+                                    <tr><td>Peer-to-peer networking and applications, Springer Nature </td><td>Springer</td><td><span class="rev-badge springer">6</span></td></tr>
+                                    <tr><td>Telecommunication systems, Springer Nature </td><td>Springer</td><td><span class="rev-badge springer">1</span></td></tr>
+                                    <tr><td>The journal of supercomputing, Springer Nature </td><td>Springer</td><td><span class="rev-badge springer">4</span></td></tr>
+                                    <tr><td>Wireless personal communications, Springer Nature </td><td>Springer</td><td><span class="rev-badge springer">2</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ══ PANEL: Expert Lectures ══ -->
+                    <div class="act-panel" id="panel-lectures">
+                        <div class="academia-section" data-aos="fade-up">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#16a34a;"><i class="fas fa-microphone-alt"></i></div>
+                                <h3 class="section-title-text">Expert Lectures</h3>
+                            </div>
+
+                            <div class="act-card" data-aos="fade-up" data-aos-delay="60">
+                                <div class="act-icon" style="background:linear-gradient(135deg,#3e82f7,#2563eb);"><i class="fas fa-raspberry-pi" style="font-family:FontAwesome;"></i><i class="fas fa-microchip"></i></div>
+                                <div class="act-body">
+                                    <h4>From Zero to IoT: Building Projects with RaspberryPi</h4>
+                                    <p>BE Coding Café · Eindhoven University of Technology, Eindhoven, Netherlands</p>
+                                    <div class="act-date"><i class="fas fa-calendar-alt"></i> 27 May 2026</div>
+                                </div>
+                            </div>
+
+                            <div class="act-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="act-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);"><i class="fas fa-shield-alt"></i></div>
+                                <div class="act-body">
+                                    <h4>Secure, Intelligent, and Sustainable Data Infrastructures for the Industrial Internet of Things</h4>
+                                    <p>Computing and Data Science · Universidad Instituto de Empresa, Madrid, Spain</p>
+                                    <div class="act-date"><i class="fas fa-calendar-alt"></i> 17 March 2026</div>
+                                </div>
+                            </div>
+
+                            <div class="act-card" data-aos="fade-up" data-aos-delay="140">
+                                <div class="act-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fas fa-project-diagram"></i></div>
+                                <div class="act-body">
+                                    <h4>Distributed Data Modelling and Federated Digital Twinning</h4>
+                                    <p>Mini-Symposium &amp; Workshop on Circularity and Data Spaces · Ruhr-University Bochum, Germany</p>
+                                    <div class="act-date"><i class="fas fa-calendar-alt"></i> 26 November 2025</div>
+                                </div>
+                            </div>
+
+                            <div class="act-card" data-aos="fade-up" data-aos-delay="180">
+                                <div class="act-icon" style="background:linear-gradient(135deg,#10b981,#059669);"><i class="fas fa-globe-asia"></i></div>
+                                <div class="act-body">
+                                    <h4>Guest Speaker: Academic Enrichment Program</h4>
+                                    <p>Faculty of Engineering and Vocational Studies · Universitas Pendidikan Ganesha, Indonesia</p>
+                                    <div class="act-date"><i class="fas fa-calendar-alt"></i> 15 April 2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ PANEL: Workshops ══ -->
+                    <div class="act-panel" id="panel-workshops">
+                        <div class="academia-section" data-aos="fade-up">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#8b5cf6;"><i class="fas fa-chalkboard"></i></div>
+                                <h3 class="section-title-text">Seminars &amp; Workshops</h3>
+                            </div>
+                            <div class="workshop-list">
+                                <div class="workshop-item" data-aos="fade-up" data-aos-delay="50">
+                                    <div class="workshop-date-badge">Jul 2026</div>
+                                    <div><h4>Workshop: Building Data Hubs for Circular Material Flows in Construction Logistics</h4><p>2026 European Conference on Computing in Construction (EC³), Corfu, Greece</p></div>
+                                </div>
+                                <div class="workshop-item" data-aos="fade-up" data-aos-delay="80">
+                                    <div class="workshop-date-badge">Jun 2026</div>
+                                    <div><h4>ETS-TUE Workshop on Digital Twinning for the Built Environment</h4><p>TU Eindhoven, Netherlands</p></div>
+                                </div>
+                                <div class="workshop-item" data-aos="fade-up" data-aos-delay="110">
+                                    <div class="workshop-date-badge">May 2026</div>
+                                    <div><h4>Workshop: Data Spaces for Construction</h4><p>TU Eindhoven, Netherlands <br> Poster: <em>SmartData Interlock: An Access Control Architecture and Data Exchange Model for Secure Data Ecosystem in Smart Buildings</em></p></div>
+                                </div>
+                                <div class="workshop-item" data-aos="fade-up" data-aos-delay="140">
+                                    <div class="workshop-date-badge">Nov 2025</div>
+                                    <div><h4>Mini-Symposium and Workshop on Circularity and Data Spaces</h4><p>Ruhr-University Bochum, Germany</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ PANEL: Training ══ -->
+                    <div class="act-panel" id="panel-training">
+                        <div class="academia-section" data-aos="fade-up">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#0891b2;"><i class="fas fa-certificate"></i></div>
+                                <h3 class="section-title-text">Training &amp; Courses</h3>
+                            </div>
+                            <div class="courses-grid">
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="40">
+                                    <div class="course-year">Jul 2026</div>
+                                    <h4>PhD Supervision Training</h4>
+                                    <p>Utrecht University, Netherlands</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="70">
+                                    <div class="course-year">Apr 2025</div>
+                                    <h4>University Teaching Qualification (UTQ)</h4>
+                                    <p>Foundations, Supervising, Evaluation, Inclusive Interaction · TU/e Eindhoven</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="course-year">May 2020</div>
+                                    <h4>Data Scientist Nanodegree</h4>
+                                    <p>Udacity</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="130">
+                                    <div class="course-year">Jun 2020</div>
+                                    <h4>Wifi and Bluetooth Security</h4>
+                                    <p>IEEE Continuing Education · 0.3 CEUs, 3 PDHs (#117/0003849)</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="160">
+                                    <div class="course-year">May 2020</div>
+                                    <h4>Springboot and Microservices</h4>
+                                    <p>Master Class by Cognixia</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="190">
+                                    <div class="course-year">May 2020</div>
+                                    <h4>ISO 50001: Energy Efficiency Through Proven Standards</h4>
+                                    <p>Schneider Electric</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="220">
+                                    <div class="course-year">Jul 2018</div>
+                                    <h4>Internet of Things</h4>
+                                    <p>4-Week Advanced Training · Innovians Technologies, Bangalore (#3707752)</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="250">
+                                    <div class="course-year">Jan 2014</div>
+                                    <h4>Information Storage and Management</h4>
+                                    <p>EMC² Education Services Academic Alliance (#28X1QJ5YN24E1N5J)</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="280">
+                                    <div class="course-year">Feb 2012</div>
+                                    <h4>JAVA Technology</h4>
+                                    <p>3-month certificate · HITEC Information Technology Training Center</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="310">
+                                    <div class="course-year">Aug 2011</div>
+                                    <h4>JAVA Industrial Training</h4>
+                                    <p>IBM Software · Allsoft Solutions Pvt. Ltd. (#AS/PIET/Jul01/58)</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="340">
+                                    <div class="course-year">Jul 2011</div>
+                                    <h4>Oracle Database 10g: Administration</h4>
+                                    <p>Oracle Workforce Development Program</p>
+                                </div>
+                                <div class="course-card" data-aos="zoom-in" data-aos-delay="370">
+                                    <div class="course-year">Apr 2011</div>
+                                    <h4>Oracle Database 10g: SQL</h4>
+                                    <p>Oracle Workforce Development Program</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ PANEL: Achievements ══ -->
+                    <div class="act-panel" id="panel-achievements">
+                        <div class="academia-section" data-aos="fade-up">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#f59e0b;"><i class="fas fa-trophy"></i></div>
+                                <h3 class="section-title-text">Achievements</h3>
+                            </div>
+                            <div class="achieve-grid">
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="40">
+                                    <div class="achieve-year">2026</div>
+                                    <div><h4>Scientific Editor Elsevier Journals</h4><p>Member of the editorial board as Scientific Editor</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="70">
+                                    <div class="achieve-year">2026</div>
+                                    <div><h4>Lead Educator, IoT</h4><p>Alkademy Academic Partnership Programme · <a href="https://alkademy.com" target="_blank" style="color:#3e82f7;">alkademy.com</a></p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="achieve-year" style="background:#10b981;">2015</div>
+                                    <div><h4>Coloring Competition</h4><p>Bhaktivedavta Club at IIT Patna</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="130">
+                                    <div class="achieve-year" style="background:#10b981;">2015</div>
+                                    <div><h4>Heritage Quiz</h4><p>Indian National Trust for Art and Culture Heritage</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="160">
+                                    <div class="achieve-year" style="background:#8b5cf6;">2014</div>
+                                    <div><h4>98.26 Percentile · GATE 2014</h4><p>Graduate Aptitude Test in Engineering</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="190">
+                                    <div class="achieve-year" style="background:#e53935;">2006</div>
+                                    <div><h4>First Position · March Past Competition</h4><p>MHOW Cantonment Board · Indian Republic Day, 26 January 2006</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="220">
+                                    <div class="achieve-year" style="background:#f59e0b;">2004</div>
+                                    <div><h4>First Prize · National Level Drawing Competition</h4><p>Organized by Parivertan Kalyan Sangh</p></div>
+                                </div>
+                                <div class="achieve-card" data-aos="zoom-in" data-aos-delay="250">
+                                    <div class="achieve-year" style="background:#64748b;">2001</div>
+                                    <div><h4>Second Prize · Improvised Speech</h4><p>Anand Nagar Welfare Society Palasia, Mhow Indore</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /section-content -->
+            </div><!-- /section -->
+        </div><!-- /content-panel -->
+    </div><!-- /container -->
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright"><p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p></div>
+            <div class="social-links">
+                <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({ duration: 700, once: true, offset: 60 });
+
+            // Globe
+            if (typeof VANTA !== 'undefined') {
+                VANTA.GLOBE({ el: '#particles-js', mouseControls: true, touchControls: true, gyroControls: false, minHeight: 200, minWidth: 200, scale: 1, scaleMobile: 1, color: 0x3e82f7, backgroundColor: 0xffffff, size: 0.70, speed: 0.3 });
+            }
+
+            // Active nav link
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navlink').forEach(link => {
+                if (link.getAttribute('href') === currentPage) link.classList.add('active');
+            });
+
+            // Mobile nav
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinksContainer = document.querySelector('.navlinks');
+            mobileNavToggle.addEventListener('click', function () {
+                navLinksContainer.classList.toggle('active');
+                const isExpanded = navLinksContainer.classList.contains('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                mobileNavToggle.innerHTML = isExpanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            document.querySelectorAll('.navlinks .navlink').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Tab switching
+            const tabs   = document.querySelectorAll('.act-tab');
+            const panels = document.querySelectorAll('.act-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('visible'));
+                    this.classList.add('active');
+                    const target = document.getElementById(this.dataset.target);
+                    if (target) {
+                        target.classList.add('visible');
+                        AOS.refresh();
+                    }
+                });
+            });
+
+            // Scroll to top
+            const scrollBtn = document.createElement('button');
+            scrollBtn.classList.add('scroll-top-btn');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollBtn.style.display = 'none';
+            document.body.appendChild(scrollBtn);
+            const contentPanel = document.getElementById('content');
+            if (contentPanel) {
+                contentPanel.addEventListener('scroll', () => {
+                    scrollBtn.style.display = contentPanel.scrollTop > 300 ? 'block' : 'none';
+                });
+            }
+            scrollBtn.addEventListener('click', () => {
+                if (contentPanel) contentPanel.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Add typing effect to the heading
+            const typeElement = (selector, text, speed = 100, delay = 0) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                // Store original text and clear it
+                const originalText = text || element.textContent;
+                element.textContent = '';
+                element.style.borderRight = '2px solid var(--primary-color)';
+                
+                // Start typing after delay
+                setTimeout(() => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < originalText.length) {
+                            element.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                            element.style.borderRight = 'none';
+                        }
+                    }, speed);
+                }, delay);
+            };
+            
+            // Typing effects for name
+            typeElement('.name-container .title', 'Dr.', 100, 300);
+            typeElement('.name-container .first-name', 'Ravi', 100, 800);
+            typeElement('.name-container .last-name', 'Sharma', 100, 1500);   
+        });
+    </script>
+    <script src="particles.js"></script>
+</body>
+</html>

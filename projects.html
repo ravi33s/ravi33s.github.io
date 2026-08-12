@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ravi Sharma - Projects">
+    <meta name="author" content="Dr. Ravi Sharma">
+    <title>Projects - Dr. Ravi Sharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <link rel="stylesheet" href="Styles.css">
+    <style>
+        .section-header-new { display: flex; align-items: center; margin-bottom: 20px; position: relative; }
+        .blue-circle-icon { background-color: #3e82f7; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,0.2); flex-shrink: 0; }
+        .blue-circle-icon i { font-size: 18px; }
+        .section-title-text { margin: 0; padding: 0; font-size: 24px; color: #333; font-weight: 600; letter-spacing: 0.5px; }
+    </style>
+    <style>
+        .project-card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 24px; transition: all 0.3s ease; border-left: 4px solid #3e82f7; }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+        .project-card h3 { color: #222; margin: 0 0 8px 0; font-size: 1.2em; }
+        .project-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+        .project-badge { padding: 3px 12px; border-radius: 20px; font-size: 0.82em; font-weight: 600; }
+        .badge-horizon { background: #dbeafe; color: #1d4ed8; }
+        .badge-daad { background: #fce7f3; color: #9d174d; }
+        .badge-phd { background: #d1fae5; color: #065f46; }
+        .project-dates { font-size: 0.85em; color: #888; display: flex; align-items: center; gap: 5px; }
+        .project-desc { color: #444; font-size: 0.95em; line-height: 1.6; margin: 10px 0; }
+        .project-team { font-size: 0.88em; color: #555; margin-top: 8px; }
+        .project-team strong { color: #3e82f7; }
+        .project-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: #3e82f7; text-decoration: none; font-weight: 500; font-size: 0.9em; }
+        .project-link:hover { text-decoration: underline; }
+        .project-visits { margin-top: 16px; border-top: 1px solid #eee; padding-top: 14px; }
+        .project-visits h4 { color: #555; font-size: 0.9em; margin-bottom: 8px; }
+        .visit-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; font-size: 0.88em; color: #555; }
+        .visit-item i { color: #3e82f7; margin-top: 2px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
+            <div class="name-container">
+                <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
+            </div>
+            <div class="profile-container">
+                <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-info">
+                    <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
+                    <h3><i class="fas fa-university"></i> TU Eindhoven</h3>
+                    <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
+                </div>
+            </div>
+            <div class="logos" data-aos="fade-up" data-aos-delay="400">
+                <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile"><img src="img/Scopus.jpg" alt="Scopus"></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID Profile"><img src="img/ORCID.png" alt="Orcid"></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar Profile"><img src="img/GS.png" alt="Google Scholar"></a>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-building"></i> Department of Built Environment, Eindhoven University of Technology (TU/e), Netherlands</p>
+                <p><i class="fas fa-map-marker-alt"></i> Vertigo 9.16, TU/e Campus, 5600 MB Eindhoven, The Netherlands</p>
+            </div>
+        </div>
+
+        <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
+            <div class="navbar">
+                <div class="navbar">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink" id="aboutBtn">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Academia</span>
+                    </a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Publications</span>
+                    </a>
+                    <a href="projects.html" class="navlink" id="projectsBtn">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="group.html" class="navlink" id="groupBtn">
+                        <i class="fas fa-users"></i>
+                        <span>Research Group</span>
+                    </a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn">
+                        <i class="fas fa-tasks"></i>
+                        <span>Activities</span>
+                    </a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Opportunities</span>
+                    </a>
+                </div>
+                <!-- Mobile nav button -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            </div>
+
+            <div class="section" id="projects">
+                <div class="section-content">
+                    <div class="section-header-new" data-aos="fade-right">
+                        <div class="blue-circle-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3 class="section-title-text">Research Projects</h3>
+                    </div>
+
+                    <!-- WILSON Project -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-meta">
+                            <span class="project-badge badge-horizon"><i class="fas fa-eu"></i> Horizon Europe</span>
+                            <span class="project-dates"><i class="fas fa-calendar"></i> May 2024 – Apr 2028</span>
+                        </div>
+                        <h3>WILSON: Distributed Data Modelling and Federated Digital Twinning for Lifecycle Data-driven Sustainable Operation and Management of Buildings and Districts</h3>
+                        <p class="project-desc">WILSON focuses on distributed data modelling and federated digital twinning for lifecycle data-driven sustainable operation and management of buildings and districts. The project develops cutting-edge approaches to information systems in the built environment. <br> Grant: <strong>#HORIZON-CL5-2023-D4-02-01</strong></p>
+                        <p class="project-team"><strong>Team:</strong> Dr. Ir.-arch. Pieter Pauwels (Project Manager), Dr. Ir.-arch. Ekaterina Petrova (Project member), Dr. Ravi Sharma (Project member), Avinash Ramachandruni (Project member)</p>
+                        <a href="https://wilson-project.eu" target="_blank" class="project-link"><i class="fas fa-globe"></i> https://wilson-project.eu</a>
+                        <div class="project-visits">
+                            <h4><i class="fas fa-map-marker-alt"></i> Project Visits</h4>
+                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 3rd General Assembly in Eindhoven, Netherlands, May 21–22, 2024, hosted by TUE</span></div>
+                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st Review Meeting in Grenoble, France, Dec 10–11, 2025, hosted by CSTB</span></div>
+                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 2nd General Assembly in Athens, Greece, Apr 2–3, 2025, hosted by QUE Technologies</span></div>
+                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st General Assembly in Milan, Italy, Oct 22–23, 2024, hosted by RINA-C</span></div>
+                        </div>
+                    </div>
+
+                    <!-- PhD Thesis Project -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200" style="border-left-color: #16a34a;">
+                        <div class="project-meta">
+                            <span class="project-badge badge-phd"><i class="fas fa-graduation-cap"></i> PhD Thesis</span>
+                            <span class="project-dates"><i class="fas fa-calendar"></i> Sep 2019 – Feb 2024</span>
+                        </div>
+                        <h3>Research of Industrial Internet of Things and Industry 4.0 in Enterprise Resource Planning</h3>
+                        <p class="project-desc">PhD thesis at Budapest University of Technology and Economics. Research accomplishments have significant implications for the advancement of Industrial IoT, Industry 4.0, and related domains, paving the way for future research and development. Topics include spatiotemporal query processing, secure code dissemination, predictive analytics for smart manufacturing, and data management architectures.</p>
+                        <a href="http://hdl.handle.net/10890/55155" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> View Thesis Repository</a>
+                    </div>
+
+                    <!-- DAAD-DST Project -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300" style="border-left-color: #d946ef;">
+                        <div class="project-meta">
+                            <span class="project-badge badge-daad"><i class="fas fa-handshake"></i> DAAD-DST</span>
+                            <span class="project-dates"><i class="fas fa-calendar"></i> Feb 2015 – Feb 2017</span>
+                        </div>
+                        <h3>Time Synchronization in Duty Cycled Wireless Sensor Networks</h3>
+                        <p class="project-desc">DST-DAAD Indo-German Project Based Personnel Exchange Programme. The goal was to model broadcast duration to ensure that a certain percentage of available nodes are synchronized. The problem of estimating broadcast duration is formulated to capture the probability threshold of nodes being synchronized. <br> Grant: <strong>#INT/FRG/DAAD/P-250/2015</strong></p>
+                        <p class="project-team"><strong>Team:</strong> Prof. Dr. Ashok Singh Sairam (PI), Prof. Dr.-Ing. Axel Sikora (PI), Akash Yadav, Ravi Sharma</p>
+                        <div class="project-visits">
+                            <h4><i class="fas fa-map-marker-alt"></i> Project Visit</h4>
+                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>DST-DAAD Indo-German Exchange Programme at Öffenburg University of Applied Sciences, Germany — Jun 1 to Jul 5, 2015</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright"><p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p></div>
+            <div class="social-links">
+                <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+            
+            // Globe background effect
+            if (typeof VANTA !== 'undefined') {
+                VANTA.GLOBE({
+                    el: "#particles-js",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x3e82f7,
+                    backgroundColor: 0xffffff,
+                    size: 0.70,
+                    speed: 0.3
+                });
+            }
+            
+            // Highlight active page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navlink').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Mobile navigation toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinksContainer = document.querySelector('.navlinks');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+                const isExpanded = navLinksContainer.classList.contains('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                
+                // Change icon based on state
+                if (isExpanded) {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.navlinks .navlink').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
+            // Scroll to top button
+            const scrollTopButton = document.createElement('div');
+            scrollTopButton.className = 'scroll-top-btn';
+            scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            document.body.appendChild(scrollTopButton);
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            });
+            
+            scrollTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add CSS styles for Intern page
+            const internStyles = document.createElement('style');
+            internStyles.textContent = `
+                /* Page Layout Adjustments */
+                .section#intern .section-content {
+                    max-width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
+                
+                .container {
+                    display: flex;
+                    min-height: 100vh;
+                    max-width: 1600px;
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 1rem;
+                    position: relative;
+                    z-index: 1;
+                    gap: 0.5rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(5px);
+                    -webkit-backdrop-filter: blur(5px);
+                    border-radius: 20px;
+                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+                    flex: 1;
+                }
+                
+                .content-panel {
+                    flex: 1;
+                    padding: 2rem;
+                    background: rgba(255, 255, 255, 0.85);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    border: 1px solid rgba(26, 115, 232, 0.3);
+                    border-radius: 15px;
+                    animation: fadeInRight 1s ease-out;
+                    overflow-y: auto;
+                    max-height: 100vh;
+                }
+                
+                .intern-alert {
+                    display: flex;
+                    background-color: #f8f9fa;
+                    border-left: 4px solid #4CAF50;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    width: 100%;
+                }
+                
+                /* Intern Colors */
+                .intern-alert:nth-child(1) {
+                    border-left-color: #4CAF50;
+                }
+                
+                .intern-alert:nth-child(1) .alert-icon {
+                    background-color: rgba(76, 175, 80, 0.1);
+                }
+                
+                .intern-alert:nth-child(1) .alert-icon i {
+                    color: #4CAF50;
+                }
+                
+                .intern-alert:nth-child(1) .intern-details span {
+                    background-color: rgba(76, 175, 80, 0.05);
+                }
+                
+                .intern-alert:nth-child(1) .intern-details span i {
+                    color: #4CAF50;
+                }
+                
+                .intern-alert:nth-child(2) {
+                    border-left-color: #2196F3;
+                }
+                
+                .intern-alert:nth-child(2) .alert-icon {
+                    background-color: rgba(33, 150, 243, 0.1);
+                }
+                
+                .intern-alert:nth-child(2) .alert-icon i {
+                    color: #2196F3;
+                }
+                
+                .intern-alert:nth-child(2) .intern-details span {
+                    background-color: rgba(33, 150, 243, 0.05);
+                }
+                
+                .intern-alert:nth-child(2) .intern-details span i {
+                    color: #2196F3;
+                }
+                
+                .intern-alert:nth-child(3) {
+                    border-left-color: #9C27B0;
+                }
+                
+                .intern-alert:nth-child(3) .alert-icon {
+                    background-color: rgba(156, 39, 176, 0.1);
+                }
+                
+                .intern-alert:nth-child(3) .alert-icon i {
+                    color: #9C27B0;
+                }
+                
+                .intern-alert:nth-child(3) .intern-details span {
+                    background-color: rgba(156, 39, 176, 0.05);
+                }
+                
+                .intern-alert:nth-child(3) .intern-details span i {
+                    color: #9C27B0;
+                }
+                
+                .intern-alert:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                }
+                
+                .alert-icon {
+                    flex: 0 0 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgba(76, 175, 80, 0.1);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 20px;
+                }
+                
+                .alert-icon i {
+                    font-size: 24px;
+                    color: #4CAF50;
+                }
+                
+                .alert-content {
+                    flex: 1;
+                }
+                
+                .alert-content h4 {
+                    margin-top: 0;
+                    margin-bottom: 15px;
+                    color: #333;
+                    font-size: 20px;
+                }
+                
+                .status-tag {
+                    display: inline-block;
+                    padding: 4px 10px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                }
+                
+                .status-tag.active {
+                    background-color: rgba(25, 135, 84, 0.1);
+                    color: #198754;
+                    border: 1px solid rgba(25, 135, 84, 0.2);
+                }
+                
+                .status-tag.completed {
+                    background-color: rgba(13, 110, 253, 0.1);
+                    color: #0d6efd;
+                    border: 1px solid rgba(13, 110, 253, 0.2);
+                }
+                
+                .intern-details {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 12px;
+                    margin-bottom: 15px;
+                }
+                
+                .intern-details span {
+                    background-color: rgba(76, 175, 80, 0.05);
+                    border-radius: 20px;
+                    padding: 6px 12px;
+                    font-size: 14px;
+                    color: #333;
+                }
+                
+                .intern-details span i {
+                    color: #4CAF50;
+                    margin-right: 5px;
+                }
+                
+                .intern-description {
+                    margin-top: 15px;
+                }
+                
+                .intern-description p {
+                    color: #666;
+                    line-height: 1.6;
+                    margin: 0;
+                }
+                
+                @media screen and (max-width: 767px) {
+                    .intern-alert {
+                        flex-direction: column;
+                    }
+                    
+                    .alert-icon {
+                        margin: 0 auto 15px;
+                    }
+                    
+                    .alert-content {
+                        text-align: center;
+                    }
+                    
+                    .intern-details {
+                        justify-content: center;
+                    }
+                }
+                
+                .intern-info {
+                    border-left-color: #FF9800;
+                }
+                
+                .intern-info .alert-icon {
+                    background-color: rgba(255, 152, 0, 0.1);
+                }
+                
+                .intern-info .alert-icon i {
+                    color: #FF9800;
+                }
+                
+                .intern-info .intern-description p strong {
+                    color: #d32f2f;
+                    font-weight: 700;
+                }
+                
+                .opportunity-text {
+                    background-color: #f8f9fa;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                }
+                
+                .opportunity-box {
+                    background-color: #f8f9fa;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    border-left: 4px solid #3e82f7;
+                }
+                
+                .opportunity-box:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+                }
+                
+                .opportunity-box:first-of-type {
+                    border-left-color: #FF9800;
+                }
+                
+                .opportunity-box:first-of-type strong {
+                    color: #d32f2f;
+                    font-weight: 700;
+                }
+                
+                .opportunity-box p {
+                    margin: 0;
+                    line-height: 1.6;
+                    color: #333;
+                }
+                
+                .apply-container {
+                    margin-top: 15px;
+                    text-align: center;
+                }
+                
+                .apply-link {
+                    display: inline-block;
+                    color: #fff;
+                    background-color: #3e82f7;
+                    padding: 3px 8px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    animation: pulse 2s infinite;
+                }
+                
+                .apply-link:hover {
+                    background-color: #2c6bed;
+                    text-decoration: none;
+                    transform: scale(1.05);
+                    box-shadow: 0 5px 15px rgba(62, 130, 247, 0.4);
+                }
+                
+                .apply-link:active {
+                    transform: scale(0.95);
+                }
+                
+                @keyframes pulse {
+                    0% {
+                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0.7);
+                    }
+                    70% {
+                        box-shadow: 0 0 0 10px rgba(62, 130, 247, 0);
+                    }
+                    100% {
+                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0);
+                    }
+                }
+                
+                .location-box {
+                    background-color: #f8f9fa;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    border-left: 4px solid #4CAF50;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+                
+                .location-box:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+                }
+                
+                .map-container {
+                    flex: 1;
+                    min-width: 300px;
+                }
+                
+                .address-container {
+                    flex: 1;
+                    min-width: 250px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                
+                .address-container h4 {
+                    color: #333;
+                    margin-top: 0;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                }
+                
+                .address-container p {
+                    margin: 0 0 10px 0;
+                    line-height: 1.6;
+                    color: #555;
+                }
+                
+                .address-container i {
+                    color: #4CAF50;
+                    margin-right: 8px;
+                }
+                
+                .address-container a {
+                    color: #3e82f7;
+                    text-decoration: none;
+                    transition: color 0.3s;
+                }
+                
+                .address-container a:hover {
+                    color: #2c6bed;
+                    text-decoration: underline;
+                }
+                
+                @media (max-width: 767px) {
+                    .location-box {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    
+                    .map-container, .address-container {
+                        width: 100%;
+                    }
+                    
+                    .address-container {
+                        text-align: center;
+                    }
+                }
+                
+                .opportunity-text p {
+                    margin-bottom: 15px;
+                    line-height: 1.6;
+                    color: #333;
+                }
+                
+                .opportunity-text p:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .project-link {
+                    color: #3e82f7;
+                    text-decoration: none;
+                    position: relative;
+                    padding: 2px 4px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
+                
+                .project-link i {
+                    font-size: 0.8em;
+                    margin-left: 3px;
+                    transition: transform 0.3s ease;
+                }
+                
+                .project-link:hover {
+                    color: #1a56e8;
+                    background-color: rgba(62, 130, 247, 0.1);
+                    border-radius: 3px;
+                    text-decoration: none;
+                }
+                
+                .project-link:hover i {
+                    transform: translateX(3px);
+                }
+                
+                .opportunity-text strong {
+                    color: #d32f2f;
+                    font-weight: 700;
+                }
+            `;
+            document.head.appendChild(internStyles);
+
+            // Add typing effect to the heading
+            const typeElement = (selector, text, speed = 100, delay = 0) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                // Store original text and clear it
+                const originalText = text || element.textContent;
+                element.textContent = '';
+                element.style.borderRight = '2px solid var(--primary-color)';
+                
+                // Start typing after delay
+                setTimeout(() => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < originalText.length) {
+                            element.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                            element.style.borderRight = 'none';
+                        }
+                    }, speed);
+                }, delay);
+            };
+            
+            // Typing effects for name
+            typeElement('.name-container .title', 'Dr.', 100, 300);
+            typeElement('.name-container .first-name', 'Ravi', 100, 800);
+            typeElement('.name-container .last-name', 'Sharma', 100, 1500);
+        });
+    </script>
+    <!-- Load particles.js for the background animation -->
+    <script src="particles.js"></script>
+</body>
+</html>

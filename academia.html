@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ravi Sharma - Postdoctoral Researcher at TU Eindhoven - Academia">
+    <meta name="author" content="Dr. Ravi Sharma">
+    <title>Academia - Dr. Ravi Sharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <link rel="stylesheet" href="Styles.css">
+    <style>
+        .section-header-new { display: flex; align-items: center; margin-bottom: 20px; position: relative; }
+        .blue-circle-icon { background-color: #3e82f7; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,0.2); flex-shrink: 0; }
+        .blue-circle-icon i { font-size: 18px; }
+        .section-title-text { margin: 0; padding: 0; font-size: 24px; color: #333; font-weight: 600; letter-spacing: 0.5px; }
+    </style>
+    <style>
+        .teaching-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin: 18px 0 0 0; }
+        .teaching-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(30,60,90,0.07); padding: 18px 14px 14px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 80px; transition: box-shadow 0.2s, transform 0.2s; }
+        .teaching-card:hover { box-shadow: 0 6px 18px rgba(30,60,90,0.13); transform: translateY(-2px) scale(1.01); }
+        .teaching-card-title { display: flex; align-items: center; font-size: 1em; color: #222; gap: 8px; margin-bottom: 10px; }
+        .teaching-card-title i { font-size: 1.1em; color: #2563eb; }
+        .teaching-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 7px; font-size: 0.85em; font-weight: 500; color: #fff; margin-top: 1px; }
+        .badge-blue { background: #3578e5; } .badge-green { background: #16a34a; } .badge-purple { background: #8338ec; }
+        .badge-orange { background: #f57c00; } .badge-red { background: #e53935; }
+        .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+        .membership-card { background: #fff; border-radius: 10px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); display: flex; align-items: center; gap: 12px; transition: all 0.2s; }
+        .membership-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.12); transform: translateY(-2px); }
+        .membership-card i { color: #3e82f7; font-size: 1.3em; flex-shrink: 0; }
+        .membership-card span { font-size: 0.9em; color: #333; font-weight: 500; }
+        .scholarship-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+        .scholarship-item { background: #fff; border-radius: 10px; padding: 14px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .scholarship-name { font-weight: 600; color: #222; }
+        .scholarship-org { font-size: 0.9em; color: #666; }
+        .scholarship-year { background: #3e82f7; color: #fff; padding: 3px 10px; border-radius: 6px; font-size: 0.85em; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <!-- Globe background container -->
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
+            <div class="name-container">
+                <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
+            </div>
+            <div class="profile-container">
+                <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-info">
+                    <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
+                    <h3><i class="fas fa-university"></i> TU Eindhoven</h3>
+                    <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
+                </div>
+            </div>
+            <div class="logos" data-aos="fade-up" data-aos-delay="400">
+                <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile"><img src="img/Scopus.jpg" alt="Scopus"></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID Profile"><img src="img/ORCID.png" alt="Orcid"></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar Profile"><img src="img/GS.png" alt="Google Scholar"></a>
+            </div>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-building"></i> Department of Built Environment, Eindhoven University of Technology (TU/e), Netherlands</p>
+                <p><i class="fas fa-map-marker-alt"></i> Vertigo 9.16, TU/e Campus, 5600 MB Eindhoven, The Netherlands</p>
+            </div>
+        </div>
+
+        <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
+            <div class="navbar">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink" id="aboutBtn">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Academia</span>
+                    </a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Publications</span>
+                    </a>
+                    <a href="projects.html" class="navlink" id="projectsBtn">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="group.html" class="navlink" id="groupBtn">
+                        <i class="fas fa-users"></i>
+                        <span>Research Group</span>
+                    </a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn">
+                        <i class="fas fa-tasks"></i>
+                        <span>Activities</span>
+                    </a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Opportunities</span>
+                    </a>
+                </div>
+                <!-- Mobile nav button -->
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="section" id="academia">
+                <div class="section-content">
+                    <div class="academia-section" id="experience-section" data-aos="fade-up">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3 class="section-title-text">Experience</h3>
+                        </div>
+                        <div class="main-timeline experience-timeline" data-aos="fade-right" data-aos-delay="100">
+                            <div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-briefcase"></i> 
+                                    </div>
+                                    <div class="timeline-year">2024</div>
+                                    <h3 class="title">Postdoctoral Researcher</h3>
+                                    <p class="description">Information Systems in the Built Environment</p>
+                                    <h5 class="description">Eindhoven University of Technology, Eindhoven, The Netherlands</h5>
+                                </a>
+                            </div>
+                            <div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div class="timeline-year">2019</div>
+                                    <h3 class="title">Doctoral Research Associate</h3>
+                                    <p class="description">Department of Electronics Technology</p>
+                                    <h5 class="description">Budapest University of Technology and Economics, Budapest, Hungary</h5>
+                                </a>
+                            </div>
+                            <div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="timeline-year">2016</div>
+                                    <h3 class="title">Assistant Professor</h3>
+                                    <p class="description">Department of Computer Science and Engineering</p>
+                                    <h5 class="description">Medi-Caps University, Indore, India</h5>
+                                </a>
+                            </div>
+							<div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="timeline-year">2015</div>
+                                    <h3 class="title">Visiting Researcher</h3>
+                                    <p class="description">Institute of Reliable Embedded Systems and Communication Electronics</p>
+                                    <h5 class="description">Öffenburg University of Applied Sciences, Öffenburg, Germany</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="academia-section" id="education-section" data-aos="fade-up" data-aos-delay="200" style="margin-top: 40px;">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="section-title-text">Education</h3>
+                        </div>
+                        <div class="main-timeline education-timeline" data-aos="fade-right" data-aos-delay="300">
+                            <div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-year">2024</div>
+                                    <h3 class="title">Doctor of Philosophy <br> Computer Science and Engineering</h3> 
+                                    <h5 class="description">Budapest University of Technology and Economics, Budapest, Hungary</h5>
+                                    <p class="description"><strong>Thesis:</strong> “Research of Industrial Internet of Things and Industry 4.0 in Enterprise Resource Planning”</p>
+                                    <p class="description"><strong>Advisor:</strong> Prof. Balázs Villányi</p>
+                                </a>
+                            </div>
+                            <div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-year">2016</div>
+                                    <h3 class="title">Master of Technology <br> Computer Science and Engineering</h3>
+                                    <h5 class="description">Indian Institute of Technology, Patna, India</h5>
+                                    <p class="description"><strong>Thesis:</strong> “Tunable Synchronization in Duty-cycled Wireless Sensor Networks”</p>
+                                    <p class="description"><strong>Advisor:</strong> Prof. Ashok Singh Sairam</p>
+                                </a>
+                            </div>
+							<div class="timeline">
+                                <a href="javascript:void(0)" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-year">2012</div>
+                                    <h3 class="title">Bachelor of Engineering <br> Computer Science and Engineering</h3>
+                                    <h5 class="description">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal, India</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="academia-section" id="recognition-section" style="display: none;" data-aos="fade-up" data-aos-delay="400">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3 class="section-title-text">Recognition</h3>
+                        </div>
+                        <div class="recognition-grid" data-aos="fade-right" data-aos-delay="500">
+                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="350">
+                                <div class="recognition-year">2019</div>
+                                <div class="recognition-detail">
+                                    <h4><i class="fas fa-medal"></i>Stipendium Hungaricum Scholarship</h4>
+                                    <p class="recognition-institution"><i class="fas fa-university"></i> Tempus Public Foundation Hungary</p>
+                                    <p class="recognition-description">Fellowship supporting doctoral research in Industrial Internet of Things</p>
+                                </div>
+                            </div>
+                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="400">
+                                <div class="recognition-year">2015</div>
+                                <div class="recognition-detail">
+                                    <h4><i class="fas fa-star"></i>DAAD Scholarship</h4>
+                                    <p class="recognition-institution"><i class="fas fa-university"></i>German Academic Exchange Service Germany</p>
+                                    <p class="recognition-description">Fellowship supporting research in Wireless Sensor Networks</p>
+                                </div>
+                            </div>
+                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="450">
+                                <div class="recognition-year">2014</div>
+                                <div class="recognition-detail">
+                                    <h4><i class="fas fa-award"></i> MHRD Scholarship</h4>
+                                    <p class="recognition-institution"><i class="fas fa-university"></i> Indian Institute of Technology Patna</p>
+                                    <p class="recognition-description">Fellowship supporting M.Tech research in Wireless Sensor Networks</p>
+                                </div>
+                            </div>
+                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="500">
+                                <div class="recognition-year">2026</div>
+                                <div class="recognition-detail">
+                                    <h4><i class="fab fa-google"></i> Lead Educator, IoT </h4>
+                                    <p class="recognition-institution"><i class="fas fa-building"></i> Alkademy Academic Partnership Programme</p>
+                                    <p class="recognition-description">Recognized as a lead educator for the IoT course in the Alkademy Academic Partnership Programme</p>
+                                </div>
+                            </div>
+                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="550">
+                                <div class="recognition-year">2026</div>
+                                <div class="recognition-detail">
+                                    <h4><i class="fas fa-trophy"></i> Scientific Editor</h4>
+                                    <p class="recognition-institution"><i class="fas fa-university"></i> Member of the editorial board for Elsevier</p>
+                                    <p class="recognition-description">Serving as a scientific editor for the Elsevier computer science journal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="academia-section" id="courses-section" data-aos="fade-up" data-aos-delay="600">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="section-title-text">Teaching</h3>
+                        </div>
+                        <div class="teaching-cards-grid">
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-book"></i>
+                                    <span><b>7M900: Fundamentals of building information modeling</b></span>
+                                </div>
+                                <div class="teaching-badges">
+                                    <span class="badge badge-blue">Fall-2025</span>
+                                </div>
+                            </div>
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-flask"></i>
+                                    <span><b>VIETAC63: Responsible Data Science</b></span>
+                                </div> 
+                                <div class="teaching-badges">
+                                    <span class="badge badge-green">Spring-2022</span>
+                                    <span class="badge badge-orange">Fall-2022</span>
+                                </div>
+                            </div>
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-search"></i>
+                                    <span><b>VIETAC15: Production planning and industrial IoT</b></span>
+                                </div>
+                                <div class="teaching-badges">
+                                    <span class="badge badge-red">Fall-2021</span>
+                                </div>
+                            </div>
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-brain"></i>
+                                    <span><b>VIETAC09: Business information management</b></span>
+                                </div>
+                                <div class="teaching-badges">
+                                    <span class="badge badge-green">Spring-2021</span>
+                                    <span class="badge badge-orange">Fall-2020</span>
+                                </div>
+                            </div>
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span><b>CS5EL25: Internet of Things</b></span>
+                                </div>
+                                <div class="teaching-badges">
+                                    <span class="badge badge-green">Spring-2019</span>
+                                    <span class="badge badge-orange">Fall-2018</span>
+                                </div>
+                            </div>
+                            <div class="teaching-card">
+                                <div class="teaching-card-title">
+                                    <i class="fas fa-money-check-alt"></i>
+                                    <span><b>CS3CO41: Computer Networks</b></span>
+                                </div>
+                                <div class="teaching-badges">
+                                    <span class="badge badge-green">Spring-2018</span>
+                                    <span class="badge badge-orange">Fall-2017</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p>
+            </div>
+            <div class="social-links">
+                <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+            
+            // Section transitions
+            const experienceSection = document.getElementById('experience-section');
+            const educationSection = document.getElementById('education-section');
+            const recognitionSection = document.getElementById('recognition-section');
+            
+            // Ensure only Experience section is visible by default
+            experienceSection.style.display = 'block';
+            educationSection.style.display = 'none';
+            recognitionSection.style.display = 'none';
+            
+            // Create section navigation
+            const sectionNav = document.createElement('div');
+            sectionNav.className = 'section-nav';
+            sectionNav.innerHTML = `
+                <button id="exp-btn" class="active">Experience</button>
+                <button id="edu-btn">Education</button>
+                <button id="courses-btn">Courses</button>
+                <button id="rec-btn">Recognition</button>  
+            `;
+            
+            // Insert before the first section
+            experienceSection.parentNode.insertBefore(sectionNav, experienceSection);
+            
+            // Handle section navigation
+            document.getElementById('exp-btn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('edu-btn').classList.remove('active');
+                document.getElementById('courses-btn').classList.remove('active');
+                document.getElementById('rec-btn').classList.remove('active');
+                experienceSection.style.display = 'block';
+                educationSection.style.display = 'none';
+                coursesSection.style.display = 'none';
+                recognitionSection.style.display = 'none';
+
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+            
+            document.getElementById('edu-btn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('exp-btn').classList.remove('active');
+                document.getElementById('courses-btn').classList.remove('active');
+                document.getElementById('rec-btn').classList.remove('active');
+
+                experienceSection.style.display = 'none';
+                educationSection.style.display = 'block';
+                coursesSection.style.display = 'none';
+                recognitionSection.style.display = 'none';
+
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+            
+            // Add courses section to the display logic
+            const coursesSection = document.getElementById('courses-section');
+            coursesSection.style.display = 'none';
+            
+            // Update section navigation
+            document.getElementById('courses-btn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('exp-btn').classList.remove('active');
+                document.getElementById('edu-btn').classList.remove('active');
+                document.getElementById('rec-btn').classList.remove('active');
+                experienceSection.style.display = 'none';
+                educationSection.style.display = 'none';
+                coursesSection.style.display = 'block';
+                recognitionSection.style.display = 'none';
+
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+
+            document.getElementById('rec-btn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('exp-btn').classList.remove('active');
+                document.getElementById('edu-btn').classList.remove('active');
+                document.getElementById('courses-btn').classList.remove('active');
+                experienceSection.style.display = 'none';
+                educationSection.style.display = 'none';
+                coursesSection.style.display = 'none';
+                recognitionSection.style.display = 'block';
+
+                // Refresh AOS animations
+                AOS.refresh();
+            });
+            
+            // Globe background effect
+            if (typeof VANTA !== 'undefined') {
+                VANTA.GLOBE({
+                    el: "#particles-js",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x3e82f7,
+                    backgroundColor: 0xffffff,
+                    size: 0.70,
+                    speed: 0.3
+                });
+            }
+            
+            // Highlight active page in navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navlink').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Mobile navigation toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinksContainer = document.querySelector('.navlinks');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+                const isExpanded = navLinksContainer.classList.contains('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                
+                // Change icon based on state
+                if (isExpanded) {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.navlinks .navlink').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
+            // Scroll to top button
+            const scrollTopButton = document.createElement('div');
+            scrollTopButton.className = 'scroll-top-btn';
+            scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            document.body.appendChild(scrollTopButton);
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            });
+            
+            scrollTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add CSS styles dynamically to enhance the Academia page
+            const academiaStyles = document.createElement('style');
+            academiaStyles.textContent = `
+                /* Logo alignment fix */
+                .logos {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                    margin: 15px auto;
+                }
+                
+                .logos a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .logos img {
+                    height: 40px;
+                    width: auto;
+                    object-fit: contain;
+                    transition: all 0.3s ease;
+                }
+                
+                .logos img:hover {
+                    transform: scale(1.1);
+                }
+
+                /* Section Styling */
+                .academia-section {
+                    margin-bottom: 50px;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    border-radius: 10px;
+                    padding: 25px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                }
+                
+                /* New Header Design Matching Image */
+                .section-header-new {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    position: relative;
+                    padding-bottom: 10px;
+                }
+                
+                .blue-circle-icon {
+                    background-color: #3e82f7;
+                    color: white;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 15px;
+                    box-shadow: 0 4px 10px rgba(62, 130, 247, 0.2);
+                }
+                
+                .blue-circle-icon i {
+                    font-size: 18px;
+                }
+                
+                .section-title-text {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 28px;
+                    color: #333;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                }
+                
+                .section-header, .section-icon {
+                    display: none;
+                }
+                
+                /* BestjQuery Timeline Style */
+                .main-timeline {
+                    font-family: 'Roboto', sans-serif;
+                    position: relative;
+                    margin-top: 20px;
+                }
+                
+                .main-timeline:after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
+                
+                .main-timeline .timeline {
+                    width: 50%;
+                    margin: 0 0 25px;
+                    float: left;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .main-timeline .timeline-content {
+                    color: #3e82f7;
+                    text-decoration: none;
+                    padding: 0 145px 0 0;
+                    display: block;
+                    position: relative;
+                }
+                
+                .main-timeline .timeline-content:hover {
+                    text-decoration: none;
+                }
+                
+                .main-timeline .timeline-icon {
+                    color: #fff;
+                    background-color: #3e82f7;
+                    font-size: 22px;
+                    text-align: center;
+                    line-height: 60px;
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    transform: translateY(-50%);
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                }
+                
+                .main-timeline .timeline-year {
+                    color: #fff;
+                    background-color: #3e82f7;
+                    font-size: 18px;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 60px;
+                    height: 60px;
+                    width: 70px;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    top: 50%;
+                    right: 65px;
+                    z-index: -1;
+                    border-radius: 0 10px 10px 0;
+                }
+                
+                .main-timeline .title {
+                    font-size: 19px;
+                    font-weight: 600;
+                    margin: 0 0 8px;
+                    color: #333;
+                }
+                
+                .main-timeline .description {
+                    font-size: 14px;
+                    letter-spacing: 0.8px;
+                    margin: 0 0 5px;
+                    color: #555;
+                }
+                
+                .main-timeline .timeline:nth-child(even) {
+                    float: right;
+                    margin: 0 0 25px 10px;
+                }
+                
+                .main-timeline .timeline:nth-child(even) .timeline-content {
+                    padding: 0 0 0 145px;
+                }
+                
+                .main-timeline .timeline:nth-child(even) .timeline-icon {
+                    right: auto;
+                    left: 0;
+                }
+                
+                .main-timeline .timeline:nth-child(even) .timeline-year {
+                    right: auto;
+                    left: 65px;
+                    border-radius: 10px 0 0 10px;
+                }
+                
+                /* Timeline Color Variations */
+                .experience-timeline .timeline:nth-child(1) .timeline-icon,
+                .experience-timeline .timeline:nth-child(1) .timeline-year {
+                    background-color: #3e82f7;
+                }
+                
+                .experience-timeline .timeline:nth-child(2) .timeline-icon,
+                .experience-timeline .timeline:nth-child(2) .timeline-year {
+                    background-color: #1B92D2;
+                }
+                
+                .experience-timeline .timeline:nth-child(3) .timeline-icon,
+                .experience-timeline .timeline:nth-child(3) .timeline-year {
+                    background-color: #ED8C25;
+                }
+                
+                .education-timeline .timeline:nth-child(1) .timeline-icon,
+                .education-timeline .timeline:nth-child(1) .timeline-year {
+                    background-color: #D52C63;
+                }
+                
+                .education-timeline .timeline:nth-child(2) .timeline-icon,
+                .education-timeline .timeline:nth-child(2) .timeline-year {
+                    background-color: #9e3674;
+                }
+                
+                .education-timeline .timeline:nth-child(3) .timeline-icon,
+                .education-timeline .timeline:nth-child(3) .timeline-year {
+                    background-color: #4CAF50;
+                }
+                
+                /* Recognition Cards */
+                .recognition-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+                    gap: 16px;
+                    margin-top: 16px;
+                }
+                
+                .recognition-card {
+                    display: flex;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    height: 100%;
+                    padding: 14px 12px;
+                    margin-bottom: 0;
+                }
+                
+                .recognition-card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                }
+                
+                .recognition-year {
+                    background-color: #3e82f7;
+                    color: white;
+                    padding: 12px 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    min-width: 70px;
+                    font-size: 1.1em;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+                }
+                
+                .recognition-detail {
+                    padding: 10px 12px;
+                    flex-grow: 1;
+                }
+                
+                .recognition-detail h4 {
+                    margin-top: 0;
+                    margin-bottom: 8px;
+                    color: #333;
+                    font-size: 1.08em;
+                }
+                
+                .recognition-detail h4 i {
+                    color: #3e82f7;
+                    margin-right: 10px;
+                    font-size: 1.1em;
+                }
+                
+                .recognition-institution {
+                    font-weight: 500;
+                    margin: 10px 0;
+                    color: #555;
+                }
+                
+                .recognition-description {
+                    color: #666;
+                    margin-top: 10px;
+                    line-height: 1.6;
+                }
+                
+                .recognition-institution i {
+                    margin-right: 10px;
+                    color: #3e82f7;
+                    width: 18px;
+                    text-align: center;
+                }
+                
+                /* Updated mobile view to match the image */
+                @media screen and (max-width: 767px) {
+                    .main-timeline .timeline,
+                    .main-timeline .timeline:nth-child(even) {
+                        width: 100%;
+                        margin: 0 0 40px;
+                        padding-top: 10px;
+                        position: relative;
+                    }
+                    
+                    .main-timeline .timeline-content,
+                    .main-timeline .timeline:nth-child(even) .timeline-content {
+                        padding: 75px 0 0 0;
+                        text-align: center;
+                    }
+                    
+                    /* Smaller icons for mobile */
+                    .main-timeline .timeline-icon,
+                    .main-timeline .timeline:nth-child(even) .timeline-icon {
+                        transform: translateX(-50%);
+                        top: 0;
+                        left: 50%;
+                        right: auto;
+                        z-index: 2;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                    
+                    .main-timeline .timeline-icon i {
+                        font-size: 16px;
+                    }
+                    
+                    .main-timeline .timeline-year,
+                    .main-timeline .timeline:nth-child(even) .timeline-year {
+                        transform: translateX(-50%);
+                        top: 42px;
+                        left: 50%;
+                        right: auto;
+                        border-radius: 4px;
+                        z-index: 1;
+                        width: 50px;
+                        height: 30px;
+                        line-height: 30px;
+                        font-size: 14px;
+                    }
+                    
+                    /* Add a line instead of shifting timeline icon and year */
+                    .main-timeline .timeline::before {
+                        content: '';
+                        height: 100%;
+                        width: 1px;
+                        background-color: #e5e5e5;
+                        position: absolute;
+                        left: 50%;
+                        top: 10px;
+                        transform: translateX(-50%);
+                        z-index: -2;
+                    }
+                    
+                    /* Adjust title and description for mobile */
+                    .main-timeline .title {
+                        margin-top: 15px;
+                        font-size: 18px;
+                        position: relative;
+                        display: inline-block;
+                        border-bottom: 1px solid #eee;
+                        padding-bottom: 5px;
+                    }
+                    
+                    .main-timeline .description {
+                        text-align: center;
+                        max-width: 90%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-top: 8px;
+                        color: #555;
+                    }
+                    
+                    /* Add horizontal line after title */
+                    .main-timeline .timeline::after {
+                        content: '';
+                        position: absolute;
+                        left: 10%;
+                        right: 10%;
+                        bottom: -20px;
+                        height: 1px;
+                        background-color: #eee;
+                    }
+                    
+                    /* Add horizontal lines before and after job title */
+                    .main-timeline .timeline-content::before,
+                    .main-timeline .timeline-content::after {
+                        content: '';
+                        position: absolute;
+                        left: 10%;
+                        right: 10%;
+                        height: 1px;
+                        background-color: #eee;
+                    }
+                    
+                    .main-timeline .timeline-content::before {
+                        top: 75px;
+                    }
+                    
+                    .recognition-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    /* Specific adjustments for education items in mobile */
+                    .education-timeline .description {
+                        margin-bottom: 5px;
+                    }
+                    
+                    .education-timeline .description:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                
+                @media screen and (max-width: 576px) {
+                    .academia-section {
+                        padding: 20px 15px;
+                    }
+                    
+                    .academia-section h3 {
+                        font-size: 1.5em;
+                    }
+                    
+                    /* Make section nav more compact on small screens */
+                    .section-nav {
+                        margin: 10px 0;
+                    }
+                    
+                    .section-nav button {
+                        padding: 6px 12px;
+                        font-size: 14px;
+                    }
+                }
+                
+                /* Animation enhancements */
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                
+                .timeline, .recognition-card {
+                    animation: fadeIn 0.5s ease forwards;
+                }
+                
+                .timeline:nth-child(1), .recognition-card:nth-child(1) { animation-delay: 0.1s; }
+                .timeline:nth-child(2), .recognition-card:nth-child(2) { animation-delay: 0.2s; }
+                .timeline:nth-child(3), .recognition-card:nth-child(3) { animation-delay: 0.3s; }
+                .timeline:nth-child(4), .recognition-card:nth-child(4) { animation-delay: 0.4s; }
+                .timeline:nth-child(5), .recognition-card:nth-child(5) { animation-delay: 0.5s; }
+                
+                /* Fix for potential overflow issues */
+                .section-content {
+                    overflow: hidden;
+                }
+
+                /* Custom icon colors for each section */
+                .academia-section:nth-child(1) .blue-circle-icon {
+                    background-color: #4285F4; /* Google Blue */
+                    box-shadow: 0 4px 10px rgba(66, 133, 244, 0.2);
+                }
+                
+                .academia-section:nth-child(2) .blue-circle-icon {
+                    background-color: #0F9D58; /* Google Green */
+                    box-shadow: 0 4px 10px rgba(15, 157, 88, 0.2);
+                }
+                
+                .academia-section:nth-child(3) .blue-circle-icon {
+                    background-color: #DB4437; /* Google Red */
+                    box-shadow: 0 4px 10px rgba(219, 68, 55, 0.2);
+                }
+
+                /* Experience section specific styling for more compact appearance */
+                .experience-timeline {
+                    margin-bottom: 0;
+                }
+                
+                .experience-timeline .timeline {
+                    margin-bottom: 15px;
+                }
+                
+                .experience-timeline .timeline-content {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+                
+                .experience-timeline .title {
+                    margin-bottom: 4px;
+                }
+                
+                .experience-timeline .description {
+                    margin-bottom: 2px;
+                }
+                
+                /* Education section specific styling for more compact appearance */
+                .education-timeline {
+                    margin-bottom: 0;
+                    margin-top: 10px;
+                }
+                
+                .education-timeline .timeline {
+                    margin-bottom: 10px;
+                }
+                
+                .education-timeline .timeline-content {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    margin-bottom: 0;
+                }
+                
+                .education-timeline .title {
+                    margin-bottom: 2px;
+                    font-size: 17px;
+                }
+                
+                .education-timeline .description {
+                    margin-bottom: 1px;
+                    margin-top: 1px;
+                    font-size: 13px;
+                    line-height: 1.4;
+                }
+                
+                .education-timeline .timeline:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .academia-section:nth-child(2) {
+                    margin-bottom: 30px;
+                    padding-bottom: 15px;
+                }
+                
+                /* Responsive adjustments for experience section */
+                @media screen and (max-width: 767px) {
+                    .experience-timeline .timeline,
+                    .experience-timeline .timeline:nth-child(even) {
+                        margin-bottom: 20px;
+                    }
+                    
+                    .education-timeline .timeline,
+                    .education-timeline .timeline:nth-child(even) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                /* Section Transitions */
+                .academia-section {
+                    transition: all 0.5s ease-in-out;
+                    position: relative;
+                }
+                
+                .timeline, .recognition-card {
+                    transition: all 0.4s ease-out;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    animation: fadeInUp 0.5s forwards;
+                    animation-delay: calc(var(--item-index, 0) * 0.1s + 0.2s);
+                }
+                
+                .timeline:nth-child(1), .recognition-card:nth-child(1) { --item-index: 1; }
+                .timeline:nth-child(2), .recognition-card:nth-child(2) { --item-index: 2; }
+                .timeline:nth-child(3), .recognition-card:nth-child(3) { --item-index: 3; }
+                .timeline:nth-child(4), .recognition-card:nth-child(4) { --item-index: 4; }
+                .timeline:nth-child(5), .recognition-card:nth-child(5) { --item-index: 5; }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                /* Section navigation */
+                .section-nav {
+                    display: flex;
+                    justify-content: center;
+                    margin: 20px 0;
+                    gap: 10px;
+                }
+                
+                .section-nav button {
+                    background: none;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-weight: 500;
+                    color: #555;
+                }
+                
+                .section-nav button:hover {
+                    background-color: rgba(62, 130, 247, 0.1);
+                    color: #3e82f7;
+                }
+                
+                .section-nav button.active {
+                    background-color: #3e82f7;
+                    color: white;
+                }
+
+                /* Updated year badge style to match the image */
+                .main-timeline .timeline-year {
+                    background-color: #4285F4;
+                    font-size: 16px;
+                    line-height: 40px;
+                    height: 40px;
+                    width: 60px;
+                    top: 50%;
+                    font-weight: 500;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+                
+                .main-timeline .timeline-content {
+                    padding-right: 130px;
+                }
+                
+                .main-timeline .timeline:nth-child(even) .timeline-content {
+                    padding-left: 130px;
+                    padding-right: 0;
+                }
+                
+                /* Mobile adjustments for tighter spacing */
+                @media screen and (max-width: 767px) {
+                    .main-timeline .timeline-content, 
+                    .main-timeline .timeline:nth-child(even) .timeline-content {
+                        padding-left: 130px;
+                        padding-right: 0;
+                    }
+                }
+
+                /* Add CSS to hide sections by default */
+                /* Hide sections by default */
+                #education-section, #recognition-section {
+                    display: none;
+                }
+
+                /* Experience timeline specific colors */
+                .experience-timeline .timeline:nth-child(1) .timeline-icon {
+                    background-color: #4285F4; /* Google Blue */
+                }
+                
+                .experience-timeline .timeline:nth-child(2) .timeline-icon {
+                    background-color: #1B92D2; /* Light Blue */
+                }
+                
+                .experience-timeline .timeline:nth-child(3) .timeline-icon {
+                    background-color: #ED8C25; /* Orange */
+                }
+
+                /* Update line separators between items on mobile */
+                @media screen and (max-width: 767px) {
+                    .timeline:not(:last-child) {
+                        position: relative;
+                    }
+                    
+                    .timeline:not(:last-child)::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -15px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 80%;
+                        height: 1px;
+                        background-color: #eee;
+                    }
+                }
+
+                /* Add courses timeline specific colors */
+                .courses-timeline .timeline:nth-child(1) .timeline-icon,
+                .courses-timeline .timeline:nth-child(1) .timeline-year {
+                    background-color: #4285F4;
+                }
+                
+                .courses-timeline .timeline:nth-child(2) .timeline-icon,
+                .courses-timeline .timeline:nth-child(2) .timeline-year {
+                    background-color: #34A853;
+                }
+                
+                .courses-timeline .timeline:nth-child(3) .timeline-icon,
+                .courses-timeline .timeline:nth-child(3) .timeline-year {
+                    background-color: #EA4335;
+                }
+                
+                #courses-section {
+                    margin-top: 30px;
+                }
+                
+                .courses-timeline .timeline-content {
+                    padding: 15px;
+                }
+                
+                .courses-timeline .title {
+                    font-size: 18px;
+                    margin-bottom: 8px;
+                }
+                
+                .courses-timeline .description {
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                }
+
+                /* Course Section Styles */
+                .courses-container {
+                    margin-top: 30px;
+                }
+
+                .course-category {
+                    margin-bottom: 40px;
+                }
+
+                .category-title {
+                    font-size: 1.5em;
+                    color: #333;
+                    margin-bottom: 20px;
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid #3e82f7;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .category-title i {
+                    color: #3e82f7;
+                }
+
+                .course-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 20px;
+                }
+
+                .course-card {
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .course-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+                }
+
+                .course-header {
+                    margin-bottom: 15px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .course-header h5 {
+                    font-size: 1.2em;
+                    color: #333;
+                    margin: 0 0 5px 0;
+                }
+
+                .course-semester {
+                    display: inline-block;
+                    background: #3e82f7;
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 15px;
+                    font-size: 0.9em;
+                }
+
+                .course-details p {
+                    margin: 8px 0;
+                    color: #555;
+                    font-size: 0.95em;
+                }
+
+                .course-details strong {
+                    color: #333;
+                    font-weight: 500;
+                }
+
+                @media screen and (max-width: 768px) {
+                    .course-grid {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .course-card {
+                        margin-bottom: 15px;
+                    }
+                }
+
+                .teaching-cards-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                    gap: 18px;
+                    margin: 18px 0 0 0;
+                }
+                .teaching-card {
+                    background: #fff;
+                    border-radius: 14px;
+                    box-shadow: 0 2px 12px rgba(30, 60, 90, 0.07);
+                    padding: 18px 14px 14px 14px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    min-height: 80px;
+                    transition: box-shadow 0.2s, transform 0.2s;
+                }
+                .teaching-card:hover {
+                    box-shadow: 0 6px 18px rgba(30, 60, 90, 0.13);
+                    transform: translateY(-2px) scale(1.01);
+                }
+                .teaching-card-title {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1em;
+                    color: #222;
+                    gap: 8px;
+                    margin-bottom: 10px;
+                }
+                .teaching-card-title i {
+                    font-size: 1.1em;
+                    color: #2563eb;
+                }
+                .teaching-badges {
+                    display: flex;
+                    gap: 6px;
+                    flex-wrap: wrap;
+                }
+                .badge {
+                    display: inline-block;
+                    padding: 4px 12px;
+                    border-radius: 7px;
+                    font-size: 0.85em;
+                    font-weight: 500;
+                    color: #fff;
+                    margin-top: 1px;
+                }
+                .badge-blue {
+                    background: #3578e5;
+                }
+                .badge-green {
+                    background: #16a34a;
+                }
+                .badge-purple {
+                    background: #8338ec;
+                }
+                .badge-orange {
+                    background: #f57c00;
+                }
+                .badge-red {
+                    background: #e53935;
+                }
+                .badge-yellow {
+                    background: #fbc02d;
+                }
+                @media (max-width: 700px) {
+                    .teaching-cards-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            `;
+            document.head.appendChild(academiaStyles);
+
+            // Add typing effect to the heading
+            const typeElement = (selector, text, speed = 100, delay = 0) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                // Store original text and clear it
+                const originalText = text || element.textContent;
+                element.textContent = '';
+                element.style.borderRight = '2px solid var(--primary-color)';
+                
+                // Start typing after delay
+                setTimeout(() => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < originalText.length) {
+                            element.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                            element.style.borderRight = 'none';
+                        }
+                    }, speed);
+                }, delay);
+            };
+            
+            // Typing effects for name
+            typeElement('.name-container .title', 'Dr.', 100, 300);
+            typeElement('.name-container .first-name', 'Ravi', 100, 800);
+            typeElement('.name-container .last-name', 'Sharma', 100, 1500);
+        });
+    </script>
+    <!-- Load particles.js for the background animation -->
+    <script src="particles.js"></script>
+</body>
+</html> 
