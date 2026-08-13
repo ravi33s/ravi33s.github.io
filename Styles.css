@@ -1563,6 +1563,24 @@ footer {
     transform: translateX(5px);
 }
 
+/* 1. Target the parent container */
+.timeline-icon {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+}
+
+/* 2. Your cleaned up image code */
+.timeline-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%; /* 50% makes it a perfect circle */
+    background: rgb(255, 255, 255);
+    padding: 1px;
+    /* Removed margin-right to prevent pushing the image off-center */
+}
+
 /* Animation keyframes */
 @keyframes fadeInUp {
     from {
