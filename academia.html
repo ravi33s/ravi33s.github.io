@@ -15,37 +15,196 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <link rel="stylesheet" href="Styles.css">
     <style>
-        .section-header-new { display: flex; align-items: center; margin-bottom: 20px; position: relative; }
-        .blue-circle-icon { background-color: #3e82f7; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,0.2); flex-shrink: 0; }
+        /* ── Core circle + header (shared across all pages) ── */
+        .section-header-new { display: flex; align-items: center; margin-bottom: 24px; }
+        .blue-circle-icon { background-color: #3e82f7; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,.25); flex-shrink: 0; }
         .blue-circle-icon i { font-size: 18px; }
-        .section-title-text { margin: 0; padding: 0; font-size: 24px; color: #333; font-weight: 600; letter-spacing: 0.5px; }
-    </style>
-    <style>
-        .teaching-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin: 18px 0 0 0; }
-        .teaching-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(30,60,90,0.07); padding: 18px 14px 14px 14px; display: flex; flex-direction: column; justify-content: space-between; min-height: 80px; transition: box-shadow 0.2s, transform 0.2s; }
-        .teaching-card:hover { box-shadow: 0 6px 18px rgba(30,60,90,0.13); transform: translateY(-2px) scale(1.01); }
-        .teaching-card-title { display: flex; align-items: center; font-size: 1em; color: #222; gap: 8px; margin-bottom: 10px; }
-        .teaching-card-title i { font-size: 1.1em; color: #2563eb; }
-        .teaching-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 7px; font-size: 0.85em; font-weight: 500; color: #fff; margin-top: 1px; }
-        .badge-blue { background: #3578e5; } .badge-green { background: #16a34a; } .badge-purple { background: #8338ec; }
-        .badge-orange { background: #f57c00; } .badge-red { background: #e53935; }
-        .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
-        .membership-card { background: #fff; border-radius: 10px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); display: flex; align-items: center; gap: 12px; transition: all 0.2s; }
-        .membership-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.12); transform: translateY(-2px); }
-        .membership-card i { color: #3e82f7; font-size: 1.3em; flex-shrink: 0; }
-        .membership-card span { font-size: 0.9em; color: #333; font-weight: 500; }
-        .scholarship-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-        .scholarship-item { background: #fff; border-radius: 10px; padding: 14px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-        .scholarship-name { font-weight: 600; color: #222; }
-        .scholarship-org { font-size: 0.9em; color: #666; }
-        .scholarship-year { background: #3e82f7; color: #fff; padding: 3px 10px; border-radius: 6px; font-size: 0.85em; font-weight: 600; }
+        .section-title-text { margin: 0; font-size: 24px; color: #1e293b; font-weight: 700; letter-spacing: .3px; }
+
+        /* ── Tab bar ── */
+        .acad-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .acad-tab { background: none; border: 2px solid #e0e7ff; border-radius: 22px; padding: 7px 20px; font-size: .88em; font-weight: 600; color: #555; cursor: pointer; transition: all .25s; display: flex; align-items: center; gap: 7px; }
+        .acad-tab:hover { border-color: #3e82f7; color: #3e82f7; background: #f0f6ff; }
+        .acad-tab.active { background: #3e82f7; border-color: #3e82f7; color: #fff; box-shadow: 0 4px 12px rgba(62,130,247,.35); }
+        .acad-tab .tab-count { background: rgba(255,255,255,.3); border-radius: 10px; padding: 1px 7px; font-size: .78em; }
+        .acad-tab:not(.active) .tab-count { background: #e0e7ff; color: #3e82f7; }
+
+        /* ── Panel ── */
+        .acad-panel { display: none; animation: panelIn .35s ease; }
+        .acad-panel.visible { display: block; }
+        @keyframes panelIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ════════════════════════════════════
+           RECOGNITION — Horizontal ribbon cards
+        ════════════════════════════════════ */
+        .recog-list { display:flex; flex-direction:column; gap:14px; margin-top:4px; }
+        .recog-card { background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 3px 14px rgba(0,0,0,.07); display:flex; gap:18px; align-items:center; transition:all .25s; border-left:5px solid; }
+        .recog-card:hover { transform:translateX(6px); box-shadow:0 8px 22px rgba(0,0,0,.12); }
+        .recog-card.gold   { border-color:#f59e0b; }
+        .recog-card.blue   { border-color:#3e82f7; }
+        .recog-card.green  { border-color:#16a34a; }
+        .recog-card.purple { border-color:#8b5cf6; }
+        .recog-icon-wrap { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.4em; }
+        .recog-card.gold   .recog-icon-wrap { background:#fef3c7; color:#d97706; }
+        .recog-card.blue   .recog-icon-wrap { background:#dbeafe; color:#1d4ed8; }
+        .recog-card.green  .recog-icon-wrap { background:#dcfce7; color:#15803d; }
+        .recog-card.purple .recog-icon-wrap { background:#ede9fe; color:#7c3aed; }
+        .recog-body h4 { margin:0 0 3px; font-size:.97em; font-weight:700; color:#1e293b; }
+        .recog-body p  { margin:0; font-size:.84em; color:#64748b; line-height:1.5; }
+        .recog-year { font-size:.8em; font-weight:700; padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; align-self:flex-start; }
+        .recog-card.gold   .recog-year { background:#fef3c7; color:#92400e; }
+        .recog-card.blue   .recog-year { background:#dbeafe; color:#1e40af; }
+        .recog-card.green  .recog-year { background:#dcfce7; color:#14532d; }
+        .recog-card.purple .recog-year { background:#ede9fe; color:#5b21b6; }
+
+        /* ════════════════════════════════════
+           MEMBERSHIPS — Icon grid
+        ════════════════════════════════════ */
+        .mem-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-top:4px; }
+        .mem-card { background:#fff; border-radius:12px; padding:14px 16px; box-shadow:0 2px 10px rgba(0,0,0,.06); display:flex; align-items:center; gap:12px; transition:all .22s; border-bottom:3px solid transparent; }
+        .mem-card:hover { transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.1); border-bottom-color:#3e82f7; }
+        .mem-card i { font-size:1.25em; flex-shrink:0; }
+        .mem-card span { font-size:.88em; color:#1e293b; font-weight:500; }
+        .mem-since { font-size:.74em; color:#94a3b8; display:block; }
+
+        /* ════════════════════════════════════
+           TEACHING — Stylish course cards
+        ════════════════════════════════════ */
+        .teach-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-top:4px; }
+        .teach-card { background:#fff; border-radius:16px; padding:20px; box-shadow:0 3px 14px rgba(0,0,0,.07); transition:all .25s; position:relative; overflow:hidden; }
+        .teach-card:hover { transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.12); }
+        .teach-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:3px; }
+        .tc-blue::before   { background:linear-gradient(90deg,#3e82f7,#60a5fa); }
+        .tc-purple::before { background:linear-gradient(90deg,#8b5cf6,#c084fc); }
+        .tc-teal::before   { background:linear-gradient(90deg,#0891b2,#22d3ee); }
+        .tc-green::before  { background:linear-gradient(90deg,#16a34a,#4ade80); }
+        .tc-orange::before { background:linear-gradient(90deg,#ea580c,#fb923c); }
+        .teach-icon { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; font-size:1.1em; }
+        .tc-blue   .teach-icon { background:#dbeafe; color:#1d4ed8; }
+        .tc-purple .teach-icon { background:#ede9fe; color:#7c3aed; }
+        .tc-teal   .teach-icon { background:#cffafe; color:#0e7490; }
+        .tc-green  .teach-icon { background:#dcfce7; color:#15803d; }
+        .tc-orange .teach-icon { background:#ffedd5; color:#c2410c; }
+        .teach-code { font-size:.72em; font-weight:700; letter-spacing:.5px; color:#94a3b8; text-transform:uppercase; margin-bottom:4px; }
+        .teach-title { font-size:.95em; font-weight:700; color:#1e293b; margin-bottom:10px; line-height:1.35; }
+        .teach-sems { display:flex; flex-wrap:wrap; gap:5px; }
+        .sem-badge { font-size:.75em; padding:3px 9px; border-radius:10px; font-weight:600; }
+        .sb-fall   { background:#dbeafe; color:#1e40af; }
+        .sb-spring { background:#dcfce7; color:#14532d; }
+
+        /* ════════════════════════════════════
+           SCHOLARSHIPS — Horizontal award cards
+        ════════════════════════════════════ */
+        .award-list { display:flex; flex-direction:column; gap:14px; margin-top:4px; }
+        .award-card { background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 3px 14px rgba(0,0,0,.07); display:flex; gap:18px; align-items:center; transition:all .25s; }
+        .award-card:hover { transform:translateX(5px); box-shadow:0 8px 22px rgba(0,0,0,.1); }
+        .award-emblem { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6em; flex-shrink:0; }
+        .ae-hungary { background:#fef3c7; }
+        .ae-germany { background:#fef9c3; }
+        .ae-india   { background:#fff1f2; }
+        .award-body { flex:1; min-width:0; }
+        .award-name { font-weight:700; color:#1e293b; font-size:.97em; margin-bottom:2px; }
+        .award-org  { font-size:.84em; color:#64748b; }
+        .award-id   { font-size:.76em; color:#94a3b8; font-family:monospace; margin-top:3px; }
+        .award-year { background:#f1f5f9; color:#475569; padding:4px 12px; border-radius:12px; font-size:.8em; font-weight:700; flex-shrink:0; }
+
+
+        /* ══════════════════════════════════════
+           ZIGZAG TIMELINE (Experience & Education)
+        ══════════════════════════════════════ */
+        .main-timeline { font-family: 'Roboto', sans-serif; position: relative; margin-top: 20px; }
+        .main-timeline:after { content: ''; display: block; clear: both; }
+        .main-timeline .timeline { width: 50%; margin: 0 0 25px; float: left; position: relative; z-index: 1; animation: fadeIn 0.5s ease forwards; }
+        .main-timeline .timeline:nth-child(1) { animation-delay: 0.1s; }
+        .main-timeline .timeline:nth-child(2) { animation-delay: 0.2s; }
+        .main-timeline .timeline:nth-child(3) { animation-delay: 0.3s; }
+        .main-timeline .timeline:nth-child(4) { animation-delay: 0.4s; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .main-timeline .timeline-content { color: #3e82f7; text-decoration: none; padding: 0 145px 0 0; display: block; position: relative; }
+        .main-timeline .timeline-content:hover { text-decoration: none; }
+        .main-timeline .timeline-icon {
+            color: #fff; background-color: #3e82f7;
+            font-size: 22px; text-align: center; line-height: 65px;
+            height: 65px; width: 65px; border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transform: translateY(-50%);
+            position: absolute; top: 50%; right: 0;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .main-timeline .timeline-icon img {
+            width: 52px; height: 52px;
+            object-fit: contain;
+            background: #fff;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        .main-timeline .timeline-year {
+            color: #fff; background-color: #3e82f7;
+            font-size: 18px; font-weight: 600; text-align: center;
+            line-height: 60px; height: 60px; width: 70px;
+            transform: translateY(-50%);
+            position: absolute; top: 50%; right: 65px;
+            z-index: -1; border-radius: 0 10px 10px 0;
+        }
+        .main-timeline .title { font-size: 19px; font-weight: 600; margin: 0 0 8px; color: #333; }
+        .main-timeline h5.description { font-size: 14px; font-weight: 600; color: #444; margin: 0 0 5px; }
+        .main-timeline .description { font-size: 14px; letter-spacing: 0.5px; margin: 0 0 5px; color: #555; }
+
+        /* Even items flip to right */
+        .main-timeline .timeline:nth-child(even) { float: right; margin: 0 0 25px 10px; }
+        .main-timeline .timeline:nth-child(even) .timeline-content { padding: 0 0 0 145px; }
+        .main-timeline .timeline:nth-child(even) .timeline-icon { right: auto; left: 0; }
+        .main-timeline .timeline:nth-child(even) .timeline-year { right: auto; left: 65px; border-radius: 10px 0 0 10px; }
+
+        /* Experience colours */
+        .experience-timeline .timeline:nth-child(1) .timeline-icon,
+        .experience-timeline .timeline:nth-child(1) .timeline-year { background-color: #4285F4; }
+        .experience-timeline .timeline:nth-child(2) .timeline-icon,
+        .experience-timeline .timeline:nth-child(2) .timeline-year { background-color: #1B92D2; }
+        .experience-timeline .timeline:nth-child(3) .timeline-icon,
+        .experience-timeline .timeline:nth-child(3) .timeline-year { background-color: #ED8C25; }
+        .experience-timeline .timeline:nth-child(4) .timeline-icon,
+        .experience-timeline .timeline:nth-child(4) .timeline-year { background-color: #9e3674; }
+
+        /* Education colours */
+        .education-timeline .timeline:nth-child(1) .timeline-icon,
+        .education-timeline .timeline:nth-child(1) .timeline-year { background-color: #D52C63; }
+        .education-timeline .timeline:nth-child(2) .timeline-icon,
+        .education-timeline .timeline:nth-child(2) .timeline-year { background-color: #9e3674; }
+        .education-timeline .timeline:nth-child(3) .timeline-icon,
+        .education-timeline .timeline:nth-child(3) .timeline-year { background-color: #4CAF50; }
+
+        /* Mobile */
+        @media screen and (max-width: 767px) {
+            .main-timeline .timeline,
+            .main-timeline .timeline:nth-child(even) { width: 100%; margin: 0 0 40px; padding-top: 10px; float: none; }
+            .main-timeline .timeline-content,
+            .main-timeline .timeline:nth-child(even) .timeline-content { padding: 80px 0 0 0; text-align: center; }
+            .main-timeline .timeline-icon,
+            .main-timeline .timeline:nth-child(even) .timeline-icon { transform: translateX(-50%); top: 0; left: 50%; right: auto; z-index: 2; width: 55px; height: 55px; line-height: 55px; }
+            .main-timeline .timeline-year,
+            .main-timeline .timeline:nth-child(even) .timeline-year { transform: translateX(-50%); top: 57px; left: 50%; right: auto; border-radius: 4px; z-index: 1; width: 55px; height: 28px; line-height: 28px; font-size: 13px; }
+            .main-timeline .title { font-size: 17px; margin-top: 10px; }
+            .main-timeline .description { text-align: center; max-width: 90%; margin: 5px auto; }
+        }
+
+        /* Shared wrapper */
+        .acad-box { background:rgba(255,255,255,.65); border-radius:16px; padding:24px; box-shadow:0 4px 20px rgba(0,0,0,.06); margin-bottom:28px; }
+
+        @media (max-width:600px) {
+            .teach-grid,.mem-grid { grid-template-columns:1fr; }
+            .acad-tabs { gap:5px; }
+            .acad-tab { padding:6px 12px; font-size:.82em; }
+
+        }
     </style>
 </head>
 <body>
-    <!-- Globe background container -->
     <div id="particles-js"></div>
     <div class="container">
+
+        <!-- ── INFO PANEL ── -->
         <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
             <div class="name-container">
                 <h2><span class="title">Dr.</span> <span class="first-name">Ravi</span> <span class="last-name">Sharma</span></h2>
@@ -69,46 +228,24 @@
             </div>
         </div>
 
+        <!-- ── CONTENT PANEL ── -->
         <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
             <div class="navbar">
                 <div class="navlinks">
-                    <a href="index.html" class="navlink" id="aboutBtn">
-                        <i class="fas fa-user"></i>
-                        <span>About</span>
-                    </a>
-                    <a href="academia.html" class="navlink" id="academicJourneyBtn">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Academia</span>
-                    </a>
-                    <a href="publications.html" class="navlink" id="publicationsBtn">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Publications</span>
-                    </a>
-                    <a href="projects.html" class="navlink" id="projectsBtn">
-                        <i class="fas fa-code-branch"></i>
-                        <span>Projects</span>
-                    </a>
-                    <a href="group.html" class="navlink" id="groupBtn">
-                        <i class="fas fa-users"></i>
-                        <span>Research Group</span>
-                    </a>
-                    <a href="activities.html" class="navlink" id="activitiesBtn">
-                        <i class="fas fa-tasks"></i>
-                        <span>Activities</span>
-                    </a>
-                    <a href="intern.html" class="navlink" id="opportunitiesBtn">
-                        <i class="fas fa-handshake"></i>
-                        <span>Opportunities</span>
-                    </a>
+                    <a href="index.html" class="navlink" id="aboutBtn"><i class="fas fa-user"></i><span>About</span></a>
+                    <a href="academia.html" class="navlink" id="academicJourneyBtn"><i class="fas fa-graduation-cap"></i><span>Academia</span></a>
+                    <a href="publications.html" class="navlink" id="publicationsBtn"><i class="fas fa-file-alt"></i><span>Publications</span></a>
+                    <a href="projects.html" class="navlink" id="projectsBtn"><i class="fas fa-code-branch"></i><span>Projects</span></a>
+                    <a href="group.html" class="navlink" id="groupBtn"><i class="fas fa-users"></i><span>Research Group</span></a>
+                    <a href="activities.html" class="navlink" id="activitiesBtn"><i class="fas fa-tasks"></i><span>Activities</span></a>
+                    <a href="intern.html" class="navlink" id="opportunitiesBtn"><i class="fas fa-handshake"></i><span>Opportunities</span></a>
                 </div>
-                <!-- Mobile nav button -->
-                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
             </div>
 
             <div class="section" id="academia">
                 <div class="section-content">
+<<<<<<< Updated upstream
                     <div class="academia-section" id="experience-section" data-aos="fade-up">
                         <div class="section-header-new" data-aos="fade-right">
                             <div class="blue-circle-icon">
@@ -162,172 +299,306 @@
                                 </a>
                             </div>
                         </div>
+=======
+
+                    <!-- Tab bar -->
+                    <div class="acad-tabs" data-aos="fade-down">
+                        <button class="acad-tab active" data-target="panel-exp">
+                            <i class="fas fa-briefcase"></i> Experience
+                        </button>
+                        <button class="acad-tab" data-target="panel-edu">
+                            <i class="fas fa-graduation-cap"></i> Education
+                        </button>
+                        <button class="acad-tab" data-target="panel-recog">
+                            <i class="fas fa-award"></i> Recognition
+                        </button>
+                        <button class="acad-tab" data-target="panel-teach">
+                            <i class="fas fa-chalkboard-teacher"></i> Teaching
+                        </button>
+                        <button class="acad-tab" data-target="panel-mem">
+                            <i class="fas fa-id-badge"></i> Memberships
+                        </button>
+>>>>>>> Stashed changes
                     </div>
-                    
-                    <div class="academia-section" id="education-section" data-aos="fade-up" data-aos-delay="200" style="margin-top: 40px;">
-                        <div class="section-header-new" data-aos="fade-right">
-                            <div class="blue-circle-icon">
-                                <i class="fas fa-graduation-cap"></i>
+
+                    <!-- ══ EXPERIENCE ══ -->
+                    <div class="acad-panel visible" id="panel-exp">
+                        <div class="acad-box">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon"><i class="fas fa-briefcase"></i></div>
+                                <h3 class="section-title-text">Experience</h3>
                             </div>
-                            <h3 class="section-title-text">Education</h3>
-                        </div>
-                        <div class="main-timeline education-timeline" data-aos="fade-right" data-aos-delay="300">
-                            <div class="timeline">
-                                <a href="javascript:void(0)" class="timeline-content">
-                                    <div class="timeline-icon">
-                                        <img src="img/bme_logo.png" alt="BME">
-                                    </div>
-                                    <div class="timeline-year">2024</div>
-                                    <h3 class="title">Doctor of Philosophy <br> Computer Science and Engineering</h3> 
-                                    <h5 class="description">Budapest University of Technology and Economics, Budapest, Hungary</h5>
-                                    <p class="description"><strong>Thesis:</strong> “Research of Industrial Internet of Things and Industry 4.0 in Enterprise Resource Planning”</p>
-                                    <p class="description"><strong>Advisor:</strong> Prof. Balázs Villányi</p>
-                                </a>
-                            </div>
-                            <div class="timeline">
-                                <a href="javascript:void(0)" class="timeline-content">
-                                    <div class="timeline-icon">
-                                        <img src="img/iitp_logo.png" alt="IITP">
-                                    </div>
-                                    <div class="timeline-year">2016</div>
-                                    <h3 class="title">Master of Technology <br> Computer Science and Engineering</h3>
-                                    <h5 class="description">Indian Institute of Technology, Patna, India</h5>
-                                    <p class="description"><strong>Thesis:</strong> “Tunable Synchronization in Duty-cycled Wireless Sensor Networks”</p>
-                                    <p class="description"><strong>Advisor:</strong> Prof. Ashok Singh Sairam</p>
-                                </a>
-                            </div>
-							<div class="timeline">
-                                <a href="javascript:void(0)" class="timeline-content">
-                                    <div class="timeline-icon">
-                                        <img src="img/rgpv_logo.png" alt="RGPV">
-                                    </div>
-                                    <div class="timeline-year">2012</div>
-                                    <h3 class="title">Bachelor of Engineering <br> Computer Science and Engineering</h3>
-                                    <h5 class="description">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal, India</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="academia-section" id="recognition-section" style="display: none;" data-aos="fade-up" data-aos-delay="400">
-                        <div class="section-header-new" data-aos="fade-right">
-                            <div class="blue-circle-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <h3 class="section-title-text">Recognition</h3>
-                        </div>
-                        <div class="recognition-grid" data-aos="fade-right" data-aos-delay="500">
-                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="350">
-                                <div class="recognition-year">2019</div>
-                                <div class="recognition-detail">
-                                    <h4><i class="fas fa-medal"></i>Stipendium Hungaricum Scholarship</h4>
-                                    <p class="recognition-institution"><i class="fas fa-university"></i>Tempus Public Foundation Hungary</p>
-                                    <p class="recognition-description">Fellowship supporting doctoral research in Industrial Internet of Things</p>
+                            <div class="main-timeline experience-timeline">
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/tue_logo.jpg" alt="TU/e">
+                                        </div>
+                                        <div class="timeline-year">2024</div>
+                                        <h3 class="title">Postdoctoral Researcher</h3>
+                                        <p class="description">Information Systems in the Built Environment</p>
+                                        <h5 class="description">Eindhoven University of Technology (TU/e), Netherlands</h5>
+                                        <p class="description"><i class="fas fa-globe" style="color:#4285F4;margin-right:5px;"></i>WILSON Horizon Europe Project</p>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="400">
-                                <div class="recognition-year">2015</div>
-                                <div class="recognition-detail">
-                                    <h4><i class="fas fa-star"></i>DAAD Scholarship</h4>
-                                    <p class="recognition-institution"><i class="fas fa-university"></i>German Academic Exchange Service Germany</p>
-                                    <p class="recognition-description">Fellowship supporting research in Wireless Sensor Networks</p>
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/bme_logo.png" alt="BME">
+                                        </div>
+                                        <div class="timeline-year">2019</div>
+                                        <h3 class="title">Doctoral Research Associate</h3>
+                                        <p class="description">Department of Electronics Technology</p>
+                                        <h5 class="description">Budapest University of Technology and Economics, Hungary</h5>
+                                        <p class="description"><i class="fas fa-flask" style="color:#1B92D2;margin-right:5px;"></i>Research &amp; Teaching Assistant</p>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="450">
-                                <div class="recognition-year">2014</div>
-                                <div class="recognition-detail">
-                                    <h4><i class="fas fa-award"></i> MHRD Scholarship</h4>
-                                    <p class="recognition-institution"><i class="fas fa-university"></i> Indian Institute of Technology Patna</p>
-                                    <p class="recognition-description">Fellowship supporting M.Tech research in Wireless Sensor Networks</p>
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/mu_logo.JPG" alt="Medi-Caps">
+                                        </div>
+                                        <div class="timeline-year">2016</div>
+                                        <h3 class="title">Assistant Professor</h3>
+                                        <p class="description">Department of Computer Science and Engineering</p>
+                                        <h5 class="description">Medi-Caps University, Indore, India</h5>
+                                        <p class="description"><i class="fas fa-chalkboard-teacher" style="color:#ED8C25;margin-right:5px;"></i>Teaching &amp; Administration</p>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="500">
-                                <div class="recognition-year">2026</div>
-                                <div class="recognition-detail">
-                                    <h4><i class="fab fa-google"></i> Lead Educator, IoT </h4>
-                                    <p class="recognition-institution"><i class="fas fa-building"></i> Alkademy Academic Partnership Programme</p>
-                                    <p class="recognition-description">Lead educator for the IoT course in the Alkademy Academic Partnership Programme</p>
-                                </div>
-                            </div>
-                            <div class="recognition-card" data-aos="fade-up" data-aos-delay="550">
-                                <div class="recognition-year">2026</div>
-                                <div class="recognition-detail">
-                                    <h4><i class="fas fa-trophy"></i> Scientific Editor</h4>
-                                    <p class="recognition-institution"><i class="fas fa-university"></i> Member of the editorial board for Elsevier</p>
-                                    <p class="recognition-description">Serving as a scientific editor for the Elsevier computer science journal</p>
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/offenburg_logo.JPG" alt="Öffenburg">
+                                        </div>
+                                        <div class="timeline-year">2015</div>
+                                        <h3 class="title">Visiting Researcher</h3>
+                                        <p class="description">Institute of Reliable Embedded Systems &amp; Communication Electronics</p>
+                                        <h5 class="description">Öffenburg University of Applied Sciences, Germany</h5>
+                                        <p class="description"><i class="fas fa-exchange-alt" style="color:#9e3674;margin-right:5px;"></i>DST-DAAD Exchange Programme</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="academia-section" id="courses-section" data-aos="fade-up" data-aos-delay="600">
-                        <div class="section-header-new" data-aos="fade-right">
-                            <div class="blue-circle-icon">
-                                <i class="fas fa-book"></i>
+                    <!-- ══ EDUCATION ══ -->
+                    <div class="acad-panel" id="panel-edu">
+                        <div class="acad-box">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#a21caf;"><i class="fas fa-graduation-cap"></i></div>
+                                <h3 class="section-title-text">Education</h3>
                             </div>
-                            <h3 class="section-title-text">Teaching</h3>
-                        </div>
-                        <div class="teaching-cards-grid">
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-book"></i>
-                                    <span><b>7M900: Fundamentals of building information modeling</b></span>
+                            <div class="main-timeline education-timeline">
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/bme_logo.png" alt="BME">
+                                        </div>
+                                        <div class="timeline-year">2024</div>
+                                        <h3 class="title">Doctor of Philosophy<br>Computer Science &amp; Engineering</h3>
+                                        <h5 class="description">Budapest University of Technology and Economics, Hungary</h5>
+                                        <p class="description"><strong>CGPA:</strong> 4.96 / 5.0</p>
+                                        <p class="description"><strong>Thesis:</strong> "Research of Industrial IoT and Industry 4.0 in Enterprise Resource Planning"</p>
+                                        <p class="description"><strong>Advisor:</strong> Prof. Balázs Villányi</p>
+                                    </a>
                                 </div>
-                                <div class="teaching-badges">
-                                    <span class="badge badge-blue">Fall-2025</span>
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/iit_patna_logo.png" alt="IIT Patna">
+                                        </div>
+                                        <div class="timeline-year">2016</div>
+                                        <h3 class="title">Master of Technology<br>Computer Science &amp; Engineering</h3>
+                                        <h5 class="description">Indian Institute of Technology, Patna, India</h5>
+                                        <p class="description"><strong>CGPA:</strong> 7.98 / 10.0</p>
+                                        <p class="description"><strong>Thesis:</strong> "Tunable Synchronization in Duty-cycled Wireless Sensor Networks"</p>
+                                        <p class="description"><strong>Advisor:</strong> Prof. Ashok Singh Sairam</p>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-flask"></i>
-                                    <span><b>VIETAC63: Responsible Data Science</b></span>
-                                </div> 
-                                <div class="teaching-badges">
-                                    <span class="badge badge-green">Spring-2022</span>
-                                    <span class="badge badge-orange">Fall-2022</span>
-                                </div>
-                            </div>
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-search"></i>
-                                    <span><b>VIETAC15: Production planning and industrial IoT</b></span>
-                                </div>
-                                <div class="teaching-badges">
-                                    <span class="badge badge-red">Fall-2021</span>
-                                </div>
-                            </div>
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-brain"></i>
-                                    <span><b>VIETAC09: Business information management</b></span>
-                                </div>
-                                <div class="teaching-badges">
-                                    <span class="badge badge-green">Spring-2021</span>
-                                    <span class="badge badge-orange">Fall-2020</span>
-                                </div>
-                            </div>
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <span><b>CS5EL25: Internet of Things</b></span>
-                                </div>
-                                <div class="teaching-badges">
-                                    <span class="badge badge-green">Spring-2019</span>
-                                    <span class="badge badge-orange">Fall-2018</span>
-                                </div>
-                            </div>
-                            <div class="teaching-card">
-                                <div class="teaching-card-title">
-                                    <i class="fas fa-money-check-alt"></i>
-                                    <span><b>CS3CO41: Computer Networks</b></span>
-                                </div>
-                                <div class="teaching-badges">
-                                    <span class="badge badge-green">Spring-2018</span>
-                                    <span class="badge badge-orange">Fall-2017</span>
+                                <div class="timeline">
+                                    <a href="javascript:void(0)" class="timeline-content">
+                                        <div class="timeline-icon">
+                                            <img src="img/rgpv_logo.png" alt="RGPV">
+                                        </div>
+                                        <div class="timeline-year">2012</div>
+                                        <h3 class="title">Bachelor of Engineering (Distinction)<br>Computer Science &amp; Engineering</h3>
+                                        <h5 class="description">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal, India</h5>
+                                        <p class="description"><strong>Percentage:</strong> 77.3%</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- ══ RECOGNITION ══ -->
+                    <div class="acad-panel" id="panel-recog">
+                        <div class="acad-box">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#f59e0b;"><i class="fas fa-award"></i></div>
+                                <h3 class="section-title-text">Recognition &amp; Scholarships</h3>
+                            </div>
+                            <div class="recog-list">
+
+                                <div class="recog-card gold" data-aos="fade-up" data-aos-delay="50">
+                                    <div class="recog-icon-wrap"><i class="fas fa-trophy"></i></div>
+                                    <div class="recog-body" style="flex:1">
+                                        <h4>Stipendium Hungaricum Scholarship</h4>
+                                        <p>Tempus Public Foundation Hungary &nbsp;·&nbsp; #ID:309540<br>Fellowship supporting doctoral research in Industrial Internet of Things</p>
+                                    </div>
+                                    <span class="recog-year gold">Sep 2019</span>
+                                </div>
+
+                                <div class="recog-card blue" data-aos="fade-up" data-aos-delay="90">
+                                    <div class="recog-icon-wrap"><i class="fas fa-plane"></i></div>
+                                    <div class="recog-body" style="flex:1">
+                                        <h4>DAAD Scholarship</h4>
+                                        <p>German Academic Exchange Service (DAAD) &nbsp;·&nbsp; #INT/FRG/DAAD/P-250/2015<br>Fellowship supporting research in Wireless Sensor Networks at Öffenburg, Germany</p>
+                                    </div>
+                                    <span class="recog-year blue">Jun 2015</span>
+                                </div>
+
+                                <div class="recog-card green" data-aos="fade-up" data-aos-delay="130">
+                                    <div class="recog-icon-wrap"><i class="fas fa-medal"></i></div>
+                                    <div class="recog-body" style="flex:1">
+                                        <h4>MHRD Scholarship</h4>
+                                        <p>Government of India &nbsp;·&nbsp; #ID:1411CS11<br>Fellowship supporting M.Tech research in Wireless Sensor Networks at IIT Patna</p>
+                                    </div>
+                                    <span class="recog-year green">Jul 2014</span>
+                                </div>
+
+                                <div class="recog-card purple" data-aos="fade-up" data-aos-delay="170">
+                                    <div class="recog-icon-wrap"><i class="fas fa-chalkboard-teacher"></i></div>
+                                    <div class="recog-body" style="flex:1">
+                                        <h4>Lead Educator, IoT</h4>
+                                        <p>Alkademy Academic Partnership Programme &nbsp;·&nbsp; <a href="https://alkademy.com" target="_blank" style="color:#7c3aed;">alkademy.com</a><br>Recognized as lead educator for the IoT course in the Academic Partnership Programme</p>
+                                    </div>
+                                    <span class="recog-year purple">2026</span>
+                                </div>
+
+                                <div class="recog-card gold" data-aos="fade-up" data-aos-delay="210">
+                                    <div class="recog-icon-wrap"><i class="fas fa-star"></i></div>
+                                    <div class="recog-body" style="flex:1">
+                                        <h4>Scientific Editor — Elsevier (~10 Journals)</h4>
+                                        <p>Member of the editorial board as Scientific Editor for Elsevier computer science journals including Results in Engineering (IF 9.4), Energy Nexus (IF 8.2), and others</p>
+                                    </div>
+                                    <span class="recog-year gold">2026</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ TEACHING ══ -->
+                    <div class="acad-panel" id="panel-teach">
+                        <div class="acad-box">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#0891b2;"><i class="fas fa-chalkboard-teacher"></i></div>
+                                <h3 class="section-title-text">Teaching</h3>
+                            </div>
+                            <div class="teach-grid">
+
+                                <div class="teach-card tc-teal" data-aos="zoom-in" data-aos-delay="50">
+                                    <div class="teach-icon"><i class="fas fa-building"></i></div>
+                                    <div class="teach-code">7M900</div>
+                                    <div class="teach-title">Fundamentals of Building Information Modeling</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-fall">Fall 2025</span>
+                                    </div>
+                                </div>
+
+                                <div class="teach-card tc-purple" data-aos="zoom-in" data-aos-delay="80">
+                                    <div class="teach-icon"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="teach-code">VIETAC63</div>
+                                    <div class="teach-title">Responsible Data Science</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-spring">Spring 2022</span>
+                                        <span class="sem-badge sb-fall">Fall 2022</span>
+                                    </div>
+                                </div>
+
+                                <div class="teach-card tc-orange" data-aos="zoom-in" data-aos-delay="110">
+                                    <div class="teach-icon"><i class="fas fa-industry"></i></div>
+                                    <div class="teach-code">VIETAC15</div>
+                                    <div class="teach-title">Production Planning and Industrial IoT</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-fall">Fall 2021</span>
+                                    </div>
+                                </div>
+
+                                <div class="teach-card tc-blue" data-aos="zoom-in" data-aos-delay="140">
+                                    <div class="teach-icon"><i class="fas fa-briefcase"></i></div>
+                                    <div class="teach-code">VIETAC09</div>
+                                    <div class="teach-title">Business Information Management</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-spring">Spring 2021</span>
+                                        <span class="sem-badge sb-fall">Fall 2020</span>
+                                    </div>
+                                </div>
+
+                                <div class="teach-card tc-green" data-aos="zoom-in" data-aos-delay="170">
+                                    <div class="teach-icon"><i class="fas fa-wifi"></i></div>
+                                    <div class="teach-code">CS5EL25</div>
+                                    <div class="teach-title">Internet of Things</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-spring">Spring 2019</span>
+                                        <span class="sem-badge sb-fall">Fall 2018</span>
+                                    </div>
+                                </div>
+
+                                <div class="teach-card tc-blue" data-aos="zoom-in" data-aos-delay="200">
+                                    <div class="teach-icon"><i class="fas fa-network-wired"></i></div>
+                                    <div class="teach-code">CS3CO41</div>
+                                    <div class="teach-title">Computer Networks</div>
+                                    <div class="teach-sems">
+                                        <span class="sem-badge sb-spring">Spring 2018</span>
+                                        <span class="sem-badge sb-fall">Fall 2017</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ MEMBERSHIPS ══ -->
+                    <div class="acad-panel" id="panel-mem">
+                        <div class="acad-box">
+                            <div class="section-header-new">
+                                <div class="blue-circle-icon" style="background:#0f766e;"><i class="fas fa-id-badge"></i></div>
+                                <h3 class="section-title-text">Professional Memberships</h3>
+                            </div>
+                            <div class="mem-grid">
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="40">
+                                    <i class="fas fa-id-card" style="color:#3e82f7;"></i>
+                                    <div><span>IEEE Member</span><span class="mem-since">#92364050 · Jan 2015</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="70">
+                                    <i class="fas fa-id-card" style="color:#0f766e;"></i>
+                                    <div><span>ACM Member</span><span class="mem-since">#1397494 · Aug 2016</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="100">
+                                    <i class="fas fa-users" style="color:#3e82f7;"></i>
+                                    <div><span>IEEE Young Professionals</span><span class="mem-since">Jan 2015</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="130">
+                                    <i class="fas fa-wifi" style="color:#f59e0b;"></i>
+                                    <div><span>IEEE IoT Community</span><span class="mem-since">Mar 2018</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="160">
+                                    <i class="fas fa-signal" style="color:#e53935;"></i>
+                                    <div><span>IEEE Council on RFID</span><span class="mem-since">Jan 2020</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="190">
+                                    <i class="fas fa-atom" style="color:#8b5cf6;"></i>
+                                    <div><span>IEEE Nanotechnology Council</span><span class="mem-since">Jan 2020</span></div>
+                                </div>
+                                <div class="mem-card" data-aos="zoom-in" data-aos-delay="220">
+                                    <i class="fas fa-microchip" style="color:#16a34a;"></i>
+                                    <div><span>IEEE Sensors Council</span><span class="mem-since">Jan 2020</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -335,9 +606,7 @@
 
     <footer>
         <div class="footer-content">
-            <div class="copyright">
-                <p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p>
-            </div>
+            <div class="copyright"><p>&copy; 2026 Dr. Ravi Sharma. All Rights Reserved.</p></div>
             <div class="social-links">
                 <a href="mailto:r.sharma@tue.nl" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://orcid.org/0000-0002-3892-276X" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
@@ -346,1064 +615,73 @@
         </div>
     </footer>
 
-    <!-- JavaScript Libraries -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
-    <!-- Custom JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
-            AOS.init({
-                duration: 800,
-                once: true,
-                mirror: false,
-                anchorPlacement: 'top-bottom'
-            });
-            
-            // Section transitions
-            const experienceSection = document.getElementById('experience-section');
-            const educationSection = document.getElementById('education-section');
-            const recognitionSection = document.getElementById('recognition-section');
-            
-            // Ensure only Experience section is visible by default
-            experienceSection.style.display = 'block';
-            educationSection.style.display = 'none';
-            recognitionSection.style.display = 'none';
-            
-            // Create section navigation
-            const sectionNav = document.createElement('div');
-            sectionNav.className = 'section-nav';
-            sectionNav.innerHTML = `
-                <button id="exp-btn" class="active">Experience</button>
-                <button id="edu-btn">Education</button>
-                <button id="courses-btn">Courses</button>
-                <button id="rec-btn">Recognition</button>  
-            `;
-            
-            // Insert before the first section
-            experienceSection.parentNode.insertBefore(sectionNav, experienceSection);
-            
-            // Handle section navigation
-            document.getElementById('exp-btn').addEventListener('click', function() {
-                this.classList.add('active');
-                document.getElementById('edu-btn').classList.remove('active');
-                document.getElementById('courses-btn').classList.remove('active');
-                document.getElementById('rec-btn').classList.remove('active');
-                experienceSection.style.display = 'block';
-                educationSection.style.display = 'none';
-                coursesSection.style.display = 'none';
-                recognitionSection.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({ duration: 700, once: true, offset: 50 });
 
-                // Refresh AOS animations
-                AOS.refresh();
-            });
-            
-            document.getElementById('edu-btn').addEventListener('click', function() {
-                this.classList.add('active');
-                document.getElementById('exp-btn').classList.remove('active');
-                document.getElementById('courses-btn').classList.remove('active');
-                document.getElementById('rec-btn').classList.remove('active');
-
-                experienceSection.style.display = 'none';
-                educationSection.style.display = 'block';
-                coursesSection.style.display = 'none';
-                recognitionSection.style.display = 'none';
-
-                // Refresh AOS animations
-                AOS.refresh();
-            });
-            
-            // Add courses section to the display logic
-            const coursesSection = document.getElementById('courses-section');
-            coursesSection.style.display = 'none';
-            
-            // Update section navigation
-            document.getElementById('courses-btn').addEventListener('click', function() {
-                this.classList.add('active');
-                document.getElementById('exp-btn').classList.remove('active');
-                document.getElementById('edu-btn').classList.remove('active');
-                document.getElementById('rec-btn').classList.remove('active');
-                experienceSection.style.display = 'none';
-                educationSection.style.display = 'none';
-                coursesSection.style.display = 'block';
-                recognitionSection.style.display = 'none';
-
-                // Refresh AOS animations
-                AOS.refresh();
-            });
-
-            document.getElementById('rec-btn').addEventListener('click', function() {
-                this.classList.add('active');
-                document.getElementById('exp-btn').classList.remove('active');
-                document.getElementById('edu-btn').classList.remove('active');
-                document.getElementById('courses-btn').classList.remove('active');
-                experienceSection.style.display = 'none';
-                educationSection.style.display = 'none';
-                coursesSection.style.display = 'none';
-                recognitionSection.style.display = 'block';
-
-                // Refresh AOS animations
-                AOS.refresh();
-            });
-            
-            // Globe background effect
+            /* Globe */
             if (typeof VANTA !== 'undefined') {
                 VANTA.GLOBE({
-                    el: "#particles-js",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x3e82f7,
-                    backgroundColor: 0xffffff,
-                    size: 0.70,
-                    speed: 0.3
+                    el: '#particles-js',
+                    mouseControls: true, touchControls: true, gyroControls: false,
+                    minHeight: 200, minWidth: 200, scale: 1, scaleMobile: 1,
+                    color: 0x93c5fd, color2: 0xffffff,
+                    backgroundColor: 0x0f2756,
+                    size: 0.70, speed: 0.3
                 });
             }
-            
-            // Highlight active page in navigation
+
+            /* Active nav */
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.navlink').forEach(link => {
-                const linkHref = link.getAttribute('href');
-                if (linkHref === currentPage) {
-                    link.classList.add('active');
-                }
+            document.querySelectorAll('.navlink').forEach(l => { if (l.getAttribute('href') === currentPage) l.classList.add('active'); });
+
+            /* Mobile nav */
+            const mnt = document.querySelector('.mobile-nav-toggle');
+            const nlc = document.querySelector('.navlinks');
+            mnt.addEventListener('click', () => {
+                nlc.classList.toggle('active');
+                const exp = nlc.classList.contains('active');
+                mnt.setAttribute('aria-expanded', exp);
+                mnt.innerHTML = exp ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
-            
-            // Mobile navigation toggle
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const navLinksContainer = document.querySelector('.navlinks');
-            
-            mobileNavToggle.addEventListener('click', function() {
-                navLinksContainer.classList.toggle('active');
-                const isExpanded = navLinksContainer.classList.contains('active');
-                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
-                
-                // Change icon based on state
-                if (isExpanded) {
-                    mobileNavToggle.innerHTML = '<i class="fas fa-times"></i>';
-                } else {
-                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
+            document.querySelectorAll('.navlinks .navlink').forEach(l => {
+                l.addEventListener('click', () => { nlc.classList.remove('active'); mnt.innerHTML = '<i class="fas fa-bars"></i>'; mnt.setAttribute('aria-expanded','false'); });
             });
-            
-            // Close mobile menu when a link is clicked
-            document.querySelectorAll('.navlinks .navlink').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinksContainer.classList.remove('active');
-                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+
+            /* Tab switching */
+            const tabs   = document.querySelectorAll('.acad-tab');
+            const panels = document.querySelectorAll('.acad-panel');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('visible'));
+                    this.classList.add('active');
+                    const target = document.getElementById(this.dataset.target);
+                    if (target) { target.classList.add('visible'); AOS.refresh(); }
+                    /* scroll content panel to top */
+                    const cp = document.getElementById('content');
+                    if (cp) cp.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
-            
-            // Scroll to top button
-            const scrollTopButton = document.createElement('div');
-            scrollTopButton.className = 'scroll-top-btn';
-            scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-            document.body.appendChild(scrollTopButton);
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollTopButton.classList.add('visible');
-                } else {
-                    scrollTopButton.classList.remove('visible');
-                }
-            });
-            
-            scrollTopButton.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Add CSS styles dynamically to enhance the Academia page
-            const academiaStyles = document.createElement('style');
-            academiaStyles.textContent = `
-                /* Logo alignment fix */
-                .logos {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-                    flex-wrap: wrap;
-                    margin: 15px auto;
-                }
-                
-                .logos a {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                
-                .logos img {
-                    height: 40px;
-                    width: auto;
-                    object-fit: contain;
-                    transition: all 0.3s ease;
-                }
-                
-                .logos img:hover {
-                    transform: scale(1.1);
-                }
 
-                /* Section Styling */
-                .academia-section {
-                    margin-bottom: 50px;
-                    background-color: rgba(255, 255, 255, 0.7);
-                    border-radius: 10px;
-                    padding: 25px;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-                }
-                
-                /* New Header Design Matching Image */
-                .section-header-new {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 20px;
-                    position: relative;
-                    padding-bottom: 10px;
-                }
-                
-                .blue-circle-icon {
-                    background-color: #3e82f7;
-                    color: white;
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: 15px;
-                    box-shadow: 0 4px 10px rgba(62, 130, 247, 0.2);
-                }
-                
-                .blue-circle-icon i {
-                    font-size: 18px;
-                }
-                
-                .section-title-text {
-                    margin: 0;
-                    padding: 0;
-                    font-size: 28px;
-                    color: #333;
-                    font-weight: 600;
-                    letter-spacing: 0.5px;
-                }
-                
-                .section-header, .section-icon {
-                    display: none;
-                }
-                
-                /* BestjQuery Timeline Style */
-                .main-timeline {
-                    font-family: 'Roboto', sans-serif;
-                    position: relative;
-                    margin-top: 20px;
-                }
-                
-                .main-timeline:after {
-                    content: '';
-                    display: block;
-                    clear: both;
-                }
-                
-                .main-timeline .timeline {
-                    width: 50%;
-                    margin: 0 0 25px;
-                    float: left;
-                    position: relative;
-                    z-index: 1;
-                }
-                
-                .main-timeline .timeline-content {
-                    color: #3e82f7;
-                    text-decoration: none;
-                    padding: 0 145px 0 0;
-                    display: block;
-                    position: relative;
-                }
-                
-                .main-timeline .timeline-content:hover {
-                    text-decoration: none;
-                }
-                
-                .main-timeline .timeline-icon {
-                    color: #fff;
-                    background-color: #3e82f7;
-                    font-size: 22px;
-                    text-align: center;
-                    line-height: 65px;
-                    height: 65px;
-                    width: 65px;
-                    border-radius: 50%;
-                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-                    transform: translateY(-50%);
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                }
-                
-                .main-timeline .timeline-year {
-                    color: #fff;
-                    background-color: #3e82f7;
-                    font-size: 18px;
-                    font-weight: 600;
-                    text-align: center;
-                    line-height: 60px;
-                    height: 60px;
-                    width: 70px;
-                    transform: translateY(-50%);
-                    position: absolute;
-                    top: 50%;
-                    right: 65px;
-                    z-index: -1;
-                    border-radius: 0 10px 10px 0;
-                }
-                
-                .main-timeline .title {
-                    font-size: 19px;
-                    font-weight: 600;
-                    margin: 0 0 8px;
-                    color: #333;
-                }
-                
-                .main-timeline .description {
-                    font-size: 14px;
-                    letter-spacing: 0.8px;
-                    margin: 0 0 5px;
-                    color: #555;
-                }
-                
-                .main-timeline .timeline:nth-child(even) {
-                    float: right;
-                    margin: 0 0 25px 10px;
-                }
-                
-                .main-timeline .timeline:nth-child(even) .timeline-content {
-                    padding: 0 0 0 145px;
-                }
-                
-                .main-timeline .timeline:nth-child(even) .timeline-icon {
-                    right: auto;
-                    left: 0;
-                }
-                
-                .main-timeline .timeline:nth-child(even) .timeline-year {
-                    right: auto;
-                    left: 65px;
-                    border-radius: 10px 0 0 10px;
-                }
-                
-                /* Timeline Color Variations */
-                .experience-timeline .timeline:nth-child(1) .timeline-icon,
-                .experience-timeline .timeline:nth-child(1) .timeline-year {
-                    background-color: #3e82f7;
-                }
-                
-                .experience-timeline .timeline:nth-child(2) .timeline-icon,
-                .experience-timeline .timeline:nth-child(2) .timeline-year {
-                    background-color: #1B92D2;
-                }
-                
-                .experience-timeline .timeline:nth-child(3) .timeline-icon,
-                .experience-timeline .timeline:nth-child(3) .timeline-year {
-                    background-color: #ED8C25;
-                }
-                
-                .education-timeline .timeline:nth-child(1) .timeline-icon,
-                .education-timeline .timeline:nth-child(1) .timeline-year {
-                    background-color: #D52C63;
-                }
-                
-                .education-timeline .timeline:nth-child(2) .timeline-icon,
-                .education-timeline .timeline:nth-child(2) .timeline-year {
-                    background-color: #9e3674;
-                }
-                
-                .education-timeline .timeline:nth-child(3) .timeline-icon,
-                .education-timeline .timeline:nth-child(3) .timeline-year {
-                    background-color: #4CAF50;
-                }
-                
-                /* Recognition Cards */
-                .recognition-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-                    gap: 16px;
-                    margin-top: 16px;
-                }
-                
-                .recognition-card {
-                    display: flex;
-                    background-color: rgba(255, 255, 255, 0.9);
-                    border-radius: 8px;
-                    overflow: hidden;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: all 0.3s ease;
-                    height: 100%;
-                    padding: 14px 12px;
-                    margin-bottom: 0;
-                }
-                
-                .recognition-card:hover {
-                    transform: translateY(-8px);
-                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-                }
-                
-                .recognition-year {
-                    background-color: #3e82f7;
-                    color: white;
-                    padding: 12px 10px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-weight: bold;
-                    min-width: 70px;
-                    font-size: 1.1em;
-                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-                }
-                
-                .recognition-detail {
-                    padding: 10px 12px;
-                    flex-grow: 1;
-                }
-                
-                .recognition-detail h4 {
-                    margin-top: 0;
-                    margin-bottom: 8px;
-                    color: #333;
-                    font-size: 1.08em;
-                }
-                
-                .recognition-detail h4 i {
-                    color: #3e82f7;
-                    margin-right: 10px;
-                    font-size: 1.1em;
-                }
-                
-                .recognition-institution {
-                    font-weight: 500;
-                    margin: 10px 0;
-                    color: #555;
-                }
-                
-                .recognition-description {
-                    color: #666;
-                    margin-top: 10px;
-                    line-height: 1.6;
-                }
-                
-                .recognition-institution i {
-                    margin-right: 10px;
-                    color: #3e82f7;
-                    width: 18px;
-                    text-align: center;
-                }
-                
-                /* Updated mobile view to match the image */
-                @media screen and (max-width: 767px) {
-                    .main-timeline .timeline,
-                    .main-timeline .timeline:nth-child(even) {
-                        width: 100%;
-                        margin: 0 0 40px;
-                        padding-top: 10px;
-                        position: relative;
-                    }
-                    
-                    .main-timeline .timeline-content,
-                    .main-timeline .timeline:nth-child(even) .timeline-content {
-                        padding: 75px 0 0 0;
-                        text-align: center;
-                    }
-                    
-                    /* Smaller icons for mobile */
-                    .main-timeline .timeline-icon,
-                    .main-timeline .timeline:nth-child(even) .timeline-icon {
-                        transform: translateX(-50%);
-                        top: 0;
-                        left: 50%;
-                        right: auto;
-                        z-index: 2;
-                        width: 40px;
-                        height: 40px;
-                        line-height: 40px;
-                    }
-                    
-                    .main-timeline .timeline-icon i {
-                        font-size: 16px;
-                    }
-                    
-                    .main-timeline .timeline-year,
-                    .main-timeline .timeline:nth-child(even) .timeline-year {
-                        transform: translateX(-50%);
-                        top: 42px;
-                        left: 50%;
-                        right: auto;
-                        border-radius: 4px;
-                        z-index: 1;
-                        width: 50px;
-                        height: 30px;
-                        line-height: 30px;
-                        font-size: 14px;
-                    }
-                    
-                    /* Add a line instead of shifting timeline icon and year */
-                    .main-timeline .timeline::before {
-                        content: '';
-                        height: 100%;
-                        width: 1px;
-                        background-color: #e5e5e5;
-                        position: absolute;
-                        left: 50%;
-                        top: 10px;
-                        transform: translateX(-50%);
-                        z-index: -2;
-                    }
-                    
-                    /* Adjust title and description for mobile */
-                    .main-timeline .title {
-                        margin-top: 15px;
-                        font-size: 18px;
-                        position: relative;
-                        display: inline-block;
-                        border-bottom: 1px solid #eee;
-                        padding-bottom: 5px;
-                    }
-                    
-                    .main-timeline .description {
-                        text-align: center;
-                        max-width: 90%;
-                        margin-left: auto;
-                        margin-right: auto;
-                        margin-top: 8px;
-                        color: #555;
-                    }
-                    
-                    /* Add horizontal line after title */
-                    .main-timeline .timeline::after {
-                        content: '';
-                        position: absolute;
-                        left: 10%;
-                        right: 10%;
-                        bottom: -20px;
-                        height: 1px;
-                        background-color: #eee;
-                    }
-                    
-                    /* Add horizontal lines before and after job title */
-                    .main-timeline .timeline-content::before,
-                    .main-timeline .timeline-content::after {
-                        content: '';
-                        position: absolute;
-                        left: 10%;
-                        right: 10%;
-                        height: 1px;
-                        background-color: #eee;
-                    }
-                    
-                    .main-timeline .timeline-content::before {
-                        top: 75px;
-                    }
-                    
-                    .recognition-grid {
-                        grid-template-columns: 1fr;
-                    }
-                    
-                    /* Specific adjustments for education items in mobile */
-                    .education-timeline .description {
-                        margin-bottom: 5px;
-                    }
-                    
-                    .education-timeline .description:last-child {
-                        margin-bottom: 0;
-                    }
-                }
-                
-                @media screen and (max-width: 576px) {
-                    .academia-section {
-                        padding: 20px 15px;
-                    }
-                    
-                    .academia-section h3 {
-                        font-size: 1.5em;
-                    }
-                    
-                    /* Make section nav more compact on small screens */
-                    .section-nav {
-                        margin: 10px 0;
-                    }
-                    
-                    .section-nav button {
-                        padding: 6px 12px;
-                        font-size: 14px;
-                    }
-                }
-                
-                /* Animation enhancements */
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                
-                .timeline, .recognition-card {
-                    animation: fadeIn 0.5s ease forwards;
-                }
-                
-                .timeline:nth-child(1), .recognition-card:nth-child(1) { animation-delay: 0.1s; }
-                .timeline:nth-child(2), .recognition-card:nth-child(2) { animation-delay: 0.2s; }
-                .timeline:nth-child(3), .recognition-card:nth-child(3) { animation-delay: 0.3s; }
-                .timeline:nth-child(4), .recognition-card:nth-child(4) { animation-delay: 0.4s; }
-                .timeline:nth-child(5), .recognition-card:nth-child(5) { animation-delay: 0.5s; }
-                
-                /* Fix for potential overflow issues */
-                .section-content {
-                    overflow: hidden;
-                }
-
-                /* Custom icon colors for each section */
-                .academia-section:nth-child(1) .blue-circle-icon {
-                    background-color: #4285F4; /* Google Blue */
-                    box-shadow: 0 4px 10px rgba(66, 133, 244, 0.2);
-                }
-                
-                .academia-section:nth-child(2) .blue-circle-icon {
-                    background-color: #0F9D58; /* Google Green */
-                    box-shadow: 0 4px 10px rgba(15, 157, 88, 0.2);
-                }
-                
-                .academia-section:nth-child(3) .blue-circle-icon {
-                    background-color: #DB4437; /* Google Red */
-                    box-shadow: 0 4px 10px rgba(219, 68, 55, 0.2);
-                }
-
-                /* Experience section specific styling for more compact appearance */
-                .experience-timeline {
-                    margin-bottom: 0;
-                }
-                
-                .experience-timeline .timeline {
-                    margin-bottom: 15px;
-                }
-                
-                .experience-timeline .timeline-content {
-                    padding-top: 0;
-                    padding-bottom: 0;
-                }
-                
-                .experience-timeline .title {
-                    margin-bottom: 4px;
-                }
-                
-                .experience-timeline .description {
-                    margin-bottom: 2px;
-                }
-                
-                /* Education section specific styling for more compact appearance */
-                .education-timeline {
-                    margin-bottom: 0;
-                    margin-top: 10px;
-                }
-                
-                .education-timeline .timeline {
-                    margin-bottom: 10px;
-                }
-                
-                .education-timeline .timeline-content {
-                    padding-top: 0;
-                    padding-bottom: 0;
-                    margin-bottom: 0;
-                }
-                
-                .education-timeline .title {
-                    margin-bottom: 2px;
-                    font-size: 17px;
-                }
-                
-                .education-timeline .description {
-                    margin-bottom: 1px;
-                    margin-top: 1px;
-                    font-size: 13px;
-                    line-height: 1.4;
-                }
-                
-                .education-timeline .timeline:last-child {
-                    margin-bottom: 0;
-                }
-                
-                .academia-section:nth-child(2) {
-                    margin-bottom: 30px;
-                    padding-bottom: 15px;
-                }
-                
-                /* Responsive adjustments for experience section */
-                @media screen and (max-width: 767px) {
-                    .experience-timeline .timeline,
-                    .experience-timeline .timeline:nth-child(even) {
-                        margin-bottom: 20px;
-                    }
-                    
-                    .education-timeline .timeline,
-                    .education-timeline .timeline:nth-child(even) {
-                        margin-bottom: 20px;
-                    }
-                }
-
-                /* Section Transitions */
-                .academia-section {
-                    transition: all 0.5s ease-in-out;
-                    position: relative;
-                }
-                
-                .timeline, .recognition-card {
-                    transition: all 0.4s ease-out;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    animation: fadeInUp 0.5s forwards;
-                    animation-delay: calc(var(--item-index, 0) * 0.1s + 0.2s);
-                }
-                
-                .timeline:nth-child(1), .recognition-card:nth-child(1) { --item-index: 1; }
-                .timeline:nth-child(2), .recognition-card:nth-child(2) { --item-index: 2; }
-                .timeline:nth-child(3), .recognition-card:nth-child(3) { --item-index: 3; }
-                .timeline:nth-child(4), .recognition-card:nth-child(4) { --item-index: 4; }
-                .timeline:nth-child(5), .recognition-card:nth-child(5) { --item-index: 5; }
-                
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                /* Section navigation */
-                .section-nav {
-                    display: flex;
-                    justify-content: center;
-                    margin: 20px 0;
-                    gap: 10px;
-                }
-                
-                .section-nav button {
-                    background: none;
-                    border: none;
-                    padding: 8px 16px;
-                    border-radius: 20px;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    font-weight: 500;
-                    color: #555;
-                }
-                
-                .section-nav button:hover {
-                    background-color: rgba(62, 130, 247, 0.1);
-                    color: #3e82f7;
-                }
-                
-                .section-nav button.active {
-                    background-color: #3e82f7;
-                    color: white;
-                }
-
-                /* Updated year badge style to match the image */
-                .main-timeline .timeline-year {
-                    background-color: #4285F4;
-                    font-size: 16px;
-                    line-height: 40px;
-                    height: 40px;
-                    width: 60px;
-                    top: 50%;
-                    font-weight: 500;
-                    border-radius: 4px;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                }
-                
-                .main-timeline .timeline-content {
-                    padding-right: 130px;
-                }
-                
-                .main-timeline .timeline:nth-child(even) .timeline-content {
-                    padding-left: 130px;
-                    padding-right: 0;
-                }
-                
-                /* Mobile adjustments for tighter spacing */
-                @media screen and (max-width: 767px) {
-                    .main-timeline .timeline-content, 
-                    .main-timeline .timeline:nth-child(even) .timeline-content {
-                        padding-left: 130px;
-                        padding-right: 0;
-                    }
-                }
-
-                /* Add CSS to hide sections by default */
-                /* Hide sections by default */
-                #education-section, #recognition-section {
-                    display: none;
-                }
-
-                /* Experience timeline specific colors */
-                .experience-timeline .timeline:nth-child(1) .timeline-icon {
-                    background-color: #4285F4; /* Google Blue */
-                }
-                
-                .experience-timeline .timeline:nth-child(2) .timeline-icon {
-                    background-color: #1B92D2; /* Light Blue */
-                }
-                
-                .experience-timeline .timeline:nth-child(3) .timeline-icon {
-                    background-color: #ED8C25; /* Orange */
-                }
-
-                /* Update line separators between items on mobile */
-                @media screen and (max-width: 767px) {
-                    .timeline:not(:last-child) {
-                        position: relative;
-                    }
-                    
-                    .timeline:not(:last-child)::after {
-                        content: '';
-                        position: absolute;
-                        bottom: -15px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        width: 80%;
-                        height: 1px;
-                        background-color: #eee;
-                    }
-                }
-
-                /* Add courses timeline specific colors */
-                .courses-timeline .timeline:nth-child(1) .timeline-icon,
-                .courses-timeline .timeline:nth-child(1) .timeline-year {
-                    background-color: #4285F4;
-                }
-                
-                .courses-timeline .timeline:nth-child(2) .timeline-icon,
-                .courses-timeline .timeline:nth-child(2) .timeline-year {
-                    background-color: #34A853;
-                }
-                
-                .courses-timeline .timeline:nth-child(3) .timeline-icon,
-                .courses-timeline .timeline:nth-child(3) .timeline-year {
-                    background-color: #EA4335;
-                }
-                
-                #courses-section {
-                    margin-top: 30px;
-                }
-                
-                .courses-timeline .timeline-content {
-                    padding: 15px;
-                }
-                
-                .courses-timeline .title {
-                    font-size: 18px;
-                    margin-bottom: 8px;
-                }
-                
-                .courses-timeline .description {
-                    font-size: 14px;
-                    margin-bottom: 4px;
-                }
-
-                /* Course Section Styles */
-                .courses-container {
-                    margin-top: 30px;
-                }
-
-                .course-category {
-                    margin-bottom: 40px;
-                }
-
-                .category-title {
-                    font-size: 1.5em;
-                    color: #333;
-                    margin-bottom: 20px;
-                    padding-bottom: 10px;
-                    border-bottom: 2px solid #3e82f7;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .category-title i {
-                    color: #3e82f7;
-                }
-
-                .course-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                    gap: 20px;
-                }
-
-                .course-card {
-                    background: rgba(255, 255, 255, 0.9);
-                    border-radius: 10px;
-                    padding: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                .course-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-                }
-
-                .course-header {
-                    margin-bottom: 15px;
-                    padding-bottom: 10px;
-                    border-bottom: 1px solid #eee;
-                }
-
-                .course-header h5 {
-                    font-size: 1.2em;
-                    color: #333;
-                    margin: 0 0 5px 0;
-                }
-
-                .course-semester {
-                    display: inline-block;
-                    background: #3e82f7;
-                    color: white;
-                    padding: 4px 12px;
-                    border-radius: 15px;
-                    font-size: 0.9em;
-                }
-
-                .course-details p {
-                    margin: 8px 0;
-                    color: #555;
-                    font-size: 0.95em;
-                }
-
-                .course-details strong {
-                    color: #333;
-                    font-weight: 500;
-                }
-
-                @media screen and (max-width: 768px) {
-                    .course-grid {
-                        grid-template-columns: 1fr;
-                    }
-
-                    .course-card {
-                        margin-bottom: 15px;
-                    }
-                }
-
-                .teaching-cards-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                    gap: 18px;
-                    margin: 18px 0 0 0;
-                }
-                .teaching-card {
-                    background: #fff;
-                    border-radius: 14px;
-                    box-shadow: 0 2px 12px rgba(30, 60, 90, 0.07);
-                    padding: 18px 14px 14px 14px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    min-height: 80px;
-                    transition: box-shadow 0.2s, transform 0.2s;
-                }
-                .teaching-card:hover {
-                    box-shadow: 0 6px 18px rgba(30, 60, 90, 0.13);
-                    transform: translateY(-2px) scale(1.01);
-                }
-                .teaching-card-title {
-                    display: flex;
-                    align-items: center;
-                    font-size: 1em;
-                    color: #222;
-                    gap: 8px;
-                    margin-bottom: 10px;
-                }
-                .teaching-card-title i {
-                    font-size: 1.1em;
-                    color: #2563eb;
-                }
-                .teaching-badges {
-                    display: flex;
-                    gap: 6px;
-                    flex-wrap: wrap;
-                }
-                .badge {
-                    display: inline-block;
-                    padding: 4px 12px;
-                    border-radius: 7px;
-                    font-size: 0.85em;
-                    font-weight: 500;
-                    color: #fff;
-                    margin-top: 1px;
-                }
-                .badge-blue {
-                    background: #3578e5;
-                }
-                .badge-green {
-                    background: #16a34a;
-                }
-                .badge-purple {
-                    background: #8338ec;
-                }
-                .badge-orange {
-                    background: #f57c00;
-                }
-                .badge-red {
-                    background: #e53935;
-                }
-                .badge-yellow {
-                    background: #fbc02d;
-                }
-                @media (max-width: 700px) {
-                    .teaching-cards-grid {
-                        grid-template-columns: 1fr;
-                    }
-                }
-            `;
-            document.head.appendChild(academiaStyles);
-
-            // Add typing effect to the heading
-            const typeElement = (selector, text, speed = 100, delay = 0) => {
-                const element = document.querySelector(selector);
-                if (!element) return;
-                
-                // Store original text and clear it
-                const originalText = text || element.textContent;
-                element.textContent = '';
-                element.style.borderRight = '2px solid var(--primary-color)';
-                
-                // Start typing after delay
-                setTimeout(() => {
-                    let i = 0;
-                    const interval = setInterval(() => {
-                        if (i < originalText.length) {
-                            element.textContent += originalText.charAt(i);
-                            i++;
-                        } else {
-                            clearInterval(interval);
-                            element.style.borderRight = 'none';
-                        }
-                    }, speed);
-                }, delay);
-            };
-            
-            // Typing effects for name
-            typeElement('.name-container .title', 'Dr.', 100, 300);
-            typeElement('.name-container .first-name', 'Ravi', 100, 800);
-            typeElement('.name-container .last-name', 'Sharma', 100, 1500);
+            /* Scroll to top */
+            const scrollBtn = document.createElement('button');
+            scrollBtn.classList.add('scroll-top-btn');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollBtn.style.display = 'none';
+            document.body.appendChild(scrollBtn);
+            const cp = document.getElementById('content');
+            if (cp) {
+                cp.addEventListener('scroll', () => { scrollBtn.style.display = cp.scrollTop > 300 ? 'block' : 'none'; });
+            }
+            scrollBtn.addEventListener('click', () => { if (cp) cp.scrollTo({ top:0, behavior:'smooth' }); });
         });
     </script>
-    <!-- Load particles.js for the background animation -->
     <script src="particles.js"></script>
 </body>
+<<<<<<< Updated upstream
 </html> 
+=======
+</html>
+>>>>>>> Stashed changes

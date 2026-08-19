@@ -348,18 +348,12 @@
             // Globe background effect
             if (typeof VANTA !== 'undefined') {
                 VANTA.GLOBE({
-                    el: "#particles-js",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x3e82f7,
-                    backgroundColor: 0xffffff,
-                    size: 0.70,
-                    speed: 0.3
+                    el: '#particles-js',
+                    mouseControls: true, touchControls: true, gyroControls: false,
+                    minHeight: 200, minWidth: 200, scale: 1, scaleMobile: 1,
+                    color: 0x93c5fd, color2: 0xffffff,
+                    backgroundColor: 0x0f2756,
+                    size: 0.70, speed: 0.3
                 });
             }
             
@@ -622,6 +616,37 @@
                 }
             `;
             document.head.appendChild(researchGroupStyles);
+
+
+                // Add typing effect to the heading
+            const typeElement = (selector, text, speed = 100, delay = 0) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                // Store original text and clear it
+                const originalText = text || element.textContent;
+                element.textContent = '';
+                element.style.borderRight = '2px solid var(--primary-color)';
+                
+                // Start typing after delay
+                setTimeout(() => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < originalText.length) {
+                            element.textContent += originalText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                            element.style.borderRight = 'none';
+                        }
+                    }, speed);
+                }, delay);
+            };
+            
+            // Typing effects for name
+            typeElement('.name-container .title', 'Dr.', 100, 300);
+            typeElement('.name-container .first-name', 'Ravi', 100, 800);
+            typeElement('.name-container .last-name', 'Sharma', 100, 1500);
         });
     </script>
     <!-- Load particles.js for the background animation -->
