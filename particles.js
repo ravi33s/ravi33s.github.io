@@ -1,8 +1,3 @@
-/**
- * Particle animation background for Dr. Rajesh Kumar Mundotiya's website
- * Creates a subtle, professional animated background
- */
-
 // Prevent main.js 404 errors
 if (typeof window.main === 'undefined') {
     window.main = {};
