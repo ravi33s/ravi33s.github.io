@@ -1,9 +1,19 @@
 {
   "google_scholar": {
-    "total_citations": 322,
-    "h_index": null,
-    "i10_index": null,
+    "total_citations": 328,
+    "h_index": 8,
+    "i10_index": 8,
     "citations_by_year": {}
   },
-  "last_updated": null
+  "scopus": {
+    "citations": 328,
+    "h_index": 8,
+    "manual_update_note": "Not available via free API. Visit your Scopus profile and update these two fields by hand when you check it."
+  },
+  "web_of_science": {
+    "citations": 328,
+    "h_index": 8,
+    "manual_update_note": "Not available via free API. Visit your Web of Science profile and update these two fields by hand when you check it."
+  },
+  "last_updated": "September 2026"
 }
