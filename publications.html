@@ -317,7 +317,7 @@
         .citation-chart-wrap {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 90px;
             margin-bottom: 6px;
         }
         .citation-metrics-box canvas {
@@ -1192,7 +1192,8 @@
                     }
 
                     const byYear = gs.citations_by_year || {};
-                    const years = Object.keys(byYear).sort();
+                    const allYears = Object.keys(byYear).sort();
+                    const years = allYears.slice(-5);
                     const counts = years.map(function (y) { return byYear[y]; });
 
                     if (years.length && window.Chart) {
