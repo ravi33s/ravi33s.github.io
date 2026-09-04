@@ -25,6 +25,9 @@
     <!-- Three.js and Vanta.js for background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+
+    <!-- Chart.js for citation metrics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="Styles.css">
@@ -267,6 +270,71 @@
                 justify-content: flex-start;
             }
         }
+
+        /* Citation Metrics box */
+        .citation-metrics-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(26, 115, 232, 0.25);
+            border-radius: 12px;
+            padding: 14px 16px 10px;
+            margin: 14px 0;
+        }
+        .citation-metrics-box h4 {
+            margin: 0 0 10px;
+            font-size: 0.95rem;
+            color: var(--primary-color, #2c3e50);
+        }
+        .citation-metrics-box h4 i {
+            color: var(--accent-color, #e74c3c);
+            margin-right: 6px;
+        }
+        .citation-stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .citation-stat {
+            flex: 1;
+            text-align: center;
+            background: rgba(26, 115, 232, 0.08);
+            border-radius: 8px;
+            padding: 6px 4px;
+        }
+        .citation-stat-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary-color, #3498db);
+        }
+        .citation-stat-label {
+            display: block;
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .citation-metrics-box canvas {
+            max-width: 100%;
+        }
+        .citation-updated {
+            font-size: 0.7rem;
+            color: #888;
+            text-align: center;
+            margin: 8px 0 4px;
+        }
+        .citation-links {
+            font-size: 0.75rem;
+            text-align: center;
+            margin: 0;
+        }
+        .citation-links a {
+            color: var(--secondary-color, #3498db);
+            text-decoration: none;
+        }
+        .citation-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -286,6 +354,22 @@
                     <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
                 </div>
             </div>
+            <div class="citation-metrics-box" data-aos="fade-up" data-aos-delay="350">
+                <h4><i class="fas fa-chart-bar"></i> Citation Metrics</h4>
+                <div class="citation-stats" id="citationStats">
+                    <div class="citation-stat"><span class="citation-stat-value" id="statCitations">—</span><span class="citation-stat-label">Citations</span></div>
+                    <div class="citation-stat"><span class="citation-stat-value" id="statHIndex">—</span><span class="citation-stat-label">h-index</span></div>
+                    <div class="citation-stat"><span class="citation-stat-value" id="statI10">—</span><span class="citation-stat-label">i10-index</span></div>
+                </div>
+                <canvas id="citationChart" height="140"></canvas>
+                <p class="citation-updated" id="citationUpdated">Loading citation data&hellip;</p>
+                <p class="citation-links">
+                    <a href="https://scholar.google.co.in/citations?user=WUUOPUAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Full Google Scholar profile <i class="fas fa-external-link-alt"></i></a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://www.scimagojr.com/" target="_blank" rel="noopener noreferrer">Journal rankings (Scimago) <i class="fas fa-external-link-alt"></i></a>
+                </p>
+            </div>
+
             <div class="logos" data-aos="fade-up" data-aos-delay="400">
                 <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile">
                     <img src="img/Scopus.jpg" alt="Scopus">
@@ -1068,5 +1152,70 @@
     </script>
     <!-- Load particles.js for the background animation -->
     <script src="particles.js"></script>
+
+    <!-- Citation Metrics: fetch citations.json and render stats + bar chart -->
+    <script>
+        (function () {
+            const statCitations = document.getElementById('statCitations');
+            const statHIndex = document.getElementById('statHIndex');
+            const statI10 = document.getElementById('statI10');
+            const updatedEl = document.getElementById('citationUpdated');
+            const canvas = document.getElementById('citationChart');
+
+            fetch('citations.json?_=' + Date.now())
+                .then(function (res) {
+                    if (!res.ok) throw new Error('citations.json not found');
+                    return res.json();
+                })
+                .then(function (data) {
+                    const gs = data.google_scholar || {};
+                    statCitations.textContent = gs.total_citations != null ? gs.total_citations : '—';
+                    statHIndex.textContent = gs.h_index != null ? gs.h_index : '—';
+                    statI10.textContent = gs.i10_index != null ? gs.i10_index : '—';
+
+                    if (data.last_updated) {
+                        const d = new Date(data.last_updated);
+                        updatedEl.textContent = 'Auto-updated weekly via Google Scholar \u00b7 last refreshed ' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+                    } else {
+                        updatedEl.textContent = 'Auto-updated weekly via Google Scholar';
+                    }
+
+                    const byYear = gs.citations_by_year || {};
+                    const years = Object.keys(byYear).sort();
+                    const counts = years.map(function (y) { return byYear[y]; });
+
+                    if (years.length && window.Chart) {
+                        new Chart(canvas.getContext('2d'), {
+                            type: 'bar',
+                            data: {
+                                labels: years,
+                                datasets: [{
+                                    label: 'Citations',
+                                    data: counts,
+                                    backgroundColor: 'rgba(26, 115, 232, 0.75)',
+                                    borderRadius: 3,
+                                    maxBarThickness: 22
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: { legend: { display: false } },
+                                scales: {
+                                    x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                                    y: { beginAtZero: true, ticks: { precision: 0, font: { size: 10 } } }
+                                }
+                            }
+                        });
+                    } else {
+                        canvas.insertAdjacentHTML('afterend', '<p style="font-size:0.75rem;color:#999;text-align:center;">Yearly breakdown not available yet.</p>');
+                    }
+                })
+                .catch(function (err) {
+                    console.warn('Citation metrics unavailable:', err);
+                    updatedEl.textContent = 'Citation data not available yet.';
+                });
+        })();
+    </script>
 </body>
 </html>
