@@ -314,8 +314,21 @@
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
+        .citation-chart-wrap {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            margin-bottom: 6px;
+        }
         .citation-metrics-box canvas {
             max-width: 100%;
+        }
+        .citation-chart-wrap canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
         }
         .citation-updated {
             font-size: 0.7rem;
@@ -387,7 +400,9 @@
                     <div class="citation-stat"><span class="citation-stat-value" id="statHIndex">—</span><span class="citation-stat-label">h-index</span></div>
                     <div class="citation-stat"><span class="citation-stat-value" id="statI10">—</span><span class="citation-stat-label">i10-index</span></div>
                 </div>
-                <canvas id="citationChart" height="140"></canvas>
+                <div class="citation-chart-wrap">
+                    <canvas id="citationChart"></canvas>
+                </div>
                 <p class="citation-updated" id="citationUpdated">Loading citation data&hellip;</p>
             </div>
         </div>
