@@ -317,7 +317,7 @@
         .citation-chart-wrap {
             position: relative;
             width: 100%;
-            height: 90px;
+            height: 180px;
             margin-bottom: 6px;
         }
         .citation-metrics-box canvas {
@@ -1188,14 +1188,14 @@
 
                     if (data.last_updated) {
                         const d = new Date(data.last_updated);
-                        updatedEl.textContent = 'Auto-updated weekly via Google Scholar \u00b7 last refreshed ' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+                        updatedEl.textContent = 'Auto-updated by Google Scholar (<time datetime="' + data.last_updated + '">' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + '</time>)';
                     } else {
-                        updatedEl.textContent = 'Auto-updated weekly via Google Scholar';
+                        updatedEl.textContent = 'Auto-updated by Google Scholar';
                     }
 
                     const byYear = gs.citations_by_year || {};
                     const allYears = Object.keys(byYear).sort();
-                    const years = allYears.slice(-5);
+                    const years = allYears.slice(-7);
                     const counts = years.map(function (y) { return byYear[y]; });
 
                     if (years.length && window.Chart) {
