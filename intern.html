@@ -28,6 +28,68 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="Styles.css">
+    <style>
+        /* ── Core header (same pattern as other pages) ── */
+        .section-header-new { display: flex; align-items: center; margin-bottom: 24px; }
+        .blue-circle-icon { background-color: #3e82f7; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(62,130,247,.25); flex-shrink: 0; }
+        .blue-circle-icon i { font-size: 18px; }
+        .section-title-text { margin: 0; font-size: 24px; color: #1e293b; font-weight: 700; letter-spacing: .3px; }
+
+        /* ── Tab bar (same pattern as academia.html / activities.html) ── */
+        .opp-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .opp-tab { background: none; border: 2px solid #e0e7ff; border-radius: 22px; padding: 7px 20px; font-size: .88em; font-weight: 600; color: #555; cursor: pointer; transition: all .25s; display: flex; align-items: center; gap: 7px; }
+        .opp-tab:hover { border-color: #3e82f7; color: #3e82f7; background: #f0f6ff; }
+        .opp-tab.active { background: #3e82f7; border-color: #3e82f7; color: #fff; box-shadow: 0 4px 12px rgba(62,130,247,.35); }
+
+        /* ── Panel ── */
+        .opp-panel { display: none; animation: panelIn .35s ease; }
+        .opp-panel.visible { display: block; }
+        @keyframes panelIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ── Positions ── */
+        .opportunity-box { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: transform .3s ease, box-shadow .3s ease; border-left: 4px solid #3e82f7; }
+        .opportunity-box:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,.12); }
+        .opportunity-box:first-of-type { border-left-color: #FF9800; }
+        .opportunity-box:first-of-type strong { color: #d32f2f; font-weight: 700; }
+        .opportunity-box p { margin: 0; line-height: 1.6; color: #333; }
+
+        .project-link { color: #3e82f7; text-decoration: none; position: relative; padding: 2px 4px; font-weight: 500; transition: all 0.3s ease; }
+        .project-link i { font-size: 0.8em; margin-left: 3px; transition: transform 0.3s ease; }
+        .project-link:hover { color: #1a56e8; background-color: rgba(62, 130, 247, 0.1); border-radius: 3px; text-decoration: none; }
+        .project-link:hover i { transform: translateX(3px); }
+
+        .apply-container { margin-top: 15px; text-align: center; }
+        .apply-link { display: inline-block; color: #fff; background-color: #3e82f7; padding: 3px 8px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; position: relative; overflow: hidden; animation: pulse 2s infinite; }
+        .apply-link:hover { background-color: #2c6bed; text-decoration: none; transform: scale(1.05); box-shadow: 0 5px 15px rgba(62, 130, 247, 0.4); }
+        .apply-link:active { transform: scale(0.95); }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(62, 130, 247, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(62, 130, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(62, 130, 247, 0); }
+        }
+
+        /* ── Location ── */
+        .location-box { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: transform .3s ease, box-shadow .3s ease; border-left: 4px solid #4CAF50; display: flex; flex-wrap: wrap; gap: 20px; }
+        .location-box:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,.12); }
+        .map-container { flex: 1; min-width: 300px; }
+        .address-container { flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: center; }
+        .address-container h4 { color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 600; }
+        .address-container p { margin: 0 0 10px 0; line-height: 1.6; color: #555; }
+        .address-container i { color: #4CAF50; margin-right: 8px; }
+        .address-container a { color: #3e82f7; text-decoration: none; transition: color .3s; }
+        .address-container a:hover { color: #2c6bed; text-decoration: underline; }
+
+        @media (max-width: 767px) {
+            .location-box { flex-direction: column; gap: 20px; }
+            .map-container, .address-container { width: 100%; }
+            .address-container { text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .opp-tabs { gap: 5px; }
+            .opp-tab { padding: 6px 12px; font-size: .82em; }
+        }
+    </style>
 </head>
 <body>
     <!-- Globe background container -->
@@ -74,7 +136,6 @@
 
         <div class="content-panel" id="content" data-aos="fade-left" data-aos-duration="800">
             <div class="navbar">
-                <div class="navbar">
                 <div class="navlinks">
                     <a href="index.html" class="navlink" id="aboutBtn">
                         <i class="fas fa-user"></i>
@@ -110,49 +171,85 @@
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-                <button class="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-            </div>
 
             <div class="section" id="intern">
                 <div class="section-content">
-                    <div class="opportunity-box" data-aos="fade-up" data-aos-delay="50">
-                        <p>We are always looking for self-motivated, passionate individuals who can think independently, come up with their own ideas, step out of their comfort zone and plunge into 
-                            the exciting field of Privacy and Security in Industrial Internet of Things (IIoT). <strong>However, currently there are no open positions!</strong></p>
+
+                    <!-- Tab bar -->
+                    <div class="opp-tabs" data-aos="fade-down">
+                        <button class="opp-tab active" data-target="panel-positions">
+                            <i class="fas fa-handshake"></i> Positions
+                        </button>
+                        <button class="opp-tab" data-target="panel-location">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                        </button>
+                        <button class="opp-tab" data-target="panel-visitors">
+                            <i class="fas fa-globe-americas"></i> Visitors
+                        </button>
                     </div>
-                    
-                    <div class="opportunity-box" data-aos="fade-up" data-aos-delay="100">
-                        <p>Our research group is looking for motivated interns with a solid foundation in programming, Industrial IoT, distributed data modeling, and semantic web technologies. 
-                            Candidates who can showcase their technical skills through a GitHub portfolio or previous cyber-physical system projects will be given preference. Applicants interested in 
-                            contributing to our ongoing initiatives, should submit a cover letter detailing their motivation and research interests 
-                            (see the <a href="projects.html" class="project-link">Project page <i class="fas fa-external-link-alt"></i></a> for more information).</p>
-                        <div class="apply-container">
-                            <a href="https://google.com" class="apply-link">APPLY HERE</a>
+
+                    <!-- ══ POSITIONS ══ -->
+                    <div class="opp-panel visible" id="panel-positions">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon"><i class="fas fa-handshake"></i></div>
+                            <h3 class="section-title-text">Open Positions</h3>
                         </div>
-                    </div>
-                    
-                    <div class="location-box" data-aos="fade-up" data-aos-delay="150">
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1395.534669322172!2d5.484789603479693!3d51.447873791989025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6d8e08bdd34c1%3A0xc4a671b15dfb8dff!2sEindhoven%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1786020697420!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        <div class="opportunity-box" data-aos="fade-up" data-aos-delay="50">
+                            <p>We are always looking for self-motivated, passionate individuals who can think independently, come up with their own ideas, step out of their comfort zone and plunge into 
+                                the exciting field of Privacy and Security in Industrial Internet of Things (IIoT). <strong>However, currently there are no open positions!</strong></p>
                         </div>
-                        <div class="address-container">
-                            <h4><i class="fas fa-map-marker-alt"></i> Our Location</h4>
-                            <p>Department of Built Environment<br>
-                            Eindhoven University of Technology<br>
-                            Vertigo 9.16, TU/e Campus, 5600 MB<br>
-                            Eindhoven, The Netherlands</p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:r.sharma@tue.nl">r.sharma@tue.nl</a></p>
+                        
+                        <div class="opportunity-box" data-aos="fade-up" data-aos-delay="100">
+                            <p>Our research group is looking for motivated interns with a solid foundation in programming, Industrial IoT, distributed data modeling, and semantic web technologies. 
+                                Candidates who can showcase their technical skills through a GitHub portfolio or previous cyber-physical system projects will be given preference. Applicants interested in 
+                                contributing to our ongoing initiatives, should submit a cover letter detailing their motivation and research interests 
+                                (see the <a href="projects.html" class="project-link">Project page <i class="fas fa-external-link-alt"></i></a> for more information).</p>
+                            <div class="apply-container">
+                                <a href="https://google.com" class="apply-link">APPLY HERE</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="visitor-box" data-aos="fade-up" data-aos-delay="200">
-                        <h4><i class="fas fa-globe-americas"></i> Visitors From Around the World</h4>
-                        <p class="visitor-caption">A live look at where visitors to this page are coming from.</p>
-                        <div class="visitor-map-wrap">
-                            <a href="https://mapmyvisitors.com/web/1c7yi" title="Visit tracker">
-                                <img src="https://mapmyvisitors.com/map.png?cl=080808&w=500&t=tt&d=D6dnDu-6rCbUbmtUqEGmJYpj8w17YBfF1S0SjeqNRGQ&co=ffffff&ct=808080" />
-                            </a>
+                    <!-- ══ LOCATION ══ -->
+                    <div class="opp-panel" id="panel-location">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <h3 class="section-title-text">Visit Us</h3>
                         </div>
-                        <p class="visitor-note">Powered by <a href="https://mapmyvisitors.com" target="_blank" rel="noopener noreferrer">MapMyVisitors</a> &middot; dots update automatically as new visitors arrive &middot; <a href="https://mapmyvisitors.com/web/1c7yh" target="_blank" rel="noopener noreferrer">view full stats</a></p>
+
+                        <div class="location-box" data-aos="fade-up" data-aos-delay="50">
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1395.534669322172!2d5.484789603479693!3d51.447873791989025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6d8e08bdd34c1%3A0xc4a671b15dfb8dff!2sEindhoven%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1786020697420!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="address-container">
+                                <h4><i class="fas fa-map-marker-alt"></i> Our Location</h4>
+                                <p>Department of Built Environment<br>
+                                Eindhoven University of Technology<br>
+                                Vertigo 9.16, TU/e Campus, 5600 MB<br>
+                                Eindhoven, The Netherlands</p>
+                                <p><i class="fas fa-envelope"></i> <a href="mailto:r.sharma@tue.nl">r.sharma@tue.nl</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══ VISITORS ══ -->
+                    <div class="opp-panel" id="panel-visitors">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon"><i class="fas fa-globe-americas"></i></div>
+                            <h3 class="section-title-text">Visitor Map</h3>
+                        </div>
+
+                        <div class="visitor-box" data-aos="fade-up" data-aos-delay="50">
+                            <h4><i class="fas fa-globe-americas"></i> Visitors From Around the World</h4>
+                            <p class="visitor-caption">A live look at where visitors to this page are coming from.</p>
+                            <div class="visitor-map-wrap">
+                                <a href="https://mapmyvisitors.com/web/1c7yi" title="Visit tracker">
+                                    <img src="https://mapmyvisitors.com/map.png?cl=080808&w=500&t=tt&d=D6dnDu-6rCbUbmtUqEGmJYpj8w17YBfF1S0SjeqNRGQ&co=ffffff&ct=808080" />
+                                </a>
+                            </div>
+                            <p class="visitor-note">Powered by <a href="https://mapmyvisitors.com" target="_blank" rel="noopener noreferrer">MapMyVisitors</a> &middot; dots update automatically as new visitors arrive &middot; <a href="https://mapmyvisitors.com/web/1c7yh" target="_blank" rel="noopener noreferrer">view full stats</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,6 +329,21 @@
                     mobileNavToggle.setAttribute('aria-expanded', 'false');
                 });
             });
+
+            // Tab switching
+            const oppTabs = document.querySelectorAll('.opp-tab');
+            const oppPanels = document.querySelectorAll('.opp-panel');
+            oppTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    oppTabs.forEach(t => t.classList.remove('active'));
+                    oppPanels.forEach(p => p.classList.remove('visible'));
+                    this.classList.add('active');
+                    const target = document.getElementById(this.dataset.target);
+                    if (target) { target.classList.add('visible'); AOS.refresh(); }
+                    const cp = document.getElementById('content');
+                    if (cp) cp.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
             
             // Scroll to top button
             const scrollTopButton = document.createElement('div');
@@ -254,438 +366,6 @@
                 });
             });
             
-            // Add CSS styles for Intern page
-            const internStyles = document.createElement('style');
-            internStyles.textContent = `
-                /* Page Layout Adjustments */
-                .section#intern .section-content {
-                    max-width: 100%;
-                    padding: 0;
-                    margin: 0;
-                }
-                
-                .container {
-                    display: flex;
-                    min-height: 100vh;
-                    max-width: 1600px;
-                    width: 100%;
-                    margin: 0 auto;
-                    padding: 1rem;
-                    position: relative;
-                    z-index: 1;
-                    gap: 0.5rem;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(5px);
-                    -webkit-backdrop-filter: blur(5px);
-                    border-radius: 20px;
-                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-                    flex: 1;
-                }
-                
-                .content-panel {
-                    flex: 1;
-                    padding: 2rem;
-                    background: rgba(224, 242, 254, 0.85);
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(26, 115, 232, 0.3);
-                    border-radius: 15px;
-                    animation: fadeInRight 1s ease-out;
-                    overflow-y: auto;
-                    max-height: 100vh;
-                }
-                
-                .intern-alert {
-                    display: flex;
-                    background-color: #f8f9fa;
-                    border-left: 4px solid #4CAF50;
-                    border-radius: 5px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: all 0.3s ease;
-                    width: 100%;
-                }
-                
-                /* Intern Colors */
-                .intern-alert:nth-child(1) {
-                    border-left-color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(1) .alert-icon {
-                    background-color: rgba(76, 175, 80, 0.1);
-                }
-                
-                .intern-alert:nth-child(1) .alert-icon i {
-                    color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(1) .intern-details span {
-                    background-color: rgba(76, 175, 80, 0.05);
-                }
-                
-                .intern-alert:nth-child(1) .intern-details span i {
-                    color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(2) {
-                    border-left-color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(2) .alert-icon {
-                    background-color: rgba(33, 150, 243, 0.1);
-                }
-                
-                .intern-alert:nth-child(2) .alert-icon i {
-                    color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(2) .intern-details span {
-                    background-color: rgba(33, 150, 243, 0.05);
-                }
-                
-                .intern-alert:nth-child(2) .intern-details span i {
-                    color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(3) {
-                    border-left-color: #9C27B0;
-                }
-                
-                .intern-alert:nth-child(3) .alert-icon {
-                    background-color: rgba(156, 39, 176, 0.1);
-                }
-                
-                .intern-alert:nth-child(3) .alert-icon i {
-                    color: #9C27B0;
-                }
-                
-                .intern-alert:nth-child(3) .intern-details span {
-                    background-color: rgba(156, 39, 176, 0.05);
-                }
-                
-                .intern-alert:nth-child(3) .intern-details span i {
-                    color: #9C27B0;
-                }
-                
-                .intern-alert:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-                }
-                
-                .alert-icon {
-                    flex: 0 0 50px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: rgba(76, 175, 80, 0.1);
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    margin-right: 20px;
-                }
-                
-                .alert-icon i {
-                    font-size: 24px;
-                    color: #4CAF50;
-                }
-                
-                .alert-content {
-                    flex: 1;
-                }
-                
-                .alert-content h4 {
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    color: #333;
-                    font-size: 20px;
-                }
-                
-                .status-tag {
-                    display: inline-block;
-                    padding: 4px 10px;
-                    border-radius: 12px;
-                    font-size: 12px;
-                    font-weight: 600;
-                    margin-bottom: 12px;
-                }
-                
-                .status-tag.active {
-                    background-color: rgba(25, 135, 84, 0.1);
-                    color: #198754;
-                    border: 1px solid rgba(25, 135, 84, 0.2);
-                }
-                
-                .status-tag.completed {
-                    background-color: rgba(13, 110, 253, 0.1);
-                    color: #0d6efd;
-                    border: 1px solid rgba(13, 110, 253, 0.2);
-                }
-                
-                .intern-details {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                    margin-bottom: 15px;
-                }
-                
-                .intern-details span {
-                    background-color: rgba(76, 175, 80, 0.05);
-                    border-radius: 20px;
-                    padding: 6px 12px;
-                    font-size: 14px;
-                    color: #333;
-                }
-                
-                .intern-details span i {
-                    color: #4CAF50;
-                    margin-right: 5px;
-                }
-                
-                .intern-description {
-                    margin-top: 15px;
-                }
-                
-                .intern-description p {
-                    color: #666;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-                
-                @media screen and (max-width: 767px) {
-                    .intern-alert {
-                        flex-direction: column;
-                    }
-                    
-                    .alert-icon {
-                        margin: 0 auto 15px;
-                    }
-                    
-                    .alert-content {
-                        text-align: center;
-                    }
-                    
-                    .intern-details {
-                        justify-content: center;
-                    }
-                }
-                
-                .intern-info {
-                    border-left-color: #FF9800;
-                }
-                
-                .intern-info .alert-icon {
-                    background-color: rgba(255, 152, 0, 0.1);
-                }
-                
-                .intern-info .alert-icon i {
-                    color: #FF9800;
-                }
-                
-                .intern-info .intern-description p strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-                
-                .opportunity-text {
-                    background-color: #f8f9fa;
-                    border-radius: 5px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                }
-                
-                .opportunity-box {
-                    background-color: #f8f9fa;
-                    border-radius: 8px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    border-left: 4px solid #3e82f7;
-                }
-                
-                .opportunity-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-                }
-                
-                .opportunity-box:first-of-type {
-                    border-left-color: #FF9800;
-                }
-                
-                .opportunity-box:first-of-type strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-                
-                .opportunity-box p {
-                    margin: 0;
-                    line-height: 1.6;
-                    color: #333;
-                }
-                
-                .apply-container {
-                    margin-top: 15px;
-                    text-align: center;
-                }
-                
-                .apply-link {
-                    display: inline-block;
-                    color: #fff;
-                    background-color: #3e82f7;
-                    padding: 3px 8px;
-                    border-radius: 4px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    position: relative;
-                    overflow: hidden;
-                    animation: pulse 2s infinite;
-                }
-                
-                .apply-link:hover {
-                    background-color: #2c6bed;
-                    text-decoration: none;
-                    transform: scale(1.05);
-                    box-shadow: 0 5px 15px rgba(62, 130, 247, 0.4);
-                }
-                
-                .apply-link:active {
-                    transform: scale(0.95);
-                }
-                
-                @keyframes pulse {
-                    0% {
-                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0.7);
-                    }
-                    70% {
-                        box-shadow: 0 0 0 10px rgba(62, 130, 247, 0);
-                    }
-                    100% {
-                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0);
-                    }
-                }
-                
-                .location-box {
-                    background-color: #f8f9fa;
-                    border-radius: 8px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    border-left: 4px solid #4CAF50;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                }
-                
-                .location-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-                }
-                
-                .map-container {
-                    flex: 1;
-                    min-width: 300px;
-                }
-                
-                .address-container {
-                    flex: 1;
-                    min-width: 250px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-                
-                .address-container h4 {
-                    color: #333;
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    font-weight: 600;
-                }
-                
-                .address-container p {
-                    margin: 0 0 10px 0;
-                    line-height: 1.6;
-                    color: #555;
-                }
-                
-                .address-container i {
-                    color: #4CAF50;
-                    margin-right: 8px;
-                }
-                
-                .address-container a {
-                    color: #3e82f7;
-                    text-decoration: none;
-                    transition: color 0.3s;
-                }
-                
-                .address-container a:hover {
-                    color: #2c6bed;
-                    text-decoration: underline;
-                }
-                
-                @media (max-width: 767px) {
-                    .location-box {
-                        flex-direction: column;
-                        gap: 20px;
-                    }
-                    
-                    .map-container, .address-container {
-                        width: 100%;
-                    }
-                    
-                    .address-container {
-                        text-align: center;
-                    }
-                }
-                
-                .opportunity-text p {
-                    margin-bottom: 15px;
-                    line-height: 1.6;
-                    color: #333;
-                }
-                
-                .opportunity-text p:last-child {
-                    margin-bottom: 0;
-                }
-                
-                .project-link {
-                    color: #3e82f7;
-                    text-decoration: none;
-                    position: relative;
-                    padding: 2px 4px;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                }
-                
-                .project-link i {
-                    font-size: 0.8em;
-                    margin-left: 3px;
-                    transition: transform 0.3s ease;
-                }
-                
-                .project-link:hover {
-                    color: #1a56e8;
-                    background-color: rgba(62, 130, 247, 0.1);
-                    border-radius: 3px;
-                    text-decoration: none;
-                }
-                
-                .project-link:hover i {
-                    transform: translateX(3px);
-                }
-                
-                .opportunity-text strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-            `;
-            document.head.appendChild(internStyles);
-
             // Add typing effect to the heading
             const typeElement = (selector, text, speed = 100, delay = 0) => {
                 const element = document.querySelector(selector);

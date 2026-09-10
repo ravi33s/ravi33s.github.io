@@ -41,11 +41,26 @@
         .project-logo { max-height: 48px; max-width: 180px; width: auto; height: auto; margin-bottom: 12px; object-fit: contain; }
         .visit-item i { color: #3e82f7; margin-top: 2px; flex-shrink: 0; }
     </style>
+    <style>
+        /* ── Tab bar (same pattern as academia.html / activities.html) ── */
+        .proj-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .proj-tab { background: none; border: 2px solid #e0e7ff; border-radius: 22px; padding: 7px 20px; font-size: .88em; font-weight: 600; color: #555; cursor: pointer; transition: all .25s; display: flex; align-items: center; gap: 7px; }
+        .proj-tab:hover { border-color: #3e82f7; color: #3e82f7; background: #f0f6ff; }
+        .proj-tab.active { background: #3e82f7; border-color: #3e82f7; color: #fff; box-shadow: 0 4px 12px rgba(62,130,247,.35); }
+
+        /* ── Panel ── */
+        .proj-panel { display: none; animation: panelIn .35s ease; }
+        .proj-panel.visible { display: block; }
+        @keyframes panelIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+        @media (max-width:600px) {
+            .proj-tabs { gap:5px; }
+            .proj-tab { padding:6px 12px; font-size:.82em; }
+        }
+    </style>
 </head>
 <body>
-        <!-- Globe background container -->
     <div id="particles-js"></div>
-    
     <div class="container">
         <div class="info-panel" data-aos="fade-right" data-aos-duration="800">
             <div class="name-container">
@@ -55,11 +70,10 @@
                 <img src="img/Ravi.jpg" alt="Dr. Ravi Sharma" class="profile-image" data-aos="zoom-in" data-aos-delay="300">
                 <div class="profile-info">
                     <h3><i class="fas fa-user-tie"></i> Postdoctoral Researcher</h3>
-                    <h3><i class="fas fa-university"></i> Built Environment, TU/e</h3>
+                    <h3><i class="fas fa-university"></i> TU Eindhoven</h3>
                     <p><a href="mailto:r.sharma@tue.nl"><i class="fas fa-envelope"></i> r.sharma@tue.nl</a></p>
                 </div>
             </div>
-
             <div class="logos" data-aos="fade-up" data-aos-delay="400">
                 <a href="http://www.scopus.com/authid/detail.url?authorId=56824728500" target="_blank" title="Scopus Profile">
                     <img src="img/Scopus.jpg" alt="Scopus">
@@ -83,19 +97,6 @@
             <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
                 <p><i class="fas fa-building"></i>  Information Systems in the Built Environment <br> &emsp; Eindhoven University of Technology</p>
                 <p><i class="fas fa-map-marker-alt"></i>  Vertigo 9.16, 5600 MB Eindhoven, <br>&emsp; The Netherlands</p>
-            </div>
-
-            <div class="citation-metrics-box" data-aos="fade-up" data-aos-delay="350">
-                <h4><i class="fas fa-chart-bar"></i> Citation Metrics</h4>
-                <div class="citation-stats" id="citationStats">
-                    <div class="citation-stat"><span class="citation-stat-value" id="statCitations">—</span><span class="citation-stat-label">Citations</span></div>
-                    <div class="citation-stat"><span class="citation-stat-value" id="statHIndex">—</span><span class="citation-stat-label">h-index</span></div>
-                    <div class="citation-stat"><span class="citation-stat-value" id="statI10">—</span><span class="citation-stat-label">i10-index</span></div>
-                </div>
-                <div class="citation-chart-wrap">
-                    <canvas id="citationChart"></canvas>
-                </div>
-                <p class="citation-updated" id="citationUpdated">Loading citation data&hellip;</p>
             </div>
         </div>
 
@@ -139,54 +140,76 @@
 
             <div class="section" id="projects">
                 <div class="section-content">
-                    <div class="section-header-new" data-aos="fade-right">
-                        <div class="blue-circle-icon"><i class="fas fa-project-diagram"></i></div>
-                        <h3 class="section-title-text">Research Projects</h3>
+
+                    <!-- Tab bar -->
+                    <div class="proj-tabs" data-aos="fade-down">
+                        <button class="proj-tab active" data-target="panel-ongoing">
+                            <i class="fas fa-rocket"></i> Ongoing
+                        </button>
+                        <button class="proj-tab" data-target="panel-completed">
+                            <i class="fas fa-flag-checkered"></i> Completed
+                        </button>
                     </div>
 
-                    <!-- WILSON Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://wilson-project.eu/wp-content/uploads/2024/07/logo-wilson.svg" alt="WILSON Project Logo" class="project-logo">
-                        <div class="project-meta">
-                            <span class="project-badge badge-horizon"><i class="fas fa-eu"></i> Horizon Europe</span>
-                            <span class="project-dates"><i class="fas fa-calendar"></i> May 2024 – Apr 2028</span>
+                    <!-- ══ ONGOING ══ -->
+                    <div class="proj-panel visible" id="panel-ongoing">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon"><i class="fas fa-rocket"></i></div>
+                            <h3 class="section-title-text">Ongoing Projects</h3>
                         </div>
-                        <h3>WILSON: Distributed Data Modelling and Federated Digital Twinning for Lifecycle Data-driven Sustainable Operation and Management of Buildings and Districts</h3>
-                        <p class="project-desc">WILSON focuses on distributed data modelling and federated digital twinning for lifecycle data-driven sustainable operation and management of buildings and districts. The project develops cutting-edge approaches to information systems in the built environment. <br> Grant: <strong>#HORIZON-CL5-2023-D4-02-01</strong></p>
-                        <p class="project-team"><strong>Team:</strong> Dr. Ir.-arch. Pieter Pauwels (Project Manager), Dr. Ir.-arch. Ekaterina Petrova (Project member), Dr. Ravi Sharma (Project member), Avinash Ramachandruni (Project member)</p>
-                        <a href="https://wilson-project.eu" target="_blank" class="project-link"><i class="fas fa-globe"></i> https://wilson-project.eu</a>
-                        <div class="project-visits">
-                            <h4><i class="fas fa-map-marker-alt"></i> Project Visits</h4>
-                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 3rd General Assembly in Eindhoven, Netherlands, May 21–22, 2024, hosted by TUE</span></div>
-                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st Review Meeting in Grenoble, France, Dec 10–11, 2025, hosted by CSTB</span></div>
-                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 2nd General Assembly in Athens, Greece, Apr 2–3, 2025, hosted by QUE Technologies</span></div>
-                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st General Assembly in Milan, Italy, Oct 22–23, 2024, hosted by RINA-C</span></div>
+
+                        <!-- WILSON Project -->
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://wilson-project.eu/wp-content/uploads/2024/07/logo-wilson.svg" alt="WILSON Project Logo" class="project-logo">
+                            <div class="project-meta">
+                                <span class="project-badge badge-horizon"><i class="fas fa-eu"></i> Horizon Europe</span>
+                                <span class="project-dates"><i class="fas fa-calendar"></i> May 2024 – Apr 2028</span>
+                            </div>
+                            <h3>WILSON: Distributed Data Modelling and Federated Digital Twinning for Lifecycle Data-driven Sustainable Operation and Management of Buildings and Districts</h3>
+                            <p class="project-desc">WILSON focuses on distributed data modelling and federated digital twinning for lifecycle data-driven sustainable operation and management of buildings and districts. The project develops cutting-edge approaches to information systems in the built environment. <br> Grant: <strong>#HORIZON-CL5-2023-D4-02-01</strong></p>
+                            <p class="project-team"><strong>Team:</strong> Dr. Ir.-arch. Pieter Pauwels (Project Manager), Dr. Ir.-arch. Ekaterina Petrova (Project member), Dr. Ravi Sharma (Project member), Avinash Ramachandruni (Project member)</p>
+                            <a href="https://wilson-project.eu" target="_blank" class="project-link"><i class="fas fa-globe"></i> https://wilson-project.eu</a>
+                            <div class="project-visits">
+                                <h4><i class="fas fa-map-marker-alt"></i> Project Visits</h4>
+                                <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 3rd General Assembly in Eindhoven, Netherlands, May 21–22, 2024, hosted by TUE</span></div>
+                                <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st Review Meeting in Grenoble, France, Dec 10–11, 2025, hosted by CSTB</span></div>
+                                <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 2nd General Assembly in Athens, Greece, Apr 2–3, 2025, hosted by QUE Technologies</span></div>
+                                <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>WILSON 1st General Assembly in Milan, Italy, Oct 22–23, 2024, hosted by RINA-C</span></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- PhD Thesis Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="200" style="border-left-color: #16a34a;">
-                        <div class="project-meta">
-                            <span class="project-badge badge-phd"><i class="fas fa-graduation-cap"></i> PhD Thesis</span>
-                            <span class="project-dates"><i class="fas fa-calendar"></i> Sep 2019 – Feb 2024</span>
+                    <!-- ══ COMPLETED ══ -->
+                    <div class="proj-panel" id="panel-completed">
+                        <div class="section-header-new" data-aos="fade-right">
+                            <div class="blue-circle-icon"><i class="fas fa-flag-checkered"></i></div>
+                            <h3 class="section-title-text">Completed Projects</h3>
                         </div>
-                        <h3>Research of Industrial Internet of Things and Industry 4.0 in Enterprise Resource Planning</h3>
-                        <p class="project-desc">PhD thesis at Budapest University of Technology and Economics. Research accomplishments have significant implications for the advancement of Industrial IoT, Industry 4.0, and related domains, paving the way for future research and development. Topics include spatiotemporal query processing, secure code dissemination, predictive analytics for smart manufacturing, and data management architectures.</p>
-                        <a href="http://hdl.handle.net/10890/55155" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> View Thesis Repository</a>
-                    </div>
 
-                    <!-- DAAD-DST Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300" style="border-left-color: #d946ef;">
-                        <div class="project-meta">
-                            <span class="project-badge badge-daad"><i class="fas fa-handshake"></i> DAAD-DST</span>
-                            <span class="project-dates"><i class="fas fa-calendar"></i> Feb 2015 – Feb 2017</span>
+                        <!-- PhD Thesis Project -->
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="100" style="border-left-color: #16a34a;">
+                            <div class="project-meta">
+                                <span class="project-badge badge-phd"><i class="fas fa-graduation-cap"></i> PhD Thesis</span>
+                                <span class="project-dates"><i class="fas fa-calendar"></i> Sep 2019 – Feb 2024</span>
+                            </div>
+                            <h3>Research of Industrial Internet of Things and Industry 4.0 in Enterprise Resource Planning</h3>
+                            <p class="project-desc">PhD thesis at Budapest University of Technology and Economics. Research accomplishments have significant implications for the advancement of Industrial IoT, Industry 4.0, and related domains, paving the way for future research and development. Topics include spatiotemporal query processing, secure code dissemination, predictive analytics for smart manufacturing, and data management architectures.</p>
+                            <a href="http://hdl.handle.net/10890/55155" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> View Thesis Repository</a>
                         </div>
-                        <h3>Time Synchronization in Duty Cycled Wireless Sensor Networks</h3>
-                        <p class="project-desc">DST-DAAD Indo-German Project Based Personnel Exchange Programme. The goal was to model broadcast duration to ensure that a certain percentage of available nodes are synchronized. The problem of estimating broadcast duration is formulated to capture the probability threshold of nodes being synchronized. <br> Grant: <strong>#INT/FRG/DAAD/P-250/2015</strong></p>
-                        <p class="project-team"><strong>Team:</strong> Prof. Dr. Ashok Singh Sairam (PI), Prof. Dr.-Ing. Axel Sikora (PI), Akash Yadav, Ravi Sharma</p>
-                        <div class="project-visits">
-                            <h4><i class="fas fa-map-marker-alt"></i> Project Visit</h4>
-                            <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>DST-DAAD Indo-German Exchange Programme at Öffenburg University of Applied Sciences, Germany — Jun 1 to Jul 5, 2015</span></div>
+
+                        <!-- DAAD-DST Project -->
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="200" style="border-left-color: #d946ef;">
+                            <div class="project-meta">
+                                <span class="project-badge badge-daad"><i class="fas fa-handshake"></i> DAAD-DST</span>
+                                <span class="project-dates"><i class="fas fa-calendar"></i> Feb 2015 – Feb 2017</span>
+                            </div>
+                            <h3>Time Synchronization in Duty Cycled Wireless Sensor Networks</h3>
+                            <p class="project-desc">DST-DAAD Indo-German Project Based Personnel Exchange Programme. The goal was to model broadcast duration to ensure that a certain percentage of available nodes are synchronized. The problem of estimating broadcast duration is formulated to capture the probability threshold of nodes being synchronized. <br> Grant: <strong>#INT/FRG/DAAD/P-250/2015</strong></p>
+                            <p class="project-team"><strong>Team:</strong> Prof. Dr. Ashok Singh Sairam (PI), Prof. Dr.-Ing. Axel Sikora (PI), Akash Yadav, Ravi Sharma</p>
+                            <div class="project-visits">
+                                <h4><i class="fas fa-map-marker-alt"></i> Project Visit</h4>
+                                <div class="visit-item"><i class="fas fa-circle" style="font-size:0.5em;margin-top:6px"></i><span>DST-DAAD Indo-German Exchange Programme at Öffenburg University of Applied Sciences, Germany — Jun 1 to Jul 5, 2015</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -265,6 +288,21 @@
                     mobileNavToggle.setAttribute('aria-expanded', 'false');
                 });
             });
+
+            // Tab switching
+            const projTabs = document.querySelectorAll('.proj-tab');
+            const projPanels = document.querySelectorAll('.proj-panel');
+            projTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    projTabs.forEach(t => t.classList.remove('active'));
+                    projPanels.forEach(p => p.classList.remove('visible'));
+                    this.classList.add('active');
+                    const target = document.getElementById(this.dataset.target);
+                    if (target) { target.classList.add('visible'); AOS.refresh(); }
+                    const cp = document.getElementById('content');
+                    if (cp) cp.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
             
             // Scroll to top button
             const scrollTopButton = document.createElement('div');
@@ -287,438 +325,6 @@
                 });
             });
             
-            // Add CSS styles for Intern page
-            const internStyles = document.createElement('style');
-            internStyles.textContent = `
-                /* Page Layout Adjustments */
-                .section#intern .section-content {
-                    max-width: 100%;
-                    padding: 0;
-                    margin: 0;
-                }
-                
-                .container {
-                    display: flex;
-                    min-height: 100vh;
-                    max-width: 1600px;
-                    width: 100%;
-                    margin: 0 auto;
-                    padding: 1rem;
-                    position: relative;
-                    z-index: 1;
-                    gap: 0.5rem;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(5px);
-                    -webkit-backdrop-filter: blur(5px);
-                    border-radius: 20px;
-                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-                    flex: 1;
-                }
-                
-                .content-panel {
-                    flex: 1;
-                    padding: 2rem;
-                    background: rgba(224, 242, 254, 0.85);
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(26, 115, 232, 0.3);
-                    border-radius: 15px;
-                    animation: fadeInRight 1s ease-out;
-                    overflow-y: auto;
-                    max-height: fit-content;
-                }
-                
-                .intern-alert {
-                    display: flex;
-                    background-color: #f8f9fa;
-                    border-left: 4px solid #4CAF50;
-                    border-radius: 5px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: all 0.3s ease;
-                    width: 100%;
-                }
-                
-                /* Intern Colors */
-                .intern-alert:nth-child(1) {
-                    border-left-color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(1) .alert-icon {
-                    background-color: rgba(76, 175, 80, 0.1);
-                }
-                
-                .intern-alert:nth-child(1) .alert-icon i {
-                    color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(1) .intern-details span {
-                    background-color: rgba(76, 175, 80, 0.05);
-                }
-                
-                .intern-alert:nth-child(1) .intern-details span i {
-                    color: #4CAF50;
-                }
-                
-                .intern-alert:nth-child(2) {
-                    border-left-color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(2) .alert-icon {
-                    background-color: rgba(33, 150, 243, 0.1);
-                }
-                
-                .intern-alert:nth-child(2) .alert-icon i {
-                    color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(2) .intern-details span {
-                    background-color: rgba(33, 150, 243, 0.05);
-                }
-                
-                .intern-alert:nth-child(2) .intern-details span i {
-                    color: #2196F3;
-                }
-                
-                .intern-alert:nth-child(3) {
-                    border-left-color: #9C27B0;
-                }
-                
-                .intern-alert:nth-child(3) .alert-icon {
-                    background-color: rgba(156, 39, 176, 0.1);
-                }
-                
-                .intern-alert:nth-child(3) .alert-icon i {
-                    color: #9C27B0;
-                }
-                
-                .intern-alert:nth-child(3) .intern-details span {
-                    background-color: rgba(156, 39, 176, 0.05);
-                }
-                
-                .intern-alert:nth-child(3) .intern-details span i {
-                    color: #9C27B0;
-                }
-                
-                .intern-alert:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-                }
-                
-                .alert-icon {
-                    flex: 0 0 50px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: rgba(76, 175, 80, 0.1);
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    margin-right: 20px;
-                }
-                
-                .alert-icon i {
-                    font-size: 24px;
-                    color: #4CAF50;
-                }
-                
-                .alert-content {
-                    flex: 1;
-                }
-                
-                .alert-content h4 {
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    color: #333;
-                    font-size: 20px;
-                }
-                
-                .status-tag {
-                    display: inline-block;
-                    padding: 4px 10px;
-                    border-radius: 12px;
-                    font-size: 12px;
-                    font-weight: 600;
-                    margin-bottom: 12px;
-                }
-                
-                .status-tag.active {
-                    background-color: rgba(25, 135, 84, 0.1);
-                    color: #198754;
-                    border: 1px solid rgba(25, 135, 84, 0.2);
-                }
-                
-                .status-tag.completed {
-                    background-color: rgba(13, 110, 253, 0.1);
-                    color: #0d6efd;
-                    border: 1px solid rgba(13, 110, 253, 0.2);
-                }
-                
-                .intern-details {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                    margin-bottom: 15px;
-                }
-                
-                .intern-details span {
-                    background-color: rgba(76, 175, 80, 0.05);
-                    border-radius: 20px;
-                    padding: 6px 12px;
-                    font-size: 14px;
-                    color: #333;
-                }
-                
-                .intern-details span i {
-                    color: #4CAF50;
-                    margin-right: 5px;
-                }
-                
-                .intern-description {
-                    margin-top: 15px;
-                }
-                
-                .intern-description p {
-                    color: #666;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-                
-                @media screen and (max-width: 767px) {
-                    .intern-alert {
-                        flex-direction: column;
-                    }
-                    
-                    .alert-icon {
-                        margin: 0 auto 15px;
-                    }
-                    
-                    .alert-content {
-                        text-align: center;
-                    }
-                    
-                    .intern-details {
-                        justify-content: center;
-                    }
-                }
-                
-                .intern-info {
-                    border-left-color: #FF9800;
-                }
-                
-                .intern-info .alert-icon {
-                    background-color: rgba(255, 152, 0, 0.1);
-                }
-                
-                .intern-info .alert-icon i {
-                    color: #FF9800;
-                }
-                
-                .intern-info .intern-description p strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-                
-                .opportunity-text {
-                    background-color: #f8f9fa;
-                    border-radius: 5px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                }
-                
-                .opportunity-box {
-                    background-color: #f8f9fa;
-                    border-radius: 8px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    border-left: 4px solid #3e82f7;
-                }
-                
-                .opportunity-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-                }
-                
-                .opportunity-box:first-of-type {
-                    border-left-color: #FF9800;
-                }
-                
-                .opportunity-box:first-of-type strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-                
-                .opportunity-box p {
-                    margin: 0;
-                    line-height: 1.6;
-                    color: #333;
-                }
-                
-                .apply-container {
-                    margin-top: 15px;
-                    text-align: center;
-                }
-                
-                .apply-link {
-                    display: inline-block;
-                    color: #fff;
-                    background-color: #3e82f7;
-                    padding: 3px 8px;
-                    border-radius: 4px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    position: relative;
-                    overflow: hidden;
-                    animation: pulse 2s infinite;
-                }
-                
-                .apply-link:hover {
-                    background-color: #2c6bed;
-                    text-decoration: none;
-                    transform: scale(1.05);
-                    box-shadow: 0 5px 15px rgba(62, 130, 247, 0.4);
-                }
-                
-                .apply-link:active {
-                    transform: scale(0.95);
-                }
-                
-                @keyframes pulse {
-                    0% {
-                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0.7);
-                    }
-                    70% {
-                        box-shadow: 0 0 0 10px rgba(62, 130, 247, 0);
-                    }
-                    100% {
-                        box-shadow: 0 0 0 0 rgba(62, 130, 247, 0);
-                    }
-                }
-                
-                .location-box {
-                    background-color: #f8f9fa;
-                    border-radius: 8px;
-                    padding: 20px;
-                    margin-bottom: 20px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    border-left: 4px solid #4CAF50;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                }
-                
-                .location-box:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-                }
-                
-                .map-container {
-                    flex: 1;
-                    min-width: 300px;
-                }
-                
-                .address-container {
-                    flex: 1;
-                    min-width: 250px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-                
-                .address-container h4 {
-                    color: #333;
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    font-weight: 600;
-                }
-                
-                .address-container p {
-                    margin: 0 0 10px 0;
-                    line-height: 1.6;
-                    color: #555;
-                }
-                
-                .address-container i {
-                    color: #4CAF50;
-                    margin-right: 8px;
-                }
-                
-                .address-container a {
-                    color: #3e82f7;
-                    text-decoration: none;
-                    transition: color 0.3s;
-                }
-                
-                .address-container a:hover {
-                    color: #2c6bed;
-                    text-decoration: underline;
-                }
-                
-                @media (max-width: 767px) {
-                    .location-box {
-                        flex-direction: column;
-                        gap: 20px;
-                    }
-                    
-                    .map-container, .address-container {
-                        width: 100%;
-                    }
-                    
-                    .address-container {
-                        text-align: center;
-                    }
-                }
-                
-                .opportunity-text p {
-                    margin-bottom: 15px;
-                    line-height: 1.6;
-                    color: #333;
-                }
-                
-                .opportunity-text p:last-child {
-                    margin-bottom: 0;
-                }
-                
-                .project-link {
-                    color: #3e82f7;
-                    text-decoration: none;
-                    position: relative;
-                    padding: 2px 4px;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                }
-                
-                .project-link i {
-                    font-size: 0.8em;
-                    margin-left: 3px;
-                    transition: transform 0.3s ease;
-                }
-                
-                .project-link:hover {
-                    color: #1a56e8;
-                    background-color: rgba(62, 130, 247, 0.1);
-                    border-radius: 3px;
-                    text-decoration: none;
-                }
-                
-                .project-link:hover i {
-                    transform: translateX(3px);
-                }
-                
-                .opportunity-text strong {
-                    color: #d32f2f;
-                    font-weight: 700;
-                }
-            `;
-            document.head.appendChild(internStyles);
-
             // Add typing effect to the heading
             const typeElement = (selector, text, speed = 100, delay = 0) => {
                 const element = document.querySelector(selector);
