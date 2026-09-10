@@ -1188,9 +1188,9 @@
 
                     if (data.last_updated) {
                         const d = new Date(data.last_updated);
-                        updatedEl.textContent = 'Auto-updated by Google Scholar (<time datetime="' + data.last_updated + '">' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + '</time>)';
+                        updatedEl.innerHTML = 'Auto-updated by Google Scholar (<time datetime="' + data.last_updated + '">' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + '</time>)';
                     } else {
-                        updatedEl.textContent = 'Auto-updated by Google Scholar';
+                        updatedEl.innerHTML = 'Auto-updated by Google Scholar';
                     }
 
                     const byYear = gs.citations_by_year || {};
