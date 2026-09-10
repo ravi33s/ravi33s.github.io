@@ -311,7 +311,6 @@
             display: block;
             font-size: 0.7rem;
             color: #666;
-            text-transform: uppercase;
             letter-spacing: 0.03em;
         }
         .citation-chart-wrap {
@@ -1188,9 +1187,9 @@
 
                     if (data.last_updated) {
                         const d = new Date(data.last_updated);
-                        updatedEl.innerHTML = 'Auto-updated by Google Scholar (<time datetime="' + data.last_updated + '">' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + '</time>)';
+                        updatedEl.textContent = 'Auto-updated by Google Scholar (last refreshed ' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + ')';
                     } else {
-                        updatedEl.innerHTML = 'Auto-updated by Google Scholar';
+                        updatedEl.textContent = 'Auto-updated by Google Scholar';
                     }
 
                     const byYear = gs.citations_by_year || {};
