@@ -997,10 +997,11 @@
                 });
             }
 
-            function numberItems(items) {
-                let counter = 1;
+            function numberItems(items, prefix) {
+                let counter = items.length;
                 items.forEach(item => {
-                    item.querySelector('.publication-type').textContent = counter++;
+                    const num = counter--;
+                    item.querySelector('.publication-type').textContent = prefix ? '[' + prefix + ' ' + num + ']' : num;
                 });
             }
 
@@ -1027,7 +1028,7 @@
                 hideAll();
                 showItems(journalItems);
                 restoreLabels(journalItems);
-                numberItems(journalItems);
+                numberItems(journalItems, 'JA');
                 updateYearGroups();
                 AOS.refresh();
             });
@@ -1038,7 +1039,7 @@
                 hideAll();
                 showItems(conferenceItems);
                 restoreLabels(conferenceItems);
-                numberItems(conferenceItems);
+                numberItems(conferenceItems, 'CP');
                 updateYearGroups();
                 AOS.refresh();
             });
@@ -1049,7 +1050,7 @@
                 hideAll();
                 showItems(bookItems);
                 restoreLabels(bookItems);
-                numberItems(bookItems);
+                numberItems(bookItems, 'BC');
                 updateYearGroups();
                 AOS.refresh();
             });
@@ -1060,7 +1061,7 @@
                 hideAll();
                 showItems(deliverableItems);
                 restoreLabels(deliverableItems);
-                numberItems(deliverableItems);
+                numberItems(deliverableItems, 'DL');
                 updateYearGroups();
                 AOS.refresh();
             });
