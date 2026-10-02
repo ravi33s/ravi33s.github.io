@@ -60,6 +60,92 @@
         .editor-card-body h5 { margin: 0 0 2px; color: #222; font-size: .9em; font-weight: 600; }
         .editor-card-body span { font-size: .78em; color: #888; }
 
+            /* Wide Horizontal Layout: Text Left, Image Right */
+            .journal-card-wide {
+                display: flex;
+                flex-direction: row; 
+                align-items: center; 
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+                padding: 40px 50px; /* Increased padding for a bigger box */
+                max-width: 1000px; /* Much wider overall box */
+                width: 100%;
+                margin: 25px auto;
+                box-sizing: border-box;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .journal-card-wide:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            }
+
+            /* Left Side: Text Content */
+            .journal-card-wide .journal-text-left {
+                flex: 1;
+                text-align: left;
+                /* MAGIC TRICK: This forces all text to stay on one single line */
+                white-space: nowrap; 
+            }
+
+            .journal-card-wide .journal-text-left h3 {
+                margin: 0 0 15px 0;
+                color: #333;
+                font-size: 1.6rem; /* Slightly larger title */
+                font-weight: 600;
+            }
+
+            .journal-card-wide .metric-line {
+                color: #555;
+                margin: 12px 0;
+                font-size: 1.05rem; /* Slightly larger text */
+                line-height: 1.5;
+            }
+
+            .journal-card-wide .text-link {
+                display: block;
+                margin-top: 15px;
+                color: #007a3d;
+                text-decoration: underline;
+                font-size: 1rem;
+                white-space: nowrap; /* Keeps the URL on one line */
+            }
+
+            .journal-card-wide .text-link:hover {
+                color: #005a2d;
+            }
+
+            /* Right Side: Image */
+            .journal-card-wide .journal-image-right {
+                flex-shrink: 0;
+                margin-left: 40px; /* Space between text and image */
+            }
+
+            .journal-card-wide .journal-image-right img {
+                width: 160px; /* Bigger image */
+                height: 160px;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+            }
+
+            /* Mobile Fallback: Stacks vertically on phones so text doesn't overflow the screen */
+            @media (max-width: 768px) {
+                .journal-card-wide {
+                    flex-direction: column;
+                    padding: 30px;
+                }
+                .journal-card-wide .journal-text-left {
+                    white-space: normal; /* Allows wrapping on small screens so it doesn't break */
+                    margin-bottom: 20px;
+                    width: 100%;
+                }
+                .journal-card-wide .journal-image-right {
+                    margin-left: 0;
+                }
+            }
+
         /* ── Courses grid ── */
         .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 13px; margin-top: 4px; }
         .course-card { background: #fff; border-radius: 11px; padding: 15px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-left: 4px solid #3e82f7; transition: all .2s; }
@@ -196,17 +282,23 @@
                                 <h3 class="section-title-text">Elsevier Scientific Editor</h3>
                             </div>
                             <p style="color:#555;font-size:.9em;margin-bottom:16px;">Member of the editorial board of Elsevier Journals</p>
-                            <div class="editor-grid">
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="50"><i class="fas fa-flask"></i><div class="editor-card-body"><h5>Next Research</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="80"><i class="fas fa-layer-group"></i><div class="editor-card-body"><h5>Array</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="110"><i class="fas fa-city"></i><div class="editor-card-body"><h5>City and Environment Interactions</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="140"><i class="fas fa-bolt"></i><div class="editor-card-body"><h5>Energy Nexus</h5><span>Elsevier · IF 8.2 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="170"><i class="fas fa-plug"></i><div class="editor-card-body"><h5>Int. Journal of Electrical Power &amp; Energy Systems</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-atom"></i><div class="editor-card-body"><h5>Materials Today Communications</h5><span>Elsevier · IF 4.9 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="230"><i class="fas fa-ruler"></i><div class="editor-card-body"><h5>Measurement</h5><span>Elsevier · IF 6.1 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="260"><i class="fas fa-cogs"></i><div class="editor-card-body"><h5>Results in Engineering</h5><span>Elsevier · IF 9.4 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="290"><i class="fas fa-road"></i><div class="editor-card-body"><h5>Transportation Engineering</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="320"><i class="fas fa-radiation"></i><div class="editor-card-body"><h5>Physics Open</h5><span>Elsevier · IF 2.1 · Jun 2026–Jun 2027</span></div></div>
+                            <div class="editor-grid">                                
+                                <div class="journal-card-wide" data-aos="zoom-in" data-aos-delay="80">
+                                    <!-- Text on the left -->
+                                    <div class="journal-text-left">
+                                        <h3>Array</h3>
+                                        <p class="metric-line"><strong>Impact Factor:</strong> 5.3</p>
+                                        <p class="metric-line"><strong>Scientific Editor:</strong> May 2026 – April 2027</p>
+                                        <a href="https://www.sciencedirect.com/journal/array" target="_blank" rel="noopener noreferrer" class="text-link">https://www.sciencedirect.com/journal/array</a>
+                                    </div>
+                                    
+                                    <!-- Image on the right -->
+                                    <div class="journal-image-right">
+                                        <img src="img/array.jpg" alt="Array Journal Cover">
+                                    </div>
+                                </div>   
+                            
+                            
                             </div>
                         </div>
                     </div>
