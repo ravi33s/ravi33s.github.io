@@ -60,6 +60,29 @@
         .editor-card-body h5 { margin: 0 0 2px; color: #222; font-size: .9em; font-weight: 600; }
         .editor-card-body span { font-size: .78em; color: #888; }
 
+        /* Journal cover image in editor cards */
+            .act-journal-cover {
+                width: 60px;
+                height: 80px;
+                flex-shrink: 0;
+                border-radius: 6px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                background: #f0f0f0;
+            }
+
+            .act-journal-cover img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .editor-list {
+                display: flex;
+                flex-direction: column;
+            }
+
         /* ── Courses grid ── */
         .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 13px; margin-top: 4px; }
         .course-card { background: #fff; border-radius: 11px; padding: 15px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-left: 4px solid #3e82f7; transition: all .2s; }
@@ -196,17 +219,56 @@
                                 <h3 class="section-title-text">Elsevier Scientific Editor</h3>
                             </div>
                             <p style="color:#555;font-size:.9em;margin-bottom:16px;">Member of the editorial board of Elsevier Journals</p>
-                            <div class="editor-grid">                                
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="50"><i class="fas fa-flask"></i><div class="editor-card-body"><h5>Next Research</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="80"><i class="fas fa-layer-group"></i><div class="editor-card-body"><h5>Array</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="110"><i class="fas fa-city"></i><div class="editor-card-body"><h5>City and Environment Interactions</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="140"><i class="fas fa-bolt"></i><div class="editor-card-body"><h5>Energy Nexus</h5><span>Elsevier · IF 8.2 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="170"><i class="fas fa-plug"></i><div class="editor-card-body"><h5>Int. Journal of Electrical Power &amp; Energy Systems</h5><span>Elsevier · IF 5.3 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-atom"></i><div class="editor-card-body"><h5>Materials Today Communications</h5><span>Elsevier · IF 4.9 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="230"><i class="fas fa-ruler"></i><div class="editor-card-body"><h5>Measurement</h5><span>Elsevier · IF 6.1 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="260"><i class="fas fa-cogs"></i><div class="editor-card-body"><h5>Results in Engineering</h5><span>Elsevier · IF 9.4 · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="290"><i class="fas fa-road"></i><div class="editor-card-body"><h5>Transportation Engineering</h5><span>Elsevier · Jun 2026–Jun 2027</span></div></div>
-                                <div class="editor-card" data-aos="zoom-in" data-aos-delay="320"><i class="fas fa-radiation"></i><div class="editor-card-body"><h5>Physics Open</h5><span>Elsevier · IF 2.1 · Jun 2026–Jun 2027</span></div></div>
+                            <div class="editor-list">
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X30504759.jpg" alt="Next Research"></div>
+                                    <div class="act-body"><h4>Next Research</h4><p>Impact Factor 5.3</p><div class="act-date"><i class="fas fa-calendar-alt"></i> May 2026 -  April 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X25900056.jpg" alt="Array"></div>
+                                    <div class="act-body"><h4>Array</h4><p>Impact Factor 5.3</p><div class="act-date"><i class="fas fa-calendar-alt"></i> May 2026 -  April 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X25902520.jpg" alt="City and Environment Interactions"></div>
+                                    <div class="act-body"><h4>City and Environment Interactions</h4><p>Impact Factor 5.3</p><div class="act-date"><i class="fas fa-calendar-alt"></i> May 2026 -  April 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X27724271.jpg" alt="Energy Nexus"></div>
+                                    <div class="act-body"><h4>Energy Nexus</h4><p>Impact Factor 8.2</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 - Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X01420615.jpg" alt="Int. Journal of Electrical Power & Energy Systems"></div>
+                                    <div class="act-body"><h4>Int. Journal of Electrical Power & Energy Systems</h4><p>Impact Factor 5.3</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 - Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X23524928.jpg" alt="Materials Today Communications"></div>
+                                    <div class="act-body"><h4>Materials Today Communications</h4><p>Impact Factor 4.9</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 - Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X02632241.jpg" alt="Measurement"></div>
+                                    <div class="act-body"><h4>Measurement</h4><p>Impact Factor 6.1</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 - Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X25901230.jpg" alt="Results in Engineering"></div>
+                                    <div class="act-body"><h4>Results in Engineering</h4><p>Impact Factor 9.4</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 – Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X2666691X.jpg" alt="Transportation Engineering"></div>
+                                    <div class="act-body"><h4>Transportation Engineering</h4><p>Impact Factor 3.8</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 – Jun 2027</div></div>
+                                </div>
+
+                                <div class="act-card">
+                                    <div class="act-journal-cover"><img src="https://ars.els-cdn.com/content/image/X26660326.jpg" alt="Physics Open"></div>
+                                    <div class="act-body"><h4>Physics Open</h4><p>Impact Factor 2.1</p><div class="act-date"><i class="fas fa-calendar-alt"></i> Jun 2026 – Jun 2027</div></div>
+                                </div>
                             </div>
                         </div>
                     </div>
