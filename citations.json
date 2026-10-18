@@ -1,6 +1,6 @@
 {
   "google_scholar": {
-    "total_citations": 333,
+    "total_citations": 334,
     "h_index": 8,
     "i10_index": 8,
     "citations_by_year": {
@@ -16,8 +16,8 @@
       "2023": 41,
       "2024": 62,
       "2025": 80,
-      "2026": 50
+      "2026": 51
     }
   },
-  "last_updated": "2026-10-17T09:48:11.845146+00:00"
+  "last_updated": "2026-10-18T09:59:54.752001+00:00"
 }
